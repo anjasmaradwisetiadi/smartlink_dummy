@@ -47,7 +47,7 @@
             Jumlah
           </div>
           <div class="w-1/2 text-right">
-            {{count}}
+           Rp {{count}}
           </div>
         </div>
 

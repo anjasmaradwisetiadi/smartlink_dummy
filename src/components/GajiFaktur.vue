@@ -20,7 +20,8 @@
         <edit-absen 
         :inner-height="innerHeight" 
         :inner-width="innerWidth" 
-        :items="items.data">
+        :items="items.data"
+        >
 
         </edit-absen>
 
@@ -93,8 +94,6 @@
       ...mapGetters(['getAllDataEmployee', 'getToggleModal']),
 
       popUpModal() {
-        console.log("data toggle")
-        console.log(this.getToggleModal);
         return this.toggleModal = this.getToggleModal
       }
     },

@@ -17,20 +17,25 @@
             Nominal
           </div>
           <div class="flex pb-3 border-b border-dashed">
-            <div class="w-3/6 flex flex-wrap items-stretch w-full mb-4 relative">
+            <div class="w-full w-4/6 flex flex-wrap items-stretch w-full mb-4 relative">
               <div class="flex -mr-px">
                 <span
                   class="flex items-center  bg-gray-200 rounded rounded-r-none border border-r-0 border-grey-light px-4 whitespace-no-wrap text-grey-dark text-sm font-bold">Rp</span>
               </div>
               <input type="text"
                 class="flex-shrink flex-grow flex-auto  w-px flex-1 border h-10 border-grey-light rounded rounded-l-none px-4 relative focus:outline-none focus:ring-2 focus:ring-blue-400 focus:shadow"
-                placeholder="1000">
+                placeholder="1000"
+                @change="changeNominal"
+                :value="nominal"
+                >
             </div>
             <div class="w-1/6 my-2 mx-1">
               X
             </div>
-            <div class="items-stretch w-full mb-4 relative text-right m-2 font-bold">
-              22 Hari
+            <div 
+              class="items-stretch w-2/6 mb-4 relative text-right m-2 font-bold"
+            >
+              {{presence}} Hari
             </div>
           </div>
         </div>
@@ -40,7 +45,7 @@
             Jumlah
           </div>
           <div class="w-1/2 text-right">
-            Rp 220.000
+            Rp {{count}}
           </div>
         </div>
 
@@ -68,6 +73,14 @@
 
   export default {
 
+    data(){
+      return{
+        nominal:null,
+        presence:null,
+        counting:null,
+      }
+    },
+
     props: {
       items: {
         type: Object
@@ -90,8 +103,6 @@
     },
 
     computed: {
-
-
       sizeShadow() {
         return {
           width: `${this.innerWidth}px`,
@@ -99,10 +110,32 @@
         }
       },
 
+      firstTimeNominal(){
+        return this.nominal=this.items.pengaturan_gaji[1].nominal;
+      },
+
+      firstTimePresence(){
+        return this.presence=this.items.total_kehadiran;
+      },
+
+      count: function(){
+        return this.counting=this.nominal*this.presence
+      }
+
+    },
+
+    mounted(){
+      this.firstTimeNominal;
+      this.firstTimePresence;
     },
 
     methods: {
       ...mapMutations(['closeModals']),
+
+      changeNominal(e){
+        console.log(e.target.value)
+        return this.nominal=e.target.value;
+      },
 
       closeModal(toggleModal) {
         this.closeModals(toggleModal)
