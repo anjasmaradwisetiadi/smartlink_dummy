@@ -20,7 +20,9 @@
           <div class="flex flex-wrap items-stretch w-full mb-4 relative">
             <div class="flex -mr-px">
               <span
-                class="flex material-icons items-center rounded rounded-r-none border border-r-0 border-grey-light px-4 whitespace-no-wrap text-grey-dark text-lg text-red-400 cursor-pointer">add</span>
+                class="flex material-icons items-center rounded rounded-r-none border border-r-0 border-grey-light px-4 whitespace-no-wrap text-grey-dark text-lg text-red-400 cursor-pointer"
+                @click="addPresence()"  
+              >add</span>
             </div>
             <input type="text"
               class="flex-shrink flex-grow flex-auto  w-px flex-1 border h-10 border-grey-light rounded rounded-l-none px-4 relative focus:outline-none focus:ring-2 focus:ring-blue-400 focus:shadow"
@@ -28,12 +30,16 @@
               :value="presence"
               >
             <span
-              class="flex material-icons items-center rounded rounded-r-none border border-l-0 border-grey-light px-4 whitespace-no-wrap text-grey-dark text-lg text-blue-400 cursor-pointer">horizontal_rule</span>
+              class="flex material-icons items-center rounded rounded-r-none border border-l-0 border-grey-light px-4 whitespace-no-wrap text-grey-dark text-lg text-blue-400 cursor-pointer"
+              @click="minPresence()"  
+            >horizontal_rule</span>
           </div>
         </div>
         <div class="flex mt-4 px-4">
           <div class="w-1/2 mr-2">
-            <button class="text-red-400 w-full text-center py-2 rounded border border-red-400">
+            <button class="text-red-400 w-full text-center py-2 rounded border border-red-400"
+            @click="zeroPresence()"
+            >
               Hapus
             </button>
           </div>
@@ -85,7 +91,7 @@
         presence:0,
         saveData:false,
 
-        
+
       }
     },
 
@@ -120,6 +126,18 @@
         this.presence=e.target.value;
       },
 
+      addPresence(){
+        this.presence++;
+      },
+
+      minPresence(){
+        this.presence--;
+      },
+
+      zeroPresence(){
+         this.presence=0; 
+      },
+
       savePresence(){
         this.closeModals(false);
         this.saveData=true;
@@ -130,10 +148,7 @@
           this.presence=this.items.total_kehadiran
         }
       }
-
     }
-
-
   }
 
 </script>
