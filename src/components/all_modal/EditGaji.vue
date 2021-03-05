@@ -1,7 +1,7 @@
 <template>
   <div class="Edit_Gaji justify-center items-center text-center">
 
-    <div v-if="toggleModal" class="fixed flex justify-center items-center z-20  w-screen">
+    <div v-if="getToggleModal" class="fixed flex justify-center items-center z-20  w-screen">
       <div class="flex flex-col mt-3 pb-6 border rounded-lg z-20 relative bg-white w-full mx-auto">
         <div class="flex mt-3 pb-3 border-b">
           <div class="w-full text-center font-bold text-lg ml-4">
@@ -9,7 +9,7 @@
           </div>
           <div class="text-right mr-6">
             <span class="material-icons text-blue-500 font-bold cursor-pointer"
-              @click.prevent="closeModal(!toggleModal)"> close </span>
+              @click.prevent="closeModal(toggleModal)"> close </span>
           </div>
         </div>
         <div class="flex flex-col px-4 mt-4 ">
@@ -60,7 +60,7 @@
     </div>
 
 
-    <div v-if="toggleModal" class="height_window " :style="sizeShadow">
+    <div v-if="getToggleModal" class="height_window " :style="sizeShadow">
 
     </div>
 
@@ -83,6 +83,7 @@
         periode: 0,
         counting: 0,
         saveData: false,
+        toggleModal:false
       }
     },
 
@@ -90,11 +91,6 @@
     props: {
       items: {
         type: Object
-      },
-
-      toggleModal: {
-        type: Boolean,
-        default: true
       },
 
       innerWidth: {
@@ -113,7 +109,7 @@
     },
 
     computed: {
-      ...mapGetters(['getTotalSalary']),
+      ...mapGetters(['getToggleModal']),
 
       sizeShadow() {
         return {
@@ -145,8 +141,8 @@
       ...mapMutations(['closeModals', 'totalSalary']),
       ...mapActions(['setUpdateSalarys']),
 
-      closeModal(toggleModal) {
-        this.closeModals(toggleModal)
+      closeModal(data) {
+        this.closeModals(data)
       },
 
       changeNominal(e) {

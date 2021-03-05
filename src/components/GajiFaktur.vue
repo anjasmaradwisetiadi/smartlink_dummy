@@ -4,8 +4,8 @@
       <div class="uppercase font-bold text-lg">
         Faktur Gaji
       </div>
-
       <p>ini popup = {{popUpModal}}</p>
+
     </div>
     <div v-for="(items,index) in getAllDataEmployee" :key="index">
       <!-- modal -->
@@ -36,6 +36,8 @@
       </kehadiran>
 
       <sekat></sekat>
+
+
 
 
       <gaji :items="items.data" @modalEditGaji="modalEditGaji">

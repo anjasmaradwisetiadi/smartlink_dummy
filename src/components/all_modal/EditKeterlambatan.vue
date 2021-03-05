@@ -1,7 +1,8 @@
 
 <template>
   <div class="Ubah_Keterlambatan items-center text-center">
-    <div v-if="toggleModal" class="fixed flex justify-center items-center z-20  w-screen">
+    <p>baru</p>
+    <div v-if="getToggleModal" class="fixed flex justify-center items-center z-20  w-screen">
       <div class="flex flex-col mt-3 pb-6 border rounded-lg z-20 relative bg-white w-full mx-auto">
         <div class="flex mt-3 pb-3 border-b">
           <div class="w-full text-center font-bold text-lg ml-4">
@@ -9,7 +10,7 @@
           </div>
           <div class="text-right mr-6">
             <span class="material-icons text-blue-500 font-bold cursor-pointer"
-              @click.prevent="closeModal(!toggleModal)"> close </span>
+              @click.prevent="closeModal(toggleModal)"> close </span>
           </div>
         </div>
         <div class="flex flex-col mt-4 px-4">
@@ -46,7 +47,7 @@
 
 
 
-    <div v-if="toggleModal" class="height_window " :style="sizeShadow">
+    <div v-if="getToggleModal" class="height_window " :style="sizeShadow">
 
     </div>
   </div>
@@ -59,7 +60,6 @@
   } from 'vuex';
 
   export default {
-
     props: {
       items: {
         type: Object
@@ -81,6 +81,8 @@
     },
 
     computed: {
+      ...mapGetters(['getToggleModal']),
+
       sizeShadow() {
         return {
           width: `${this.innerWidth}px`,
@@ -92,8 +94,8 @@
     methods: {
       ...mapMutations(['closeModals']),
 
-      closeModal(toggleModal) {
-        this.closeModals(toggleModal)
+      closeModal(data) {
+        this.closeModals(data)
       },
 
     }
