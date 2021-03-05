@@ -44,7 +44,10 @@
 
         <div class="flex mt-4 px-4">
           <div class="w-1/2 mr-2">
-            <button class="text-red-400 w-full text-center py-2 rounded border border-red-400"
+            <button 
+            class=" w-full text-center py-2 rounded"
+            :class="!enableDelete?'text-red-100 rounded border border-red-100 cursor-not-allowed':'text-red-400 rounded border border-red-400'"
+            :disabled="!enableDelete"
             @click="deleteKomisi()"
             >
               Hapus
@@ -99,6 +102,9 @@
       },
       idTo:{
           type:String
+      },
+      enableDelete:{
+          type:Boolean
       }
     },
 
@@ -122,8 +128,8 @@
     },
 
     mounted(){
-        // this.firstTimeNominal;
-        // this.firstTimeTitle;
+        console.log("ini edit")
+        console.log(this.idTo)
     },
 
     methods:{

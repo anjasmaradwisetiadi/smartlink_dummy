@@ -36,6 +36,7 @@
           :inner-width="innerWidth"
           :items="items"
           :idTo="idTo"
+          :enableDelete="enableDelete"
         >
         </edit-komisi>
       </div>
@@ -118,6 +119,7 @@
         editModalState: '',
         indexTo: null,
         idTo:null,
+        enableDelete:false
       }
     },
 
@@ -160,12 +162,14 @@
 
       modalAddKomisi(data){
         this.editModalState=data.variabel;
+        this.enableDelete=data.enableDelete;
         this.handleResize();
       },
 
       modalEditKomisi(data){
-        this.idTo=data.data
+        this.idTo=data.data;
         this.editModalState=data.variabel;
+        this.enableDelete=data.enableDelete;
         this.handleResize();
       },
 

@@ -81,7 +81,8 @@
 
       modalAddKomisi() {
         this.$emit('modalAddKomisi', {
-          variabel: 'EditKomisi'
+          variabel: 'EditKomisi',
+          enableDelete: false
         });
         this.modalEdit(true);
       },
@@ -89,7 +90,8 @@
       modalEditKomisi(data){
         this.$emit('modalEditKomisi', {
           data:data,
-          variabel: 'EditKomisi'
+          variabel: 'EditKomisi',
+          enableDelete: true
         });
         this.modalEdit(true);
       }
