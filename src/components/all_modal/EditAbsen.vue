@@ -50,7 +50,10 @@
         </div>
 
         <div class="mt-2 px-4 mt-4">
-          <button class="button_background w-full py-2 text-center rounded text-white">
+          <button 
+            class="button_background w-full py-2 text-center rounded text-white"
+             @click.prevent="updateSalary()"
+          >
             Simpan</button>
         </div>
       </div>
@@ -99,6 +102,10 @@
       innerHeight: {
         type: Number,
         default: 0,
+      },
+
+      indexTo:{
+        type:Number
       }
     },
 
@@ -111,7 +118,7 @@
       },
 
       firstTimeNominal(){
-        return this.nominal=this.items.pengaturan_gaji[1].nominal;
+        return this.nominal=this.items.pengaturan_gaji[this.indexTo].nominal;
       },
 
       firstTimePresence(){
@@ -139,6 +146,22 @@
 
       closeModal(toggleModal) {
         this.closeModals(toggleModal)
+      },
+
+      updateSalary(){
+         this.closeModals(false);
+         this.saveData = true;
+
+          if(this.saveData){
+            this.items.pengaturan_gaji[this.indexTo].nominal=this.nominal;
+            this.items.total_kehadiran = this.presence;
+          }
+
+          else {
+          this.nominal = this.items.pengaturan_gaji[this.indexTo].nominal;
+          this.presence = this.items.total_kehadiran;
+        }
+
       },
     }
   }

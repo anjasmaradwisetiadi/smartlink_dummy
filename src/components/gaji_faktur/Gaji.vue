@@ -10,16 +10,14 @@
             Gaji
           </div>
           <div v-for="(item,index) in items.pengaturan_gaji" :key="index">
-            <div
-            v-if="index===0"
-             class="flex mt-2">
+            <div v-if="index===0" class="flex mt-2">
               <div class="w-1/2 flex flex-col text-left">
                 <div class="text-sm font-semibold"> {{item.nama}} </div>
                 <div class="text-sm font-normal text-gray-400">{{item.nominal}} x
                   {{items.total_periode}} periode</div>
               </div>
               <div class="w-1/2 flex m-auto text-right">
-                <div class="w-full text-sm font-semibold mr-2 ">
+                <div class="w-full text-sm font-semibold mr-2">
                   {{item.nominal*items.total_periode}}
                 </div>
                 <span @click.prevent="modalEditGaji()"
@@ -28,9 +26,7 @@
               </div>
             </div>
 
-            <div
-            v-if="index>0"
-             class="flex mt-2">
+            <div v-if="index>0" class="flex mt-2">
               <div class="w-1/2 flex flex-col text-left">
                 <div class="text-sm font-semibold"> {{item.nama}} </div>
                 <div class="text-sm font-normal text-gray-400">{{item.nominal}} x
@@ -40,7 +36,7 @@
                 <div class="w-full text-sm font-semibold mr-2 ">
                   {{item.nominal*items.total_kehadiran}}
                 </div>
-                <span @click.prevent="modalEditAbsen()"
+                <span @click.prevent="modalEditAbsen(index)"
                   class="material-icons text-base font-bold text-blue-400 -mt-1 cursor-pointer">
                   mode_edit </span>
               </div>
@@ -88,12 +84,6 @@
       }
     },
 
-    mounted() {
-      this.totalSalary({
-        nominal: this.items.pengaturan_gaji[0].nominal,
-        periode: this.items.total_periode
-      })
-    },
     computed: {
       ...mapGetters(['getTotalSalary'])
     },
@@ -102,14 +92,21 @@
       ...mapMutations(['modalEditSalarys', 'totalSalary']),
 
       modalEditGaji() {
-        this.$emit('modalEditGaji', {data:true,variabel:'EditGaji'});
+        this.$emit('modalEditGaji', {
+          data: true,
+          variabel: 'EditGaji'
+        });
         this.modalEditSalarys(true)
       },
 
-      modalEditAbsen(){
-        this.$emit('modalEditGaji', {data:true,variabel:'EditAbsen'});
+      modalEditAbsen(index) {
+        this.$emit('modalEditGaji', {
+          data: true,
+          variabel: 'EditAbsen',
+          index:index
+        });
         this.modalEditSalarys(true);
-      }
+      },
     }
   }
 

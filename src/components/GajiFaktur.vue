@@ -21,8 +21,8 @@
         :inner-height="innerHeight" 
         :inner-width="innerWidth" 
         :items="items.data"
+        :index-to="indexTo"
         >
-
         </edit-absen>
 
       </div>
@@ -86,7 +86,8 @@
         toggleModal: false,
         innerWidth: null,
         innerHeight: null,
-        editModalState: ''
+        editModalState: '',
+        indexTo:null
       }
     },
 
@@ -112,6 +113,7 @@
       modalEditGaji(data) {
         this.toggleModal = data.data;
         this.editModalState = data.variabel;
+        this.indexTo=data.index;
 
         this.handleResize();
         if (data.data) {

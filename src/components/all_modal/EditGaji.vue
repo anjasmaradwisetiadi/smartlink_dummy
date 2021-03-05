@@ -20,7 +20,7 @@
             <div class="w-3/6 flex flex-wrap items-stretch w-full mb-4 relative">
               <div class="flex -mr-px">
                 <span
-                  class="flex items-center  bg-gray-200 rounded rounded-r-none border border-r-0 border-grey-light px-4 whitespace-no-wrap text-grey-dark text-sm">Rp</span>
+                  class="flex items-center  bg-gray-200 rounded rounded-r-none border border-r-0 border-grey-light px-2 whitespace-no-wrap text-grey-dark text-sm">Rp</span>
               </div>
               <input type="text"
                 class="flex-shrink flex-grow flex-auto  w-px flex-1 border h-10 border-grey-light rounded rounded-l-none px-4 relative focus:outline-none focus:ring-2 focus:ring-blue-400 focus:shadow"
@@ -36,7 +36,7 @@
 
               <div class="flex -mr-px">
                 <span
-                  class="flex items-center  bg-gray-200 rounded rounded-l-none border border-r-0 border-grey-light px-4 whitespace-no-wrap text-grey-dark text-sm">Periode</span>
+                  class="flex items-center  bg-gray-200 rounded rounded-l-none border border-r-0 border-grey-light px-2 whitespace-no-wrap text-grey-dark text-sm">Periode</span>
               </div>
             </div>
           </div>
