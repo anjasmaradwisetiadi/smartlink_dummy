@@ -24,7 +24,9 @@
             </div>
             <input type="text"
               class="flex-shrink flex-grow flex-auto  w-px flex-1 border h-10 border-grey-light rounded rounded-l-none px-4 relative focus:outline-none focus:ring-2 focus:ring-blue-400 focus:shadow"
-              placeholder="1000">
+              @change="changePresence"
+              :value="presence"
+              >
             <span
               class="flex material-icons items-center rounded rounded-r-none border border-l-0 border-grey-light px-4 whitespace-no-wrap text-grey-dark text-lg text-blue-400 cursor-pointer">horizontal_rule</span>
           </div>
@@ -36,7 +38,10 @@
             </button>
           </div>
           <div class="w-1/2 ml-2">
-            <button class="button_background w-full py-2 text-center rounded text-white">
+            <button 
+            class="button_background w-full py-2 text-center rounded text-white"
+            @click="savePresence()"
+            >
               Simpan</button>
           </div>
         </div>
@@ -76,7 +81,11 @@
 
     data(){
       return{
-        toggleModal:false
+        toggleModal:false,
+        presence:0,
+        saveData:false,
+
+        
       }
     },
 
@@ -89,6 +98,15 @@
           height: `${this.innerHeight}px`,
         }
       },
+
+      firstTimePresence(){
+        return this.presence=this.items.total_kehadiran;
+      }
+
+    },
+
+    mounted(){
+      this.firstTimePresence;
     },
 
     methods: {
@@ -97,6 +115,21 @@
       closeModal(data) {
         this.closeModals(data)
       },
+
+      changePresence(e){
+        this.presence=e.target.value;
+      },
+
+      savePresence(){
+        this.closeModals(false);
+        this.saveData=true;
+        if(this.saveData){
+          this.items.total_kehadiran=this.presence
+        }
+        else{
+          this.presence=this.items.total_kehadiran
+        }
+      }
 
     }
 
