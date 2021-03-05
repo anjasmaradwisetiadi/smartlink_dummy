@@ -17,7 +17,10 @@
           <div class="mb-4 relative">
             <input type="text"
               class="w-full flex-shrink flex-grow flex-auto  w-px flex-1 border h-10 border-grey-light rounded px-4 relative focus:outline-none focus:ring-2 focus:ring-blue-400 focus:shadow"
-              placeholder="Nama Komisi">
+              placeholder="Nama Komisi"
+              @change="changeTitle"
+              :value="title"
+              >
           </div>
         </div>
 
@@ -32,18 +35,25 @@
             </div>
             <input type="text"
               class="flex-shrink flex-grow flex-auto  w-px flex-1 border h-10 border-grey-light rounded rounded-l-none px-4 relative focus:outline-none focus:ring-2 focus:ring-blue-400 focus:shadow"
-              placeholder="1000">
+              placeholder="1000"
+              @change="changeNominal"
+              :value="nominal"
+              >
           </div>
         </div>
 
         <div class="flex mt-4 px-4">
           <div class="w-1/2 mr-2">
-            <button class="text-red-400 w-full text-center py-2 rounded border border-red-400">
+            <button class="text-red-400 w-full text-center py-2 rounded border border-red-400"
+            @click="deleteKomisi()"
+            >
               Hapus
             </button>
           </div>
           <div class="w-1/2 ml-2">
-            <button class="button_background w-full py-2 text-center rounded text-white">
+            <button class="button_background w-full py-2 text-center rounded text-white"
+            @click="saveKomisi()"
+            >
               Simpan</button>
           </div>
         </div>
@@ -62,10 +72,15 @@
     mapGetters
   } from 'vuex';
 
+  const { uuid } = require('uuidv4');
   export default {
     data() {
       return {
-        toggleModal: false
+        toggleModal: false,
+        title:'',
+        nominal:0,
+        saveData:false,
+
       }
     },
 
@@ -82,6 +97,9 @@
         type: Number,
         default: 220,
       },
+      idTo:{
+          type:String
+      }
     },
 
     computed: {
@@ -93,10 +111,55 @@
           height: `${this.innerHeight}px`,
         }
       },
+
+      firstTimeNominal(){
+          return this.nominal = this.items.komisi[0].nominal;
+      },
+
+      firstTimeTitle(){
+          return this.title = this.items.komisi[0].nama;
+      }
+    },
+
+    mounted(){
+        // this.firstTimeNominal;
+        // this.firstTimeTitle;
     },
 
     methods:{
     ...mapMutations(['closeModals']),
+    ...mapActions(['setAddKomisi','setDeleteKomisi'],),
+
+    changeNominal(e){
+        this.nominal=e.target.value;
+    },
+
+    changeTitle(e){
+        this.title=e.target.value;
+    },
+
+    saveKomisi(){
+        this.saveData=true;
+        if(this.saveData){
+            let data={
+                id:uuid(),
+                nama:this.title,
+                nominal: this.nominal,
+            }
+           this.setAddKomisi(data) 
+        }
+        else{
+            this.nominal=this.items.komisi[0].nominal ;
+            this.title=this.items.komisi[0].nama;
+        }
+
+        this.closeModals(false);
+    },
+
+    deleteKomisi(){
+        this.setDeleteKomisi(this.idTo)
+        this.closeModals(false)
+    },
 
     closeModal(data) {
         this.closeModals(data)

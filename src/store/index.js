@@ -2,9 +2,9 @@ import Vue from 'vue';
 import Vuex from 'vuex';
 import { modalStateManagement } from './modal'
 import { editGaji }from './editGaji'
+import { editKomisi } from './editKomisi'
 
 import { dataEmployee } from '../service/dataEmployee'
-
 
 Vue.use(Vuex);
 
@@ -22,6 +22,7 @@ export default new Vuex.Store({
   },
   modules: {
     modalStateManagement,
-    editGaji
+    editGaji,
+    editKomisi
   },
 });

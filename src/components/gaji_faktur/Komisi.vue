@@ -10,30 +10,34 @@
         <div class="flex mt-2">
           <span class="material-icons text-xl font-bold text-blue-400 -mt-1 "> add_circle_outline
           </span>
-          <div 
-            class="ml-3 text-blue-400 text-base font-semibold cursor-pointer"
-            @click.prevent="modalEditKomisi()"
-          >Tambah komisi lain...</div>
+          <div class="ml-3 text-blue-400 text-base font-semibold cursor-pointer"
+            @click.prevent="modalAddKomisi()">Tambah komisi lain...</div>
         </div>
         <div v-if="(items.komisi).length === 0">
           <p class="mt-3 text-red-400">data tidak ada....</p>
         </div>
         <div v-else>
-          <div v-for="(item,index) in items.komisi" :key="index">
-            <div class="flex mt-3 pb-12 border-b border-dashed">
-              <div class="w-1/2 text-left font-sm ">
-                {{item.name}}
-              </div>
-              <div class="w-1/2 flex m-auto text-right">
-                <div class="w-full text-sm font-semibold mr-2 ">
-                  Rp.{{item.nominal}}
+          <div class="mt-3 pb-8 border-b border-dashed">
+            <div v-for="(item,index) in items.komisi" :key="index">
+              <div class="flex mt-2 ">
+                <div class="w-1/2 text-left font-sm ">
+                  {{item.nama}}
                 </div>
-                <span class="material-icons text-base font-bold text-blue-400 -mt-1 cursor-pointer">
-                  mode_edit
-                </span>
+                <div class="w-1/2 flex m-auto text-right">
+                  <div class="w-full text-sm font-semibold mr-2 ">
+                    Rp.{{item.nominal}}
+                  </div>
+                  <span
+                    class="material-icons text-base font-bold text-blue-400 -mt-1 cursor-pointer"
+                    @click="modalEditKomisi(item.id)"
+                    >
+                    mode_edit
+                  </span>
+                </div>
               </div>
             </div>
           </div>
+
         </div>
 
         <div class="flex mt-3 pb-4 ">
@@ -63,7 +67,7 @@
   import {
     mapMutations,
     mapGetters
-  } from 'vuex';  
+  } from 'vuex';
 
   export default {
     props: {
@@ -72,15 +76,23 @@
       }
     },
 
-    methods:{
-        ...mapMutations(['modalEdit']),
+    methods: {
+      ...mapMutations(['modalEdit']),
 
-        modalEditKomisi(){
-            this.$emit('modalEditKomisi',{
-                variabel:'EditKomisi'
-            });
-            this.modalEdit(true);
-        }
+      modalAddKomisi() {
+        this.$emit('modalAddKomisi', {
+          variabel: 'EditKomisi'
+        });
+        this.modalEdit(true);
+      },
+
+      modalEditKomisi(data){
+        this.$emit('modalEditKomisi', {
+          data:data,
+          variabel: 'EditKomisi'
+        });
+        this.modalEdit(true);
+      }
     }
   }
 

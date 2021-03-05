@@ -34,6 +34,8 @@
         <edit-komisi
           :inner-height="innerHeight" 
           :inner-width="innerWidth"
+          :items="items"
+          :idTo="idTo"
         >
         </edit-komisi>
       </div>
@@ -52,6 +54,7 @@
 
       <komisi
         :items="items.data"
+        @modalAddKomisi="modalAddKomisi"
         @modalEditKomisi="modalEditKomisi"
       ></komisi>
 
@@ -113,7 +116,8 @@
         innerWidth: 0,
         innerHeight: 0,
         editModalState: '',
-        indexTo: null
+        indexTo: null,
+        idTo:null,
       }
     },
 
@@ -154,7 +158,13 @@
         this.handleResize();
       },
 
+      modalAddKomisi(data){
+        this.editModalState=data.variabel;
+        this.handleResize();
+      },
+
       modalEditKomisi(data){
+        this.idTo=data.data
         this.editModalState=data.variabel;
         this.handleResize();
       },
