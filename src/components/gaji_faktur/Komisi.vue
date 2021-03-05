@@ -1,0 +1,58 @@
+<template>
+    <section class="Komisi">
+            <div class="Upah Borongan flex flex-col mt-3 pb-3">
+      <div class="pb-3 border-b px-4">
+        <div class=" text-base font-bold text-left">
+          Komisi
+        </div>
+      </div>
+      <div class="flex flex-col text-left px-4 pb-8 border-b">
+        <div class="flex mt-2">
+          <span class="material-icons text-xl font-bold text-blue-400 -mt-1 "> add_circle_outline
+          </span>
+          <div class="ml-3 text-blue-400 text-base font-semibold cursor-pointer">Tambah komisi lain...</div>
+        </div>
+        <div class="flex mt-3 pb-12 border-b border-dashed">
+          <div class="w-1/2 text-left font-sm ">
+            Bonus Target 1
+          </div>
+          <div class="w-1/2 flex m-auto text-right">
+            <div class="w-full text-sm font-semibold mr-2 ">
+              200.000
+            </div>
+            <span class="material-icons text-base font-bold text-blue-400 -mt-1 cursor-pointer"> mode_edit
+            </span>
+          </div>
+        </div>
+        <div class="flex mt-3 pb-4 ">
+          <div class="w-1/2 flex flex-col text-left">
+            <div class="text-base font-semibold">
+              Subtotal Komisi
+            </div>
+          </div>
+          <div class="w-1/2 text-base font-semibold text-right m-auto">
+            Rp 200.000
+          </div>
+        </div>
+      </div>
+
+      <div class="flex text-lg text-green-500 mt-3 px-4">
+        <div class="w-1/2 font-bold text-left">
+          Total Gaji Kotor
+        </div>
+        <div class="w-1/2 font-bold text-right">
+          Rp 2.824.000</div>
+      </div>
+    </div>
+    </section>
+</template>
+
+<script>
+export default {
+    
+}
+</script>
+
+<style lang="scss" scoped>
+
+</style>

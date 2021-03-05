@@ -44,7 +44,7 @@
           </div>
 
           <div class="flex mt-4">
-            <div class="w-1/2 text-lg font-semibold">
+            <div class="w-1/2 font-semibold">
               Subtotal Gaji
             </div>
             <div class="w-1/2 font-semibold text-right">

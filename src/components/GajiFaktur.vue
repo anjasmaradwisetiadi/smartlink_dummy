@@ -41,6 +41,8 @@
 
       <sekat></sekat>
 
+      <komisi></komisi>
+
 
     </div>
 
@@ -77,6 +79,7 @@
   import {
     mapMutations
   } from 'vuex';
+import Komisi from './gaji_faktur/Komisi.vue';
 
 
 
@@ -90,8 +93,7 @@
       Gaji,
       Sekat,
       EditKeterlambatan,
-
-
+      Komisi,
     },
     data() {
       return {
