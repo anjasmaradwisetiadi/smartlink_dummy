@@ -35,8 +35,9 @@
           :inner-height="innerHeight" 
           :inner-width="innerWidth"
           :items="items"
-          :idTo="idTo"
-          :enableDelete="enableDelete"
+          :id-to="idTo"
+          :enable-delete="enableDelete"
+          :index-to="indexTo"
         >
         </edit-komisi>
       </div>
@@ -170,6 +171,7 @@
         this.idTo=data.data;
         this.editModalState=data.variabel;
         this.enableDelete=data.enableDelete;
+        this.indexTo=data.index;
         this.handleResize();
       },
 

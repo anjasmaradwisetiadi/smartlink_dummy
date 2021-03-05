@@ -63,7 +63,12 @@ export const dataEmployee = [{
         }
       ],
       "komisi": [
-  
+        // {
+        //   "id":"1",
+        //   "nama":"semarang",
+        //   "nominal":"40000"
+        // }
+
       ],
       "tanggungan": [
   

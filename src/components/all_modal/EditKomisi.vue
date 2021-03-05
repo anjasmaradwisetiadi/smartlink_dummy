@@ -105,7 +105,11 @@
       },
       enableDelete:{
           type:Boolean
+      },
+      indexTo:{
+          type:Number,
       }
+
     },
 
     computed: {
@@ -119,17 +123,16 @@
       },
 
       firstTimeNominal(){
-          return this.nominal = this.items.komisi[0].nominal;
+          return this.nominal = this.items.komisi[this.indexTo].nominal;
       },
 
       firstTimeTitle(){
-          return this.title = this.items.komisi[0].nama;
+          return this.title = this.items.komisi[this.indexTo].nama;
       }
     },
 
     mounted(){
-        console.log("ini edit")
-        console.log(this.idTo)
+        this.firstTimeNominal;
     },
 
     methods:{
@@ -155,8 +158,8 @@
            this.setAddKomisi(data) 
         }
         else{
-            this.nominal=this.items.komisi[0].nominal ;
-            this.title=this.items.komisi[0].nama;
+            this.nominal=this.items.komisi[this.indexTo].nominal ;
+            this.title=this.items.komisi[this.indexTo].nama;
         }
 
         this.closeModals(false);

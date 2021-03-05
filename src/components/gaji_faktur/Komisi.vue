@@ -29,7 +29,7 @@
                   </div>
                   <span
                     class="material-icons text-base font-bold text-blue-400 -mt-1 cursor-pointer"
-                    @click="modalEditKomisi(item.id)"
+                    @click="modalEditKomisi({id:item.id,data:index})"
                     >
                     mode_edit
                   </span>
@@ -89,9 +89,10 @@
 
       modalEditKomisi(data){
         this.$emit('modalEditKomisi', {
-          data:data,
+          data:data.id,
           variabel: 'EditKomisi',
-          enableDelete: true
+          enableDelete: true,
+          index:data.data
         });
         this.modalEdit(true);
       }
