@@ -55,7 +55,7 @@
           </div>
           <div class="w-1/2 ml-2">
             <button class="button_background w-full py-2 text-center rounded text-white"
-            @click="saveKomisi()"
+            @click="saveKomisi(indexTo)"
             >
               Simpan</button>
           </div>
@@ -123,12 +123,19 @@
     },
 
     mounted(){
-        this.firstTimeNominal;
+        if(this.indexTo ===null){
+            return false
+        }
+        else{
+            this.firstTimeNominal;
+            this.firstTimeTitle;
+        }
+
     },
 
     methods:{
     ...mapMutations(['closeModals']),
-    ...mapActions(['setAddKomisi','setDeleteKomisi'],),
+    ...mapActions(['setAddKomisi','setDeleteKomisi']),
 
     changeNominal(e){
         this.nominal=e.target.value;
@@ -138,18 +145,26 @@
         this.title=e.target.value;
     },
 
-    saveKomisi(){
+    saveKomisi(data){
         this.saveData=true;
         if(this.saveData){
-            let data={
-                id:uuid(),
-                nama:this.title,
-                nominal: this.nominal,
+            if(data){
+                this.items.komisi[this.indexTo].nominal=this.nominal;
+                this.items.komisi[this.indexTo].nama=this.title;
             }
-           this.setAddKomisi(data) 
+            else{
+                let dataAddKomisi={
+                    id:uuid(),
+                    nama:this.title,
+                    nominal: this.nominal,
+                }
+                this.setAddKomisi(dataAddKomisi) 
+            }
+
+
         }
         else{
-            this.nominal=this.items.komisi[this.indexTo].nominal ;
+            this.nominal=this.items.komisi[this.indexTo].nominal;
             this.title=this.items.komisi[this.indexTo].nama;
         }
 

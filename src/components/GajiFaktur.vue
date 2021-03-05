@@ -32,7 +32,7 @@
         v-if="popUpModal && (editModalState === 'EditKomisi')"
       >
         <edit-komisi
-          :items="items"
+          :items="items.data"
           :id-to="idTo"
           :enable-delete="enableDelete"
           :index-to="indexTo"

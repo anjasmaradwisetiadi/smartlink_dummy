@@ -56,8 +56,6 @@
       </div>
     </div>
 
-
-
     <div v-if="getToggleModal" class="height_window " :style="sizeShadow">
 
     </div>
