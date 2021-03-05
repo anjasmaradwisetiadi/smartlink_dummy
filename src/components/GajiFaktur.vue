@@ -12,6 +12,7 @@
         :inner-height="innerHeight" 
         :inner-width="innerWidth" 
         :items="items.data"
+        :index-to="indexTo"
         >
         </edit-gaji>
       </div>

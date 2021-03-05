@@ -105,6 +105,10 @@
       innerHeight: {
         type: Number,
         default: 0,
+      },
+
+      indexTo:{
+        type:Number
       }
     },
 
@@ -119,7 +123,7 @@
       },
 
       firstTimeNominal() {
-        return this.nominal = this.items.pengaturan_gaji[0].nominal;
+        return this.nominal = this.items.pengaturan_gaji[this.indexTo].nominal;
       },
 
       firstTimePeriode() {
@@ -158,7 +162,7 @@
 
         this.saveData = true;
         if (this.saveData) {
-          this.items.pengaturan_gaji[0].nominal = this.nominal;
+          this.items.pengaturan_gaji[this.indexTo].nominal = this.nominal;
           this.items.total_periode = this.periode;
 
           this.totalSalary({
@@ -167,7 +171,7 @@
           })
           // this.setUpdateSalarys(items);
         } else {
-          this.nominal = this.items.pengaturan_gaji[0].nominal;
+          this.nominal = this.items.pengaturan_gaji[this.indexTo].nominal;
           this.periode = this.items.total_periode;
         }
 

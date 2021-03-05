@@ -20,7 +20,7 @@
                 <div class="w-full text-sm font-semibold mr-2">
                   {{item.nominal*items.total_periode}}
                 </div>
-                <span @click.prevent="modalEditGaji()"
+                <span @click.prevent="modalEditGaji(index)"
                   class="material-icons text-base font-bold text-blue-400 -mt-1 cursor-pointer">
                   mode_edit </span>
               </div>
@@ -91,10 +91,11 @@
     methods: {
       ...mapMutations(['modalEditSalarys', 'totalSalary']),
 
-      modalEditGaji() {
+      modalEditGaji(index) {
         this.$emit('modalEditGaji', {
           data: true,
-          variabel: 'EditGaji'
+          variabel: 'EditGaji',
+          index:index
         });
         this.modalEditSalarys(true)
       },

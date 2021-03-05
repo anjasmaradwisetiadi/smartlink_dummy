@@ -1,0 +1,2 @@
+1. cara menyimpan data dari hasil edit di page Gaji
+2. cara menampilkan Subtotal Gaji berdasarkan data dari hasil edit Gaji
