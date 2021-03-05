@@ -2,8 +2,6 @@
   <!-- Gaji -->
   <section class="Gaji">
     <!-- modal EditGaji-->
-
-    <div>
       <div class="detail_salary flex flex-col mt-3 pb-3 ">
         <div class="flex flex-col text-left px-4 ">
           <div class="text-base font-bold mb-4">
@@ -53,9 +51,6 @@
           </div>
         </div>
       </div>
-    </div>
-
-
   </section>
 
 </template>

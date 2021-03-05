@@ -1,8 +1,7 @@
 <template>
   <div class="Edit_Absen justify-center items-center text-center">
     <div v-if="getToggleModal" class="fixed flex justify-center items-center z-20  w-screen">
-      <div
-        class="flex flex-col mt-3 pb-6 border rounded-lg  border rounded-lg z-20 relative bg-white w-full mx-auto">
+      <div class="flex flex-col mt-3 pb-6 border rounded-lg z-20 relative bg-white w-full mx-auto">
         <div class="flex mt-3 pb-3 border-b">
           <div class="w-full text-center font-bold text-lg ml-4">
             Ubah Uang Absen/Transport/Lembur
@@ -24,17 +23,12 @@
               </div>
               <input type="text"
                 class="flex-shrink flex-grow flex-auto  w-px flex-1 border h-10 border-grey-light rounded rounded-l-none px-4 relative focus:outline-none focus:ring-2 focus:ring-blue-400 focus:shadow"
-                placeholder="1000"
-                @change="changeNominal"
-                :value="nominal"
-                >
+                placeholder="1000" @change="changeNominal" :value="nominal">
             </div>
             <div class="w-1/6 my-2 mx-1">
               X
             </div>
-            <div 
-              class="items-stretch w-2/6 mb-4 relative text-right m-2 font-bold"
-            >
+            <div class="items-stretch w-2/6 mb-4 relative text-right m-2 font-bold">
               {{presence}} Hari
             </div>
           </div>
@@ -50,10 +44,8 @@
         </div>
 
         <div class="mt-2 px-4 mt-4">
-          <button 
-            class="button_background w-full py-2 text-center rounded text-white"
-             @click.prevent="updateSalary()"
-          >
+          <button class="button_background w-full py-2 text-center rounded text-white"
+            @click.prevent="updateSalary()">
             Simpan</button>
         </div>
       </div>
@@ -76,12 +68,12 @@
 
   export default {
 
-    data(){
-      return{
-        nominal:0,
-        presence:0,
-        counting:0,
-        toggleModal:false,
+    data() {
+      return {
+        nominal: 0,
+        presence: 0,
+        counting: 0,
+        toggleModal: false,
       }
     },
 
@@ -100,8 +92,8 @@
         default: 0,
       },
 
-      indexTo:{
-        type:Number
+      indexTo: {
+        type: Number
       }
     },
 
@@ -115,21 +107,21 @@
         }
       },
 
-      firstTimeNominal(){
-        return this.nominal=this.items.pengaturan_gaji[this.indexTo].nominal;
+      firstTimeNominal() {
+        return this.nominal = this.items.pengaturan_gaji[this.indexTo].nominal;
       },
 
-      firstTimePresence(){
-        return this.presence=this.items.total_kehadiran;
+      firstTimePresence() {
+        return this.presence = this.items.total_kehadiran;
       },
 
-      count: function(){
-        return this.counting=this.nominal*this.presence
+      count: function () {
+        return this.counting = this.nominal * this.presence
       }
 
     },
 
-    mounted(){
+    mounted() {
       this.firstTimeNominal;
       this.firstTimePresence;
     },
@@ -137,25 +129,23 @@
     methods: {
       ...mapMutations(['closeModals']),
 
-      changeNominal(e){
+      changeNominal(e) {
         console.log(e.target.value)
-        return this.nominal=e.target.value;
+        return this.nominal = e.target.value;
       },
 
-      closeModal(toggleModal) {
-        this.closeModals(toggleModal)
+      closeModal(data) {
+        this.closeModals(data)
       },
 
-      updateSalary(){
-         this.closeModals(false);
-         this.saveData = true;
+      updateSalary() {
+        this.closeModals(false);
+        this.saveData = true;
 
-          if(this.saveData){
-            this.items.pengaturan_gaji[this.indexTo].nominal=this.nominal;
-            this.items.total_kehadiran = this.presence;
-          }
-
-          else {
+        if (this.saveData) {
+          this.items.pengaturan_gaji[this.indexTo].nominal = this.nominal;
+          this.items.total_kehadiran = this.presence;
+        } else {
           this.nominal = this.items.pengaturan_gaji[this.indexTo].nominal;
           this.presence = this.items.total_kehadiran;
         }
@@ -168,6 +158,7 @@
 <style scoped>
   .button_background {
     background-color: #206CFF;
+    border: #206CFF 1px solid;
   }
 
   .height_window {

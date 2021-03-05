@@ -1,6 +1,6 @@
 <template>
-    <section class="Komisi">
-            <div class="Upah Borongan flex flex-col mt-3 pb-3">
+  <section class="Komisi">
+    <div class="Upah Borongan flex flex-col mt-3 pb-3">
       <div class="pb-3 border-b px-4">
         <div class=" text-base font-bold text-left">
           Komisi
@@ -10,20 +10,32 @@
         <div class="flex mt-2">
           <span class="material-icons text-xl font-bold text-blue-400 -mt-1 "> add_circle_outline
           </span>
-          <div class="ml-3 text-blue-400 text-base font-semibold cursor-pointer">Tambah komisi lain...</div>
+          <div 
+            class="ml-3 text-blue-400 text-base font-semibold cursor-pointer"
+            @click.prevent="modalEditKomisi()"
+          >Tambah komisi lain...</div>
         </div>
-        <div class="flex mt-3 pb-12 border-b border-dashed">
-          <div class="w-1/2 text-left font-sm ">
-            Bonus Target 1
-          </div>
-          <div class="w-1/2 flex m-auto text-right">
-            <div class="w-full text-sm font-semibold mr-2 ">
-              200.000
+        <div v-if="(items.komisi).length === 0">
+          <p class="mt-3 text-red-400">data tidak ada....</p>
+        </div>
+        <div v-else>
+          <div v-for="(item,index) in items.komisi" :key="index">
+            <div class="flex mt-3 pb-12 border-b border-dashed">
+              <div class="w-1/2 text-left font-sm ">
+                {{item.name}}
+              </div>
+              <div class="w-1/2 flex m-auto text-right">
+                <div class="w-full text-sm font-semibold mr-2 ">
+                  Rp.{{item.nominal}}
+                </div>
+                <span class="material-icons text-base font-bold text-blue-400 -mt-1 cursor-pointer">
+                  mode_edit
+                </span>
+              </div>
             </div>
-            <span class="material-icons text-base font-bold text-blue-400 -mt-1 cursor-pointer"> mode_edit
-            </span>
           </div>
         </div>
+
         <div class="flex mt-3 pb-4 ">
           <div class="w-1/2 flex flex-col text-left">
             <div class="text-base font-semibold">
@@ -44,13 +56,34 @@
           Rp 2.824.000</div>
       </div>
     </div>
-    </section>
+  </section>
 </template>
 
 <script>
-export default {
-    
-}
+  import {
+    mapMutations,
+    mapGetters
+  } from 'vuex';  
+
+  export default {
+    props: {
+      items: {
+        type: Object,
+      }
+    },
+
+    methods:{
+        ...mapMutations(['modalEdit']),
+
+        modalEditKomisi(){
+            this.$emit('modalEditKomisi',{
+                variabel:'EditKomisi'
+            });
+            this.modalEdit(true);
+        }
+    }
+  }
+
 </script>
 
 <style lang="scss" scoped>

@@ -21,12 +21,21 @@
       </div>
 
       <div class="modal_Kehadiran" v-if="popUpModal && (editModalState==='EditKehadiran')">
-
         <edit-keterlambatan 
           :inner-height="innerHeight" 
           :inner-width="innerWidth"
           :items="items.data">
         </edit-keterlambatan>
+      </div>
+
+      <div class="modal_Komisi" 
+        v-if="popUpModal && (editModalState === 'EditKomisi')"
+      >
+        <edit-komisi
+          :inner-height="innerHeight" 
+          :inner-width="innerWidth"
+        >
+        </edit-komisi>
       </div>
 
       <!-- group by -->
@@ -41,7 +50,10 @@
 
       <sekat></sekat>
 
-      <komisi></komisi>
+      <komisi
+        :items="items.data"
+        @modalEditKomisi="modalEditKomisi"
+      ></komisi>
 
 
     </div>
@@ -66,11 +78,12 @@
   import EditGaji from './all_modal/EditGaji.vue';
   import EditAbsen from './all_modal/EditAbsen.vue';
   import EditKeterlambatan from './all_modal/EditKeterlambatan.vue';
+  import EditKomisi from './all_modal/EditKomisi.vue';
   import Kehadiran from './gaji_faktur/Kehadiran.vue';
   import Profile from './gaji_faktur/Profile.vue';
   import Gaji from './gaji_faktur/Gaji.vue';
+  import Komisi from './gaji_faktur/Komisi.vue';
   import Sekat from './component_reuse/Sekat.vue';
-
 
 
   import {
@@ -79,9 +92,6 @@
   import {
     mapMutations
   } from 'vuex';
-import Komisi from './gaji_faktur/Komisi.vue';
-
-
 
 
   export default {
@@ -94,6 +104,8 @@ import Komisi from './gaji_faktur/Komisi.vue';
       Sekat,
       EditKeterlambatan,
       Komisi,
+      EditKomisi
+
     },
     data() {
       return {
@@ -139,6 +151,11 @@ import Komisi from './gaji_faktur/Komisi.vue';
 
       modalEditKehadiran(data) {
         this.editModalState = data.variabel;
+        this.handleResize();
+      },
+
+      modalEditKomisi(data){
+        this.editModalState=data.variabel;
         this.handleResize();
       },
 
