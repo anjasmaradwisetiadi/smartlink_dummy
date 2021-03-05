@@ -7,13 +7,23 @@
     </div>
     <div v-for="(items,index) in getAllDataEmployee" :key="index">
       <!-- modal -->
-      <div class="modal" v-if="closedModal">
+      <div class="modal_Gaji" v-if="popUpModal && (editModalState==='EditGaji')">
         <edit-gaji 
-          :inner-height="innerHeight" 
-          :inner-width="innerWidth"
-          :items="items.data"
-          >
+        :inner-height="innerHeight" 
+        :inner-width="innerWidth" 
+        :items="items.data"
+        >
         </edit-gaji>
+      </div>
+
+      <div class="modal_Absen" v-if="popUpModal && (editModalState==='EditAbsen')">
+        <edit-absen 
+        :inner-height="innerHeight" 
+        :inner-width="innerWidth" 
+        :items="items.data">
+
+        </edit-absen>
+
       </div>
       <!-- group by -->
       <profile :items="items.data"></profile>
@@ -21,13 +31,11 @@
 
       <sekat></sekat>
 
-      <gaji  
-        :items="items.data"
-        @modalEditGaji="modalEditGaji"
-      >
+      <gaji :items="items.data" 
+      @modalEditGaji="modalEditGaji">
       </gaji>
 
-      <sekat></sekat> 
+      <sekat></sekat>
     </div>
 
 
@@ -60,11 +68,13 @@
   import {
     mapMutations
   } from 'vuex';
+  import EditAbsen from './all_modal/EditAbsen.vue';
 
 
   export default {
     components: {
       EditGaji,
+      EditAbsen,
       Profile,
       Kehadiran,
       Gaji,
@@ -75,13 +85,16 @@
         toggleModal: false,
         innerWidth: null,
         innerHeight: null,
+        editModalState: ''
       }
     },
 
     computed: {
       ...mapGetters(['getAllDataEmployee', 'getToggleModal']),
 
-      closedModal() {
+      popUpModal() {
+        console.log("data toggle")
+        console.log(this.getToggleModal);
         return this.toggleModal = this.getToggleModal
       }
     },
@@ -98,14 +111,18 @@
       ...mapMutations(['modalEditSalarys']),
 
       modalEditGaji(data) {
-        this.toggleModal = data;
+        this.toggleModal = data.data;
+        this.editModalState = data.variabel;
+
         this.handleResize();
-        if (data) {
-          this.modalEditSalarys(data)
+        if (data.data) {
+          this.modalEditSalarys(data.data)
         } else {
           return false
         }
       },
+
+
 
       handleResize() {
         this.innerWidth = window.innerWidth;

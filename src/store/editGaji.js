@@ -21,8 +21,6 @@ export const editGaji = {
         // },
 
         totalSalary(state,payload){
-            console.log("todo")
-            console.log(payload)
             state.result=payload.nominal*payload.periode;
         }
 

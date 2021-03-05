@@ -67,7 +67,7 @@
 
   </div>
 
-</template>git
+</template>
 
 <script>
   import {

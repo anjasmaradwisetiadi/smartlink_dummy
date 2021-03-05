@@ -1,79 +1,49 @@
 <template>
-        <!-- Gaji -->
+  <!-- Gaji -->
   <section class="Gaji">
     <!-- modal EditGaji-->
 
-    <div v-for="item in items.pengaturan_gaji" :key="item.id">
+    <div>
       <div class="detail_salary flex flex-col mt-3 pb-3 ">
         <div class="flex flex-col text-left px-4 ">
           <div class="text-base font-bold mb-4">
             Gaji
           </div>
-          <div class="flex">
-            <div class="w-1/2 flex flex-col text-left">
-              <div class="text-sm font-semibold"> {{item.nama}} </div>
-              <div class="text-sm font-normal text-gray-400">{{item.nominal}} x 1 periode</div>
-            </div>
-            <div class="w-1/2 flex m-auto text-right">
-              <div class="w-full text-sm font-semibold mr-2 ">
-                {{getTotalSalary}}
+          <div v-for="(item,index) in items.pengaturan_gaji" :key="index">
+            <div
+            v-if="index===0"
+             class="flex mt-2">
+              <div class="w-1/2 flex flex-col text-left">
+                <div class="text-sm font-semibold"> {{item.nama}} </div>
+                <div class="text-sm font-normal text-gray-400">{{item.nominal}} x
+                  {{items.total_periode}} periode</div>
               </div>
-              <span @click.prevent="modalEditGaji()"
-                class="material-icons text-base font-bold text-blue-400 -mt-1 cursor-pointer">
-                mode_edit </span>
+              <div class="w-1/2 flex m-auto text-right">
+                <div class="w-full text-sm font-semibold mr-2 ">
+                  {{item.nominal*items.total_periode}}
+                </div>
+                <span @click.prevent="modalEditGaji()"
+                  class="material-icons text-base font-bold text-blue-400 -mt-1 cursor-pointer">
+                  mode_edit </span>
+              </div>
             </div>
-          </div>
 
-          <div class="flex mt-2">
-            <div class="w-1/2 flex flex-col">
-              <div class="text-sm font-semibold"> Uang Makan</div>
-              <div class="text-sm font-normal text-gray-400">10.000 x 22 kehadiran</div>
-            </div>
-            <div class="w-1/2 flex m-auto text-right">
-              <div class="w-full text-sm font-semibold mr-2 ">
-                220.000
+            <div
+            v-if="index>0"
+             class="flex mt-2">
+              <div class="w-1/2 flex flex-col text-left">
+                <div class="text-sm font-semibold"> {{item.nama}} </div>
+                <div class="text-sm font-normal text-gray-400">{{item.nominal}} x
+                  {{items.total_kehadiran}} periode</div>
               </div>
-              <span class="material-icons text-base font-bold text-blue-400 -mt-1 cursor-pointer">
-                mode_edit </span>
-            </div>
-          </div>
-          <div class="flex mt-2">
-            <div class="w-1/2 flex flex-col">
-              <div class="text-sm font-semibold"> Uang Absen</div>
-              <div class="text-sm font-normal text-gray-400">12.000 x 22 kehadiran</div>
-            </div>
-            <div class="w-1/2 flex m-auto text-right">
-              <div class="w-full text-sm font-semibold mr-2 ">
-                264.000
+              <div class="w-1/2 flex m-auto text-right">
+                <div class="w-full text-sm font-semibold mr-2 ">
+                  {{item.nominal*items.total_kehadiran}}
+                </div>
+                <span @click.prevent="modalEditAbsen()"
+                  class="material-icons text-base font-bold text-blue-400 -mt-1 cursor-pointer">
+                  mode_edit </span>
               </div>
-              <span class="material-icons text-base font-bold text-blue-400 -mt-1 cursor-pointer">
-                mode_edit </span>
-            </div>
-          </div>
-          <div class="flex mt-2">
-            <div class="w-1/2 flex flex-col">
-              <div class="text-sm font-semibold"> Uang Transport</div>
-              <div class="text-sm font-normal text-gray-400">15.000 x 22 kehadiran</div>
-            </div>
-            <div class="w-1/2 flex m-auto text-right">
-              <div class="w-full text-sm font-semibold mr-2 ">
-                330.000
-              </div>
-              <span class="material-icons text-base font-bold text-blue-400 -mt-1 cursor-pointer">
-                mode_edit </span>
-            </div>
-          </div>
-          <div class="flex mt-2 pb-4 border-b border-dashed">
-            <div class="w-1/2 flex flex-col">
-              <div class="text-sm font-semibold"> Uang Snack</div>
-              <div class="text-sm font-normal text-gray-400">5.000 x 22 kehadiran</div>
-            </div>
-            <div class="w-1/2 flex m-auto text-right">
-              <div class="w-full text-sm font-semibold mr-2 ">
-                110.000
-              </div>
-              <span class="material-icons text-base font-bold text-blue-400 -mt-1 cursor-pointer">
-                mode_edit </span>
             </div>
           </div>
 
@@ -118,27 +88,28 @@
       }
     },
 
-    mounted(){
-        this.totalSalary({
-            nominal:this.items.pengaturan_gaji[0].nominal,
-            periode:this.items.total_periode
-        })
+    mounted() {
+      this.totalSalary({
+        nominal: this.items.pengaturan_gaji[0].nominal,
+        periode: this.items.total_periode
+      })
     },
-    computed:{
-        ...mapGetters(['getTotalSalary'])
+    computed: {
+      ...mapGetters(['getTotalSalary'])
     },
 
     methods: {
-      ...mapMutations(['modalEditSalarys','totalSalary']),
+      ...mapMutations(['modalEditSalarys', 'totalSalary']),
 
       modalEditGaji() {
-        this.$emit('modalEditGaji', true);
-        let data = {
-          toggleModal: true,
-        }
-        this.modalEditSalarys(data)
+        this.$emit('modalEditGaji', {data:true,variabel:'EditGaji'});
+        this.modalEditSalarys(true)
       },
 
+      modalEditAbsen(){
+        this.$emit('modalEditGaji', {data:true,variabel:'EditAbsen'});
+        this.modalEditSalarys(true);
+      }
     }
   }
 
