@@ -9,21 +9,21 @@
     <div v-for="(items,index) in getAllDataEmployee" :key="index">
       <!-- modal -->
       <div class="modal_Gaji" v-if="popUpModal && (editModalState==='EditGaji')">
-        <edit-gaji :inner-height="innerHeight" :inner-width="innerWidth" :items="items.data"
+        <edit-gaji 
+          :items="items.data"
           :index-to="indexTo">
         </edit-gaji>
       </div>
 
       <div class="modal_Absen" v-if="popUpModal && (editModalState==='EditAbsen')">
-        <edit-absen :inner-height="innerHeight" :inner-width="innerWidth" :items="items.data"
+        <edit-absen 
+        :items="items.data"
           :index-to="indexTo">
         </edit-absen>
       </div>
 
       <div class="modal_Kehadiran" v-if="popUpModal && (editModalState==='EditKehadiran')">
         <edit-keterlambatan 
-          :inner-height="innerHeight" 
-          :inner-width="innerWidth"
           :items="items.data">
         </edit-keterlambatan>
       </div>
@@ -32,8 +32,6 @@
         v-if="popUpModal && (editModalState === 'EditKomisi')"
       >
         <edit-komisi
-          :inner-height="innerHeight" 
-          :inner-width="innerWidth"
           :items="items"
           :id-to="idTo"
           :enable-delete="enableDelete"
@@ -141,7 +139,7 @@
     },
 
     methods: {
-      ...mapMutations(['modalEdit']),
+      ...mapMutations(['modalEdit','innerWidthHeight']),
 
       modalEditGaji(data) {
 
@@ -176,8 +174,11 @@
       },
 
       handleResize() {
-        this.innerWidth = window.innerWidth;
-        this.innerHeight = window.innerHeight;
+        this.innerWidthHeight(
+          {innerWidth:window.innerWidth,
+          innerHeight:window.innerHeight
+        })
+
       },
 
     }

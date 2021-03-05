@@ -75,14 +75,6 @@
       items: {
         type: Object
       },
-      innerHeight: {
-        type: Number,
-        default: 0
-      },
-      innerWidth: {
-        type: Number,
-        default: 0
-      }
     },
 
     data(){
@@ -96,12 +88,12 @@
     },
 
     computed: {
-      ...mapGetters(['getToggleModal']),
+      ...mapGetters(['getToggleModal','getInnerHeight','getInnerWidth']),
 
       sizeShadow() {
         return {
-          width: `${this.innerWidth}px`,
-          height: `${this.innerHeight}px`,
+          width: `${this.getInnerWidth}px`,
+          height: `${this.getInnerHeight}px`,
         }
       },
 

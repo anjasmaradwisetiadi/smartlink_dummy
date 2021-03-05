@@ -93,28 +93,18 @@
         type: Object
       },
 
-      innerWidth: {
-        type: Number,
-        default: 0,
-      },
-
-      innerHeight: {
-        type: Number,
-        default: 0,
-      },
-
       indexTo:{
         type:Number
       }
     },
 
     computed: {
-      ...mapGetters(['getToggleModal']),
+      ...mapGetters(['getToggleModal','getInnerHeight','getInnerWidth']),
 
       sizeShadow() {
         return {
-          width: `${this.innerWidth}px`,
-          height: `${this.innerHeight}px`,
+          width: `${this.getInnerWidth}px`,
+          height: `${this.getInnerHeight}px`,
         }
       },
 
