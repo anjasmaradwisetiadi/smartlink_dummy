@@ -79,9 +79,9 @@
   export default {
     data() {
       return {
-        nominal: null,
-        periode: null,
-        counting: null,
+        nominal: 0,
+        periode: 0,
+        counting: 0,
         saveData: false,
       }
     },

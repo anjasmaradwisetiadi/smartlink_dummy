@@ -80,7 +80,6 @@
 
     data() {
       return {
-        toggleModal: false,
       }
     },
 
@@ -89,24 +88,22 @@
     },
 
     methods: {
-      ...mapMutations(['modalEditSalarys', 'totalSalary']),
+      ...mapMutations(['modalEdit', 'totalSalary']),
 
       modalEditGaji(index) {
         this.$emit('modalEditGaji', {
-          data: true,
           variabel: 'EditGaji',
           index:index
         });
-        this.modalEditSalarys(true)
+        this.modalEdit(true)
       },
 
       modalEditAbsen(index) {
         this.$emit('modalEditGaji', {
-          data: true,
           variabel: 'EditAbsen',
           index:index
         });
-        this.modalEditSalarys(true);
+        this.modalEdit(true);
       },
     }
   }

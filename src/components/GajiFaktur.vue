@@ -4,40 +4,46 @@
       <div class="uppercase font-bold text-lg">
         Faktur Gaji
       </div>
+
+      <p>ini popup = {{popUpModal}}</p>
     </div>
     <div v-for="(items,index) in getAllDataEmployee" :key="index">
       <!-- modal -->
       <div class="modal_Gaji" v-if="popUpModal && (editModalState==='EditGaji')">
-        <edit-gaji 
-        :inner-height="innerHeight" 
-        :inner-width="innerWidth" 
-        :items="items.data"
-        :index-to="indexTo"
-        >
+        <edit-gaji :inner-height="innerHeight" :inner-width="innerWidth" :items="items.data"
+          :index-to="indexTo">
         </edit-gaji>
       </div>
 
       <div class="modal_Absen" v-if="popUpModal && (editModalState==='EditAbsen')">
-        <edit-absen 
-        :inner-height="innerHeight" 
-        :inner-width="innerWidth" 
-        :items="items.data"
-        :index-to="indexTo"
-        >
+        <edit-absen :inner-height="innerHeight" :inner-width="innerWidth" :items="items.data"
+          :index-to="indexTo">
         </edit-absen>
-
       </div>
+
+      <div class="modal_Kehadiran" v-if="popUpModal && (editModalState==='EditKehadiran')">
+
+        <edit-keterlambatan 
+          :inner-height="innerHeight" 
+          :inner-width="innerWidth"
+          :items="items.data">
+        </edit-keterlambatan>
+      </div>
+
       <!-- group by -->
       <profile :items="items.data"></profile>
-      <kehadiran :items="items.data"></kehadiran>
+      <kehadiran :items="items.data" @modalEditKehadiran="modalEditKehadiran">
+      </kehadiran>
 
       <sekat></sekat>
 
-      <gaji :items="items.data" 
-      @modalEditGaji="modalEditGaji">
+
+      <gaji :items="items.data" @modalEditGaji="modalEditGaji">
       </gaji>
 
       <sekat></sekat>
+
+
     </div>
 
 
@@ -58,10 +64,13 @@
 
 <script>
   import EditGaji from './all_modal/EditGaji.vue';
+  import EditAbsen from './all_modal/EditAbsen.vue';
+  import EditKeterlambatan from './all_modal/EditKeterlambatan.vue';
   import Kehadiran from './gaji_faktur/Kehadiran.vue';
   import Profile from './gaji_faktur/Profile.vue';
   import Gaji from './gaji_faktur/Gaji.vue';
   import Sekat from './component_reuse/Sekat.vue';
+
 
 
   import {
@@ -70,7 +79,8 @@
   import {
     mapMutations
   } from 'vuex';
-  import EditAbsen from './all_modal/EditAbsen.vue';
+
+
 
 
   export default {
@@ -81,14 +91,17 @@
       Kehadiran,
       Gaji,
       Sekat,
+      EditKeterlambatan,
+
+
     },
     data() {
       return {
         toggleModal: false,
-        innerWidth: null,
-        innerHeight: null,
+        innerWidth: 0,
+        innerHeight: 0,
         editModalState: '',
-        indexTo:null
+        indexTo: null
       }
     },
 
@@ -109,22 +122,26 @@
     },
 
     methods: {
-      ...mapMutations(['modalEditSalarys']),
+      ...mapMutations(['modalEdit']),
 
       modalEditGaji(data) {
-        this.toggleModal = data.data;
+
         this.editModalState = data.variabel;
-        this.indexTo=data.index;
+        this.indexTo = data.index;
 
         this.handleResize();
         if (data.data) {
-          this.modalEditSalarys(data.data)
+          this.modalEdit(data.data)
         } else {
           return false
         }
       },
 
-
+      modalEditKehadiran(data) {
+        this.editModalState = data.variabel;
+        console.log(this.editModalState);
+        this.handleResize();
+      },
 
       handleResize() {
         this.innerWidth = window.innerWidth;

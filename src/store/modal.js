@@ -3,7 +3,7 @@ export const modalStateManagement ={
         toggleModal: false,
     },
     mutations: {
-        modalEditSalarys(state,payload){
+        modalEdit(state,payload){
             state.toggleModal=payload;
         },
 
