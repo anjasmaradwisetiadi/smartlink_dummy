@@ -7,7 +7,6 @@ import { collectionUrl } from '../service/baseUrl'
 
 // import { dataEmployee } from '../service/dataEmployee'
 const axios = require('axios');
-const urlCol="https://dev-bos.smartlink.id/salary/inquiry"
 
 Vue.use(Vuex);
 
@@ -15,8 +14,9 @@ const urlInquiry = collectionUrl.baseInquiry;
 
 export default new Vuex.Store({
   state: {
-    dataEmployee: [],
-    errorMessage:''
+    dataEmployee: {},
+    errorMessage:'',
+    loading: true,
 
   },
   mutations: {
@@ -30,12 +30,16 @@ export default new Vuex.Store({
 
   },
   actions: {
-    setInquiry({commit}){
+    
+    setInquiry({state,commit}){
+      state.loading = true;
       axios.get(urlInquiry)
       .then(function (response) {
-        commit('inquiry',response)
+        state.loading = false;
+        commit('inquiry',response.data)
       })
       .catch(function (error) {
+        state.loading = false;
         commit('errorMessage',error.message)
       })
       
@@ -49,6 +53,11 @@ export default new Vuex.Store({
     },
     getErrorMessage: (state)=>{
       return state.errorMessage;
+    },
+
+    getLoading: (state)=>{
+      console.log(state.loading)
+      return state.loading;
     }
 
   },

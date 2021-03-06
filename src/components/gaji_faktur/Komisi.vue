@@ -29,8 +29,7 @@
                   </div>
                   <span
                     class="material-icons text-base font-bold text-blue-400 -mt-1 cursor-pointer"
-                    @click="modalEditKomisi({id:item.id,data:index})"
-                    >
+                    @click="modalEditKomisi({id:item.id,data:index})">
                     mode_edit
                   </span>
                 </div>
@@ -76,19 +75,21 @@
       }
     },
 
-    data(){
-      return{
-        counting:0
-      }
+    data() {
+      return {}
     },
 
-    computed:{
-      allSalary(){
-        let dataLength=this.items.komisi.length;
-        console.log(dataLength);
-        for(let i=0; i<=dataLength; i++ ){
-          return this.counting=this.counting+parseInt(this.items.komisi[i].nominal);
+    computed: {
+      allSalary() {
+        let dataLength = this.items.komisi.length;
+
+        let data = 0;
+        for (let i = 0; i < dataLength; i++) {
+          data += parseInt(this.items.komisi[i].nominal);
         }
+        return data;
+
+
       }
     },
 
@@ -103,12 +104,12 @@
         this.modalEdit(true);
       },
 
-      modalEditKomisi(data){
+      modalEditKomisi(data) {
         this.$emit('modalEditKomisi', {
-          data:data.id,
+          data: data.id,
           variabel: 'EditKomisi',
           enableDelete: true,
-          index:data.data
+          index: data.data
         });
         this.modalEdit(true);
       }

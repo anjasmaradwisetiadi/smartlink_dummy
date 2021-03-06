@@ -6,15 +6,40 @@
       </div>
 
     </div>
-    <div v-for="(items,index) in getAllDataEmployee" :key="index">
-      <!-- modal -->
-      <!-- <div class="modal_Kehadiran" v-if="popUpModal && (editModalState==='EditKehadiran')">
-        <edit-keterlambatan 
-          :items="items.data">
-        </edit-keterlambatan>
-      </div> -->
 
-      <!-- <div class="modal_Gaji" v-if="popUpModal && (editModalState==='EditGaji')">
+    <div v-if="getLoading"
+      class="loading text-center mx-auto relative text-red-500 text-lg font-bold">
+      Still Loading....
+    </div>
+
+    <div v-if="!getLoading"
+      class="main_page ">
+      <!-- modal -->
+      <div class="modal_Kehadiran" v-if="popUpModal && (editModalState==='EditKehadiran')">
+        <edit-keterlambatan :items="getAllDataEmployee.data">
+        </edit-keterlambatan>
+      </div>
+
+      <div class="modal_Komisi" v-if="popUpModal && (editModalState === 'EditKomisi')">
+        <edit-komisi :items="getAllDataEmployee.data" :id-to="idTo" :enable-delete="enableDelete"
+          :index-to="indexTo">
+        </edit-komisi>
+      </div>
+
+      <!-- group by -->
+      <profile :items="getAllDataEmployee.data"></profile>
+
+      <kehadiran :items="getAllDataEmployee.data" @modalEditKehadiran="modalEditKehadiran">
+      </kehadiran>
+
+
+      <komisi :items="getAllDataEmployee.data" @modalAddKomisi="modalAddKomisi"
+        @modalEditKomisi="modalEditKomisi"></komisi>
+
+    </div>
+
+
+    <!-- <div class="modal_Gaji" v-if="popUpModal && (editModalState==='EditGaji')">
         <edit-gaji 
           :items="items.data"
           :index-to="indexTo">
@@ -28,40 +53,14 @@
         </edit-absen>
       </div> -->
 
-      <!-- <div class="modal_Komisi" 
-        v-if="popUpModal && (editModalState === 'EditKomisi')"
-      >
-        <edit-komisi
-          :items="items.data"
-          :id-to="idTo"
-          :enable-delete="enableDelete"
-          :index-to="indexTo"
-        >
-        </edit-komisi>
-      </div> -->
 
-      <!-- group by -->
-      <profile :items="items.data"></profile>
-      
-       <!-- <kehadiran :items="items.data" @modalEditKehadiran="modalEditKehadiran">
-      </kehadiran>
-       -->
-      <!-- <sekat></sekat>
+
+    <!-- <sekat></sekat>
 
       <gaji :items="items.data" @modalEditGaji="modalEditGaji">
       </gaji>
 
       <sekat></sekat> -->
-
-      <!-- <komisi
-        :items="items.data"
-        @modalAddKomisi="modalAddKomisi"
-        @modalEditKomisi="modalEditKomisi"
-      ></komisi> -->
-
-
-    </div>
-
 
   </section>
 </template>
@@ -119,21 +118,18 @@
         innerHeight: 0,
         editModalState: '',
         indexTo: null,
-        idTo:null,
-        enableDelete:false
+        idTo: null,
+        enableDelete: false
       }
     },
 
     computed: {
-      ...mapGetters(['getAllDataEmployee', 'getToggleModal']),
+      ...mapGetters(['getAllDataEmployee', 'getToggleModal', 'getLoading']),
 
       popUpModal() {
         return this.toggleModal = this.getToggleModal
       },
 
-      getDataEmployee(){
-        return this.getAllDataEmployee
-      }
     },
 
     created() {
@@ -146,14 +142,14 @@
 
 
 
-    mounted(){
+    mounted() {
       this.$store.dispatch('setInquiry');
     },
 
     methods: {
-      ...mapMutations(['modalEdit','innerWidthHeight']),
+      ...mapMutations(['modalEdit', 'innerWidthHeight']),
 
-      getDataEndpointInquiry(){
+      getDataEndpointInquiry() {
         this.setInquiry;
       },
 
@@ -175,24 +171,24 @@
         this.handleResize();
       },
 
-      modalAddKomisi(data){
-        this.editModalState=data.variabel;
-        this.enableDelete=data.enableDelete;
+      modalAddKomisi(data) {
+        this.editModalState = data.variabel;
+        this.enableDelete = data.enableDelete;
         this.handleResize();
       },
 
-      modalEditKomisi(data){
-        this.idTo=data.data;
-        this.editModalState=data.variabel;
-        this.enableDelete=data.enableDelete;
-        this.indexTo=data.index;
+      modalEditKomisi(data) {
+        this.idTo = data.data;
+        this.editModalState = data.variabel;
+        this.enableDelete = data.enableDelete;
+        this.indexTo = data.index;
         this.handleResize();
       },
 
       handleResize() {
-        this.innerWidthHeight(
-          {innerWidth:window.innerWidth,
-          innerHeight:window.innerHeight
+        this.innerWidthHeight({
+          innerWidth: window.innerWidth,
+          innerHeight: window.innerHeight
         })
 
       },

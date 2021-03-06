@@ -145,10 +145,12 @@
         this.title=e.target.value;
     },
 
-    saveKomisi(data){
+    saveKomisi(dataSave){
+        this.closeModals(false);
         this.saveData=true;
+        console.log("ini data save = "+dataSave)
         if(this.saveData){
-            if(data){
+            if(dataSave){
                 this.items.komisi[this.indexTo].nominal=parseInt(this.nominal);
                 this.items.komisi[this.indexTo].nama=parseInt(this.title);
             }
@@ -160,15 +162,12 @@
                 }
                 this.setAddKomisi(dataAddKomisi) 
             }
-
-
         }
         else{
             this.nominal=this.items.komisi[this.indexTo].nominal;
             this.title=this.items.komisi[this.indexTo].nama;
         }
 
-        this.closeModals(false);
     },
 
     deleteKomisi(){

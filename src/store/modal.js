@@ -31,5 +31,5 @@ export const modalStateManagement ={
         getInnerHeight:(state)=>{
             return state.innerHeight;
         }
-    }
+    },
 }
