@@ -133,8 +133,8 @@
         this.saveData = true;
 
         if (this.saveData) {
-          this.items.pengaturan_gaji[this.indexTo].nominal = this.nominal;
-          this.items.total_kehadiran = this.presence;
+          this.items.pengaturan_gaji[this.indexTo].nominal = parseInt(this.nominal);
+          this.items.total_kehadiran = parseInt(this.presence);
         } else {
           this.nominal = this.items.pengaturan_gaji[this.indexTo].nominal;
           this.presence = this.items.total_kehadiran;

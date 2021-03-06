@@ -47,7 +47,7 @@
             </div>
           </div>
           <div class="w-1/2 text-base font-semibold text-right m-auto">
-            Rp 200.000
+            Rp {{allSalary}}
           </div>
         </div>
       </div>
@@ -73,6 +73,22 @@
     props: {
       items: {
         type: Object,
+      }
+    },
+
+    data(){
+      return{
+        counting:0
+      }
+    },
+
+    computed:{
+      allSalary(){
+        let dataLength=this.items.komisi.length;
+        console.log(dataLength);
+        for(let i=0; i<=dataLength; i++ ){
+          return this.counting=this.counting+parseInt(this.items.komisi[i].nominal);
+        }
       }
     },
 

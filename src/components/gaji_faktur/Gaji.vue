@@ -28,7 +28,7 @@
               <div class="w-1/2 flex flex-col text-left">
                 <div class="text-sm font-semibold"> {{item.nama}} </div>
                 <div class="text-sm font-normal text-gray-400">{{item.nominal}} x
-                  {{items.total_kehadiran}} periode</div>
+                  {{items.total_kehadiran}} kehadiran</div>
               </div>
               <div class="w-1/2 flex m-auto text-right">
                 <div class="w-full text-sm font-semibold mr-2 ">
@@ -75,11 +75,13 @@
 
     data() {
       return {
+        counting:0
       }
     },
 
     computed: {
-      ...mapGetters(['getTotalSalary'])
+      ...mapGetters(['getTotalSalary']),
+
     },
 
     methods: {

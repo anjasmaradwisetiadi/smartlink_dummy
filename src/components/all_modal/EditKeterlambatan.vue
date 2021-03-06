@@ -1,7 +1,6 @@
 
 <template>
   <div class="Ubah_Keterlambatan items-center text-center">
-    <p>baru</p>
     <div v-if="getToggleModal" class="fixed flex justify-center items-center z-20  w-screen">
       <div class="flex flex-col mt-3 pb-6 border rounded-lg z-20 relative bg-white w-full mx-auto">
         <div class="flex mt-3 pb-3 border-b">

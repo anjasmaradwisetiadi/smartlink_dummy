@@ -22,7 +22,7 @@
                 <span
                   class="flex items-center  bg-gray-200 rounded rounded-r-none border border-r-0 border-grey-light px-2 whitespace-no-wrap text-grey-dark text-sm">Rp</span>
               </div>
-              <input type="text"
+              <input type="number"
                 class="flex-shrink flex-grow flex-auto  w-px flex-1 border h-10 border-grey-light rounded rounded-l-none px-4 relative focus:outline-none focus:ring-2 focus:ring-blue-400 focus:shadow"
                 placeholder="1000" @change="changeNominal" :value="nominal">
             </div>
@@ -30,7 +30,7 @@
               X
             </div>
             <div class="w-2/6 flex flex-wrap items-stretch w-full mb-4 relative">
-              <input type="text"
+              <input type="number"
                 class="flex-shrink flex-grow flex-auto w-px flex-1 border h-10 border-grey-light rounded rounded-r-none px-4 relative focus:outline-none focus:ring-2 focus:ring-blue-400 focus:shadow"
                 placeholder="1" @change="changePeriode" :value="periode">
 
@@ -148,8 +148,8 @@
 
         this.saveData = true;
         if (this.saveData) {
-          this.items.pengaturan_gaji[this.indexTo].nominal = this.nominal;
-          this.items.total_periode = this.periode;
+          this.items.pengaturan_gaji[this.indexTo].nominal = parseInt(this.nominal);
+          this.items.total_periode = parseInt(this.periode);
 
           this.totalSalary({
             nominal: this.nominal,
