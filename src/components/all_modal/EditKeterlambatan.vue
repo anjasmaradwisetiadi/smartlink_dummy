@@ -131,7 +131,7 @@
         this.closeModals(false);
         this.saveData=true;
         if(this.saveData){
-          this.items.total_kehadiran=this.presence
+          this.items.total_kehadiran=parseInt(this.presence)
         }
         else{
           this.presence=this.items.total_kehadiran

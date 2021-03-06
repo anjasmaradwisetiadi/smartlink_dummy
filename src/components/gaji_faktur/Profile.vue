@@ -17,7 +17,14 @@
           items:{
               type:Object
           }
+      },
+
+      computed:{
+        itemsTanggalAwal(){
+          return this.items.tanggal_awal
+        }
       }
+      
 
   }
 

@@ -8,7 +8,13 @@
     </div>
     <div v-for="(items,index) in getAllDataEmployee" :key="index">
       <!-- modal -->
-      <div class="modal_Gaji" v-if="popUpModal && (editModalState==='EditGaji')">
+      <!-- <div class="modal_Kehadiran" v-if="popUpModal && (editModalState==='EditKehadiran')">
+        <edit-keterlambatan 
+          :items="items.data">
+        </edit-keterlambatan>
+      </div> -->
+
+      <!-- <div class="modal_Gaji" v-if="popUpModal && (editModalState==='EditGaji')">
         <edit-gaji 
           :items="items.data"
           :index-to="indexTo">
@@ -20,15 +26,9 @@
         :items="items.data"
           :index-to="indexTo">
         </edit-absen>
-      </div>
+      </div> -->
 
-      <div class="modal_Kehadiran" v-if="popUpModal && (editModalState==='EditKehadiran')">
-        <edit-keterlambatan 
-          :items="items.data">
-        </edit-keterlambatan>
-      </div>
-
-      <div class="modal_Komisi" 
+      <!-- <div class="modal_Komisi" 
         v-if="popUpModal && (editModalState === 'EditKomisi')"
       >
         <edit-komisi
@@ -38,25 +38,26 @@
           :index-to="indexTo"
         >
         </edit-komisi>
-      </div>
+      </div> -->
 
       <!-- group by -->
       <profile :items="items.data"></profile>
-      <kehadiran :items="items.data" @modalEditKehadiran="modalEditKehadiran">
+      
+       <!-- <kehadiran :items="items.data" @modalEditKehadiran="modalEditKehadiran">
       </kehadiran>
-
-      <sekat></sekat>
+       -->
+      <!-- <sekat></sekat>
 
       <gaji :items="items.data" @modalEditGaji="modalEditGaji">
       </gaji>
 
-      <sekat></sekat>
+      <sekat></sekat> -->
 
-      <komisi
+      <!-- <komisi
         :items="items.data"
         @modalAddKomisi="modalAddKomisi"
         @modalEditKomisi="modalEditKomisi"
-      ></komisi>
+      ></komisi> -->
 
 
     </div>
@@ -90,6 +91,7 @@
 
 
   import {
+    mapActions,
     mapGetters
   } from 'vuex';
   import {
@@ -127,6 +129,10 @@
 
       popUpModal() {
         return this.toggleModal = this.getToggleModal
+      },
+
+      getDataEmployee(){
+        return this.getAllDataEmployee
       }
     },
 
@@ -138,8 +144,18 @@
       window.addEventListener('resize', this.handleResize);
     },
 
+
+
+    mounted(){
+      this.$store.dispatch('setInquiry');
+    },
+
     methods: {
       ...mapMutations(['modalEdit','innerWidthHeight']),
+
+      getDataEndpointInquiry(){
+        this.setInquiry;
+      },
 
       modalEditGaji(data) {
 
@@ -180,6 +196,8 @@
         })
 
       },
+
+
 
     }
 
