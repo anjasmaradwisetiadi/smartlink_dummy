@@ -20,7 +20,9 @@
             Still Loading....
           </div>
 
-          <div class="flex flex-col ">
+          <div 
+            v-if="!getLoading"
+          class="flex flex-col ">
             <!-- form gaji bersih -->
             <detail-gaji-di-dapat></detail-gaji-di-dapat>
             <!-- sekat abu2 -->
@@ -54,6 +56,9 @@
       FormInputAll
     },
     
+    computed:{
+        ...mapGetters(['getLoading'])
+    },
 
     mounted() {
       this.$store.dispatch('setBanks')

@@ -9,8 +9,14 @@
         </div>
         <div class="flex rounded-md border cursor-pointer">
           <div class="w-5/6">
-            <input type="text" placeholder="Pilih Rekening Bank"
-              class="w-full px-2 py-3  focus:outline-none focus:ring-2 focus:ring-blue-400">
+            <!-- <input type="text" placeholder="Pilih Rekening Bank"
+              class="w-full px-2 py-3  focus:outline-none focus:ring-2 focus:ring-blue-400"> -->
+            <form-bank
+            :data="allBanks"
+            v-model.trim="formData.client"
+            @chosen="handleChosen"
+            placeholder="Search for state..."
+            ></form-bank>
           </div>
           <div class="w-1/6 m-auto">
             <span class="material-icons text-gray-400">
@@ -64,16 +70,31 @@
 </template>
 <script>
 import { mapActions,mapGetters } from 'vuex'
+import FormBank from './FormBank.vue'
   
   export default {
+  components: { FormBank },
       data(){
           return{
-
+              formData:{
+                  client:''
+              }
           }
       },
       computed:{
-          ...mapGetters(['getAllBanks'])
+          ...mapGetters(['getAllBanks']),
+
+          allBanks(){
+              return this.getAllBanks
+          }
+
       },
+
+      methods:{
+          handleChosen(data){
+              console.log(data)
+          }
+      }
 
   }
 

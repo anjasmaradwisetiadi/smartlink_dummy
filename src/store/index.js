@@ -59,7 +59,7 @@ export default new Vuex.Store({
       axios.get(urlBanks)
       .then(function (response) {
         state.loading = false;
-        commit('banks',response.data)
+        commit('banks',response.data.data)
       })
       .catch(function (error) {
         state.loading = false;
