@@ -3,6 +3,8 @@ import Vuex from 'vuex';
 import { modalStateManagement } from './modal'
 import { editGaji }from './editGaji'
 import { editKomisi } from './editKomisi'
+import { totalGajiKotor } from './totalGajiKotor'
+
 import { collectionUrl } from '../service/baseUrl'
 
 // import { dataEmployee } from '../service/dataEmployee'
@@ -48,7 +50,6 @@ export default new Vuex.Store({
   },
   getters: {
     getAllDataEmployee: (state) => {
-      console.log(state.dataEmployee)
       return state.dataEmployee;
     },
     getErrorMessage: (state)=>{
@@ -56,7 +57,6 @@ export default new Vuex.Store({
     },
 
     getLoading: (state)=>{
-      console.log(state.loading)
       return state.loading;
     }
 
@@ -64,6 +64,7 @@ export default new Vuex.Store({
   modules: {
     modalStateManagement,
     editGaji,
-    editKomisi
+    editKomisi,
+    totalGajiKotor
   },
 });

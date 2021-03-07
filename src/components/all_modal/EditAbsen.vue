@@ -120,7 +120,6 @@
       ...mapMutations(['closeModals']),
 
       changeNominal(e) {
-        console.log(e.target.value)
         return this.nominal = e.target.value;
       },
 

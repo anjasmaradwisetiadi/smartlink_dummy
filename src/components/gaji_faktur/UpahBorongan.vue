@@ -70,11 +70,19 @@
         }
     },
 
+    mounted(){
+        this.subTotalSalary;
+    },
+
     computed:{
         subTotalSalary(){
-            return this.data
+            let dataCall=this.data
+            this.$emit("salaryKomisi",{name:"sub_total_upah",nominal:dataCall});
+            return dataCall
         }
     }
+
+    
   }
 
 </script>

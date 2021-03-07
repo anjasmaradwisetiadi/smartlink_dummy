@@ -3,25 +3,22 @@ import { dataEmployee } from '../service/dataEmployee'
 export const editKomisi={
 
     mutations:{
-        addKomisi({rootState},payload){
-            console.log("data add komisi ")
-            console.log(payload)
-            console.log(this.$store.state.dataEmployee)
+        // try call roo state from addKomisi
+        // addKomisi({rootState},payload){
 
-
-        },
-        deleteKomisi(rootState,payload){
-            // let data = state.dataEmployee[0].data.komisi; 
-            rootState.dataEmployee.data.komisi = rootState.dataEmployee.data.komisi.filter((item)=>item.id != payload)  
-        }
+        // },
+        // deleteKomisi(rootState,payload){
+        //     // let data = state.dataEmployee[0].data.komisi; 
+        //     // rootState.dataEmployee.data.komisi = rootState.dataEmployee.data.komisi.filter((item)=>item.id != payload)  
+        // }
     },
     actions:{
-        setAddKomisi({commit,rootState},payload){
+        setAddKomisi({rootState},payload){
             // commit('addKomisi',payload)
             rootState.dataEmployee.data.komisi.push(payload)
         },
-        setDeleteKomisi({commit},payload){
-            commit('deleteKomisi',payload)
+        setDeleteKomisi({rootState},payload){
+            rootState.dataEmployee.data.komisi = rootState.dataEmployee.data.komisi.filter((item)=>item.id != payload)  
         }
 
     },

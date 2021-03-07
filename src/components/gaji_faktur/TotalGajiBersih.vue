@@ -12,7 +12,7 @@
 
           <div class="w-1/3 ">
             <div class=" text-base font-bold text-blue-500 text-right">
-              Rp {{totalNetSalary}}
+              Rp {{getTotalSalaryNet}}
             </div>
           </div>
         </div>
@@ -29,16 +29,12 @@
 
 </style>
 <script>
-  export default {
-      data(){
-          return{
-              count:2124000
-          }
-      },
+import { mapGetters } from 'vuex';
+
+export default {
+
       computed:{
-          totalNetSalary(){
-              return this.count;
-          }
+          ...mapGetters(['getTotalSalaryNet'])
       }
   }
 

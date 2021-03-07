@@ -33,8 +33,12 @@
       </kehadiran>
 
 
-      <komisi :items="getAllDataEmployee.data" @modalAddKomisi="modalAddKomisi"
-        @modalEditKomisi="modalEditKomisi"></komisi>
+      <komisi :items="getAllDataEmployee.data" 
+        @modalAddKomisi="modalAddKomisi"
+        @modalEditKomisi="modalEditKomisi"
+        @salaryKomisi ="salaryKomisi"
+      
+      ></komisi>
       
       <sekat></sekat>
       <upah-borongan
@@ -101,7 +105,7 @@
   import TotalGajiKotor from './gaji_faktur/TotalGajiKotor.vue';
   import TotalGajiBersih from './gaji_faktur/TotalGajiBersih.vue';
   import Sekat from './component_reuse/Sekat.vue';
-  import ButtonBerikutnya from './component_reuse/ButtonBerikutnya.vue';
+  import ButtonBerikutnya from './component_reuse/ButtonBerikutnya';
 
 
   import {
@@ -168,7 +172,7 @@
     },
 
     methods: {
-      ...mapMutations(['modalEdit', 'innerWidthHeight']),
+      ...mapMutations(['modalEdit', 'innerWidthHeight','collectSubTotal']),
 
       getDataEndpointInquiry() {
         this.setInquiry;
@@ -204,6 +208,10 @@
         this.enableDelete = data.enableDelete;
         this.indexTo = data.index;
         this.handleResize();
+      },
+
+      salaryKomisi(data){
+        this.collectSubTotal({name:data.name,nominal:data.nominal})
       },
 
       handleResize() {

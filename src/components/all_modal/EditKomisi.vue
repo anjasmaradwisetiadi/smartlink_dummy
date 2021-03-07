@@ -135,7 +135,7 @@
 
     methods:{
     ...mapMutations(['closeModals']),
-    ...mapActions(['setAddKomisi','setDeleteKomisi']),
+    ...mapActions(['setAddKomisi','setDeleteKomisi','setCollectSubTotal']),
 
     changeNominal(e){
         this.nominal=e.target.value;
@@ -148,7 +148,6 @@
     saveKomisi(dataSave){
         this.closeModals(false);
         this.saveData=true;
-        console.log("ini data save = "+dataSave)
         if(this.saveData){
             if(dataSave){
                 this.items.komisi[this.indexTo].nominal=parseInt(this.nominal);

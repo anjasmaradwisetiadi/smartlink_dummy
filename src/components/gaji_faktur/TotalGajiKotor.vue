@@ -5,13 +5,17 @@
         Total Gaji Kotor
       </div>
       <div class="w-1/2 font-bold text-right">
-        Rp 2.824.000</div>
+        Rp {{getAllSubTotalSalary}}</div>
     </div>
   </div>
 </template>
 <script>
-  export default {
+import { mapGetters } from 'vuex'
 
+  export default {
+      computed:{
+          ...mapGetters(['getAllSubTotalSalary'])
+      }
   }
 
 </script>

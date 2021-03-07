@@ -57,7 +57,8 @@
 <script>
   import {
     mapMutations,
-    mapGetters
+    mapGetters,
+    mapActions
   } from 'vuex';
 
   export default {
@@ -79,10 +80,11 @@
         for (let i = 0; i < dataLength; i++) {
           data += parseInt(this.items.komisi[i].nominal);
         }
+
+        this.$emit("salaryKomisi",{name:"sub_total_komisi",nominal:data});
         return data;
+      },
 
-
-      }
     },
 
     methods: {
@@ -104,7 +106,8 @@
           index: data.data
         });
         this.modalEdit(true);
-      }
+      },
+
     }
   }
 
