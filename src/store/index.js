@@ -5,6 +5,7 @@ import { editGaji }from './editGaji'
 import { editKomisi } from './editKomisi'
 import { totalAllSalary } from './totalAllSalary'
 import { detailPembayaran } from './detailPembayaran'
+import { formAllDetailPembayaran } from './detail_pembayaran/formAll'
 
 import { collectionUrl } from '../service/baseUrl'
 
@@ -92,6 +93,7 @@ export default new Vuex.Store({
     editGaji,
     editKomisi,
     totalAllSalary,
-    detailPembayaran
+    detailPembayaran,
+    formAllDetailPembayaran
   },
 });

@@ -63,11 +63,7 @@
         searchTerm: "",
       };
     },
-
-    mounted() {
-      console.log(this.data)
-    },
-
+    
     computed: {
       searchResults() {
         return this.data.filter((item) => {
@@ -90,7 +86,7 @@
 
       handleClick(item) {
         this.$emit("input", item.pemilik);
-        this.$emit("chosen", item);
+        this.$emit("chosenBank", item);
         this.chosenOption = item.pemilik;
         this.showOptions = false;
         this.$refs.input.focus();

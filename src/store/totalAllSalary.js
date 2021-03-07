@@ -26,9 +26,7 @@ export const totalAllSalary={
         }
     },
     actions:{
-        // setCollectSubTotal({commit},payload){
-        //     commit('collectSubTotal',payload)
-        // }
+
     },
     getters:{
         getSubTotalSalary:(state)=>{

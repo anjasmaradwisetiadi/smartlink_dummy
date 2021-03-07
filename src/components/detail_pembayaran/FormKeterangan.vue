@@ -7,7 +7,9 @@
       <div class="flex rounded-md border cursor-pointer mt-1">
         <div class="w-full">
           <input type="text" placeholder="Pilih Tanggal"
-            class="w-full px-2 py-3  focus:outline-none focus:ring-2 focus:ring-blue-400">
+            class="w-full px-2 py-3  focus:outline-none focus:ring-2 focus:ring-blue-400"
+            @change="changeDescription"
+            >
         </div>
       </div>
     </div>
@@ -15,8 +17,22 @@
 
 </template>
 <script>
-  export default {
+import { mapMutations } from 'vuex'
 
+  export default {
+      data(){
+          return{
+
+          }
+      },
+
+      methods:{
+          ...mapMutations(['dataDescription']),
+
+          changeDescription(e){
+              this.dataDescription(e.target.value);
+          }
+      }
   }
 
 </script>
