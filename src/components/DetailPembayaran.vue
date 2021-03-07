@@ -18,7 +18,7 @@
             <form-input-all></form-input-all>
 
             <div class="mt-6 mb-3 px-4">
-              <button class=" w-full py-3 bg_tombol text-white rounded-md ">Submit Gaji</button>
+              <router-link tag="button" to="/detail-faktur" class=" w-full py-3 bg_tombol text-white rounded-md ">Submit Gaji</router-link>
             </div>
           </div>
         </div>

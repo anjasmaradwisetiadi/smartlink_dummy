@@ -6,14 +6,9 @@
           v-if="nextFaktur === 'Simpan' " 
           class="button_background w-full py-2 text-center rounded text-white"
           @click="nextSteps()">
-          {{nextFaktur}}</button>
-
-        <button
-        v-if="nextFaktur === 'Submit Gaji' " 
-        class="button_background w-full py-2 text-center rounded text-white"
-          >
           {{nextFaktur}}
-          </button>
+        </button>
+
       </div>
     </div>
   </section>

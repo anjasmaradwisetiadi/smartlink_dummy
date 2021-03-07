@@ -21,7 +21,6 @@ import HelloWorld from '@/components/HelloWorld.vue';
 import EditGaji from '../components/all_modal/EditGaji.vue';
 import GajiFaktur from '../components/GajiFaktur.vue';
 import DetailPembayaran from '../components/DetailPembayaran.vue';
-import DetailFaktur from '../components/DetailFaktur.vue';
 import NextStepButton from '../components/component_reuse/NextStepButton.vue';
 import BackStepButton from '../components/component_reuse/BackStepButton.vue';
 
@@ -37,7 +36,6 @@ export default {
     GajiFaktur,
     EditGaji,
     DetailPembayaran,
-    DetailFaktur,
     BackStepButton,
     NextStepButton
   },
