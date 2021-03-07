@@ -3,7 +3,8 @@
     <div class="relative">
       <input :value="value" @input="handleInput" :placeholder="placeholder" ref="input" tabindex="0"
       @click="showOptions = true"
-        :class="inputClass" />
+        :class="inputClass" 
+        />
       <span v-if="value && showOptions" @click.prevent="reset()"
         class="absolute inset-y-0 right-0 pr-3 flex items-center cursor-pointer">
         x

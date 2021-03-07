@@ -1,4 +1,4 @@
-export const totalGajiKotor={
+export const totalAllSalary={
     state:{
         collectSubTotalSalary:{
             "sub_total_gaji":{

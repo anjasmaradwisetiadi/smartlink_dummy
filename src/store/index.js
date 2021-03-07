@@ -3,7 +3,7 @@ import Vuex from 'vuex';
 import { modalStateManagement } from './modal'
 import { editGaji }from './editGaji'
 import { editKomisi } from './editKomisi'
-import { totalGajiKotor } from './totalGajiKotor'
+import { totalAllSalary } from './totalAllSalary'
 import { detailPembayaran } from './detailPembayaran'
 
 import { collectionUrl } from '../service/baseUrl'
@@ -91,7 +91,7 @@ export default new Vuex.Store({
     modalStateManagement,
     editGaji,
     editKomisi,
-    totalGajiKotor,
+    totalAllSalary,
     detailPembayaran
   },
 });
