@@ -8,7 +8,7 @@
           <span class="text-blue-400 ml-1">&#42;</span>
         </div>
         <div class="flex rounded-md border cursor-pointer">
-          <div class="w-5/6">
+          <div class="w-full">
             <!-- <input type="text" placeholder="Pilih Rekening Bank"
               class="w-full px-2 py-3  focus:outline-none focus:ring-2 focus:ring-blue-400"> -->
             <form-bank
@@ -17,11 +17,6 @@
             @chosen="handleChosen"
             placeholder="Search for state..."
             ></form-bank>
-          </div>
-          <div class="w-1/6 m-auto">
-            <span class="material-icons text-gray-400">
-              expand_more
-            </span>
           </div>
         </div>
 

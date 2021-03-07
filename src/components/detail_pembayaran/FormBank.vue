@@ -1,20 +1,25 @@
 <template>
-  <div class="form_banks">
-    <div class="relative" >
+  <div class="form_banks text-left">
+    <div class="relative">
       <input :value="value" @input="handleInput" :placeholder="placeholder" ref="input" tabindex="0"
+      @click="showOptions = true"
         :class="inputClass" />
-      <span v-if="value" @click.prevent="reset()"
+      <span v-if="value && showOptions" @click.prevent="reset()"
         class="absolute inset-y-0 right-0 pr-3 flex items-center cursor-pointer">
         x
       </span>
-      <div v-show="value && showOptions" @click.self="handleSelf()" @focusout="showOptions = false"
+      <span v-if="!showOptions" class="material-icons text-gray-400 absolute inset-y-0 right-0 pr-3 flex items-center cursor-pointer">
+              expand_more
+      </span>
+      <div v-show="showOptions" @click.self="handleSelf()"
+        @focusout="showOptions = false"
         tabindex="0" :class="dropdownClass">
         <ul class="py-1">
           <li v-for="(item, index) in searchResults" :key="index" @click="handleClick(item)"
-            class="px-3 py-2 cursor-pointer hover:bg-gray-200">
+            class=" px-1 py-2 cursor-pointer hover:bg-gray-200">
             {{ item.pemilik }}
           </li>
-          <li v-if="!searchResults.length" class="px-3 py-2 text-center">
+          <li v-if="!searchResults.length" class="px-1 py-2 text-center">
             No Matching Results
           </li>
         </ul>
@@ -41,7 +46,7 @@
       inputClass: {
         type: String,
         required: false,
-        default: "border border-gray-300 py-2 px-3 rounded-md focus:outline-none focus:shadow-outline",
+        default: "border-l border-gray-300 py-2 px-3 rounded-md focus:outline-none focus:shadow-outline",
       },
       dropdownClass: {
         type: String,
@@ -58,8 +63,8 @@
       };
     },
 
-    mounted(){
-        console.log(this.data)
+    mounted() {
+      console.log(this.data)
     },
 
     computed: {
@@ -92,7 +97,6 @@
 
       clickedOutside() {
         this.showOptions = false;
-
         if (!this.chosenOption) {
           this.$emit("input", "");
         }
@@ -104,6 +108,10 @@
 <style lang="scss" scoped>
   .mh-48 {
     max-height: 10rem;
+  }
+
+  .dropdownClass ul li:hover {
+    background-color: #ddd;
   }
 
 </style>
