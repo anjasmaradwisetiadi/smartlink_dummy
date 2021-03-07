@@ -6,7 +6,7 @@
           Subtotal Gaji
         </div>
         <div class="w-1/2 text-base font-bold text-right">
-          Rp 2.524.000
+          Rp {{subTotalSalary}}
         </div>
       </div>
       <div class="flex mt-3">
@@ -14,7 +14,7 @@
           Subtotal Upah
         </div>
         <div class="w-1/2 text-base font-bold text-right">
-          Rp 100.000
+          Rp {{subTotalWages}}
         </div>
       </div>
       <div class="flex mt-3">
@@ -22,7 +22,7 @@
           Subtotal Komisi
         </div>
         <div class="w-1/2 text-base font-bold text-right">
-          Rp 200.000
+          Rp {{subTotalKomisi}}
         </div>
       </div>
 
@@ -31,7 +31,7 @@
           Gaji Kotor
         </div>
         <div class="w-1/2 text-base font-bold text-right text-green-500">
-          Rp 2.824.000
+          Rp {{totalSalaryBruto}}
         </div>
       </div>
       <div class="flex mt-8">
@@ -39,7 +39,7 @@
           Tanggungan
         </div>
         <div class="w-1/2 text-base font-bold text-right text-red-500">
-          Rp 2.824.000
+          Rp {{subTotalDemand}}
         </div>
       </div>
     </div>
@@ -48,14 +48,27 @@
         Total Gaji Bersih
       </div>
       <div class="w-1/2 text-base font-bold text-blue-400 text-right">
-        Rp 2.124.000
+        Rp {{totalSalaryNet}}
       </div>
     </div>
   </section>
 </template>
 <script>
-  export default {
+  import {
+    mapGetters
+  } from 'vuex'
 
+  export default {
+    computed: {
+      ...mapGetters({
+        subTotalSalary: 'getSubTotalSalary',
+        subTotalWages: 'getSubTotalWages',
+        subTotalKomisi: 'getSubTotalKomisi',
+        subTotalDemand: 'getSubTotalDemand',
+        totalSalaryBruto: 'getTotalSalaryBruto',
+        totalSalaryNet: 'getTotalSalaryNet'
+      })
+    }
   }
 
 </script>

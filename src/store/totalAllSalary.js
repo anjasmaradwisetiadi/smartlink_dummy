@@ -31,18 +31,32 @@ export const totalAllSalary={
         // }
     },
     getters:{
-        getTotalSalaryBruto:(state)=>{
+        getSubTotalSalary:(state)=>{
+            return  state.collectSubTotalSalary.sub_total_gaji.nominal
+        },
+
+        getSubTotalWages:(state)=>{
+            return  state.collectSubTotalSalary.sub_total_upah.nominal
+        },
+        getSubTotalKomisi:(state)=>{
+            return  state.collectSubTotalSalary.sub_total_komisi.nominal
+        },
+        getSubTotalDemand:(state)=>{
+            return  state.collectSubTotalSalary.sub_total_tanggungan.nominal
+        },
+
+        getTotalSalaryBruto:(state,getters)=>{
             let dataCollect=
-            state.collectSubTotalSalary.sub_total_gaji.nominal+
-            state.collectSubTotalSalary.sub_total_upah.nominal+
-            state.collectSubTotalSalary.sub_total_komisi.nominal+
-            state.collectSubTotalSalary.sub_total_tanggungan.nominal
+            getters.getSubTotalSalary+
+            getters.getSubTotalWages+
+            getters.getSubTotalKomisi+
+            getters.getSubTotalDemand
             
             return state.totalSalaryBruto=dataCollect;
         },
         getTotalSalaryNet:(state)=>{
             return state.totalSalaryNet
-        }
+        },
     }
 
 }
