@@ -42,17 +42,39 @@
             </span>
           </div>
         </div>
+        <div class="flex mt-3 pb-4 ">
+          <div class="w-1/2 flex flex-col text-left">
+            <div class="text-base font-semibold">
+              Subtotal Upah
+            </div>
+          </div>
+          <div class="w-1/2 text-base font-semibold text-right m-auto">
+            Rp {{subTotalSalary}}
+          </div>
+        </div>
       </div>
     </div>
   </section>
 </template>
 <script>
   export default {
-      props:{
-          items:{
-              type:Object
-          }
+    props: {
+      items: {
+        type: Object
       }
+    },
+
+    data(){
+        return{
+            data:2000
+        }
+    },
+
+    computed:{
+        subTotalSalary(){
+            return this.data
+        }
+    }
   }
 
 </script>

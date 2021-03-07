@@ -44,6 +44,7 @@
 
       <total-gaji-kotor></total-gaji-kotor>
       <sekat></sekat>
+      <total-gaji-bersih></total-gaji-bersih>
       <button-berikutnya></button-berikutnya>
 
     </div>
@@ -98,6 +99,7 @@
   import Komisi from './gaji_faktur/Komisi.vue';
   import UpahBorongan from './gaji_faktur/UpahBorongan.vue';
   import TotalGajiKotor from './gaji_faktur/TotalGajiKotor.vue';
+  import TotalGajiBersih from './gaji_faktur/TotalGajiBersih.vue';
   import Sekat from './component_reuse/Sekat.vue';
   import ButtonBerikutnya from './component_reuse/ButtonBerikutnya.vue';
 
@@ -109,6 +111,7 @@
   import {
     mapMutations
   } from 'vuex';
+
 
 
   export default {
@@ -124,7 +127,8 @@
       EditKomisi,
       UpahBorongan,
       TotalGajiKotor,
-      ButtonBerikutnya
+      ButtonBerikutnya,
+      TotalGajiBersih,
 
 
     },
