@@ -1,12 +1,5 @@
 <template>
   <section class="Gaji_Faktur">
-    <div class="z-0 relative title text-center py-3 border-b mx-auto">
-      <div class="uppercase font-bold text-lg">
-        Faktur Gaji
-      </div>
-
-    </div>
-
     <div v-if="getLoading"
       class="loading text-center mx-auto relative text-red-500 text-lg font-bold">
       Still Loading....
@@ -49,7 +42,6 @@
       <total-gaji-kotor></total-gaji-kotor>
       <sekat></sekat>
       <total-gaji-bersih></total-gaji-bersih>
-      <button-berikutnya></button-berikutnya>
 
     </div>
 
@@ -105,7 +97,6 @@
   import TotalGajiKotor from './gaji_faktur/TotalGajiKotor.vue';
   import TotalGajiBersih from './gaji_faktur/TotalGajiBersih.vue';
   import Sekat from './component_reuse/Sekat.vue';
-  import ButtonBerikutnya from './component_reuse/ButtonBerikutnya';
 
 
   import {
@@ -131,7 +122,6 @@
       EditKomisi,
       UpahBorongan,
       TotalGajiKotor,
-      ButtonBerikutnya,
       TotalGajiBersih,
 
 

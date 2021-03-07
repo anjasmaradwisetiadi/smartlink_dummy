@@ -6,6 +6,7 @@ import { editKomisi } from './editKomisi'
 import { totalAllSalary } from './totalAllSalary'
 import { detailPembayaran } from './detail_pembayaran/detailPembayaran'
 import { formAllDetailPembayaran } from './detail_pembayaran/formAll'
+import { stepper } from './stepper';
 
 import { collectionUrl } from '../service/baseUrl'
 
@@ -20,7 +21,7 @@ const urlBanks = collectionUrl.baseBanks;
 export default new Vuex.Store({
   state: {
     dataEmployee: {},
-    dataBanks:{},
+    dataBanks:[],
     errorMessage:'',
     loading: true,
 
@@ -94,6 +95,7 @@ export default new Vuex.Store({
     editKomisi,
     totalAllSalary,
     detailPembayaran,
-    formAllDetailPembayaran
+    formAllDetailPembayaran,
+    stepper
   },
 });

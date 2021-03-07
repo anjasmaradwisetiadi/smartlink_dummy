@@ -1,20 +1,6 @@
 <template>
-  <section class="Detail_Pembayaran">
-    <template>
       <section class="Detail Pembayaran overflow-y-scroll">
         <div class="flex flex-col">
-          <div class="title text-center pb-3 pt-1 border-b-2 border-t mt-2">
-            <div class=" flex font-bold">
-              <div class="w-1/6">
-                <span class="material-icons text-2xl text-blue-600 cursor-pointer"> arrow_back
-                </span>
-              </div>
-              <div class="w-full font-bold text-lg text-center mr-10">
-                Detail Pembayaran
-              </div>
-            </div>
-          </div>
-
           <div v-if="getLoading"
             class="loading text-center mx-auto relative text-red-500 text-lg font-bold">
             Still Loading....
@@ -36,10 +22,7 @@
             </div>
           </div>
         </div>
-
       </section>
-    </template>
-  </section>
 </template>
 <script>
   import DetailGajiDiDapat from './detail_pembayaran/DetailGajiDiDapat.vue'
