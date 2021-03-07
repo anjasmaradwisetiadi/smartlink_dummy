@@ -4,7 +4,7 @@ import { modalStateManagement } from './modal'
 import { editGaji }from './editGaji'
 import { editKomisi } from './editKomisi'
 import { totalAllSalary } from './totalAllSalary'
-import { detailPembayaran } from './detailPembayaran'
+import { detailPembayaran } from './detail_pembayaran/detailPembayaran'
 import { formAllDetailPembayaran } from './detail_pembayaran/formAll'
 
 import { collectionUrl } from '../service/baseUrl'
