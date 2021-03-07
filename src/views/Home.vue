@@ -1,6 +1,7 @@
 <template>
   <div class="home">
-    <gaji-faktur></gaji-faktur>
+    <!-- <gaji-faktur></gaji-faktur> -->
+    <detail-pembayaran></detail-pembayaran>
   </div>
 </template>
 
@@ -9,15 +10,14 @@
 import HelloWorld from '@/components/HelloWorld.vue';
 import EditGaji from '../components/all_modal/EditGaji.vue';
 import GajiFaktur from '../components/GajiFaktur.vue';
+import DetailPembayaran from '../components/DetailPembayaran.vue';
 
 export default {
   name: 'Home',
   components: {
     HelloWorld,
     EditGaji,
-    GajiFaktur,
-
-
+    DetailPembayaran,
 
   },
 };

@@ -5,7 +5,7 @@
         Total Gaji Kotor
       </div>
       <div class="w-1/2 font-bold text-right">
-        Rp {{getAllSubTotalSalary}}</div>
+        Rp {{getTotalSalaryBruto}}</div>
     </div>
   </div>
 </template>
@@ -13,9 +13,13 @@
 import { mapGetters } from 'vuex'
 
   export default {
+
       computed:{
-          ...mapGetters(['getAllSubTotalSalary'])
+          ...mapGetters(['getTotalSalaryBruto']),
+          
       }
+
+      
   }
 
 </script>
