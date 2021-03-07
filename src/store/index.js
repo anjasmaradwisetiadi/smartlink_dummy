@@ -4,6 +4,7 @@ import { modalStateManagement } from './modal'
 import { editGaji }from './editGaji'
 import { editKomisi } from './editKomisi'
 import { totalGajiKotor } from './totalGajiKotor'
+import { detailPembayaran } from './detailPembayaran'
 
 import { collectionUrl } from '../service/baseUrl'
 
@@ -13,10 +14,12 @@ const axios = require('axios');
 Vue.use(Vuex);
 
 const urlInquiry = collectionUrl.baseInquiry;
+const urlBanks = collectionUrl.baseBanks;
 
 export default new Vuex.Store({
   state: {
     dataEmployee: {},
+    dataBanks:{},
     errorMessage:'',
     loading: true,
 
@@ -24,6 +27,10 @@ export default new Vuex.Store({
   mutations: {
     inquiry(state,payload){
       state.dataEmployee=payload;
+    },
+
+    banks(state,payload){
+      state.dataBanks=payload;
     },
 
     errorMessage(state,payload){
@@ -45,6 +52,20 @@ export default new Vuex.Store({
         commit('errorMessage',error.message)
       })
       
+    },
+
+    setBanks({state,commit}){
+      state.loading = true;
+      axios.get(urlBanks)
+      .then(function (response) {
+        state.loading = false;
+        commit('banks',response.data)
+      })
+      .catch(function (error) {
+        state.loading = false;
+        commit('errorMessage',error.message)
+      })
+      
     }
 
   },
@@ -52,19 +73,25 @@ export default new Vuex.Store({
     getAllDataEmployee: (state) => {
       return state.dataEmployee;
     },
+    getAllBanks: (state)=>{
+      return state.dataBanks;
+    },
+
     getErrorMessage: (state)=>{
       return state.errorMessage;
     },
 
     getLoading: (state)=>{
       return state.loading;
-    }
+    },
+
 
   },
   modules: {
     modalStateManagement,
     editGaji,
     editKomisi,
-    totalGajiKotor
+    totalGajiKotor,
+    detailPembayaran
   },
 });

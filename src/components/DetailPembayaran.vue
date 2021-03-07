@@ -15,6 +15,11 @@
             </div>
           </div>
 
+          <div v-if="getLoading"
+            class="loading text-center mx-auto relative text-red-500 text-lg font-bold">
+            Still Loading....
+          </div>
+
           <div class="flex flex-col ">
             <!-- form gaji bersih -->
             <detail-gaji-di-dapat></detail-gaji-di-dapat>
@@ -37,11 +42,26 @@
 <script>
   import DetailGajiDiDapat from './detail_pembayaran/DetailGajiDiDapat.vue'
   import FormInputAll from './detail_pembayaran/FormInputAll.vue'
+
+  import {
+    mapActions,
+    mapGetters
+  } from 'vuex'
+
   export default {
     components: {
       DetailGajiDiDapat,
       FormInputAll
     },
+    
+
+    mounted() {
+      this.$store.dispatch('setBanks')
+    },
+
+    methods: {
+
+    }
 
   }
 

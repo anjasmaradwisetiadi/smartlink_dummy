@@ -2,4 +2,4 @@
 2. cara menampilkan Subtotal Gaji berdasarkan data dari hasil edit Gaji (dictionary javascript)
   ---solusi: buat dictionary berdasarkan data yang didapat, lalu baru cetak di template
 3. tanya perihal mutations dan dengan rootState ke M.Eka.
-4. ketika delete dan tambah data komisi maka error
+
