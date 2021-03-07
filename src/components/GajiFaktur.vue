@@ -35,6 +35,16 @@
 
       <komisi :items="getAllDataEmployee.data" @modalAddKomisi="modalAddKomisi"
         @modalEditKomisi="modalEditKomisi"></komisi>
+      
+      <sekat></sekat>
+      <upah-borongan
+        :items="getAllDataEmployee.data"
+      ></upah-borongan>
+      <sekat></sekat>
+
+      <total-gaji-kotor></total-gaji-kotor>
+      <sekat></sekat>
+      <button-berikutnya></button-berikutnya>
 
     </div>
 
@@ -86,7 +96,10 @@
   import Profile from './gaji_faktur/Profile.vue';
   import Gaji from './gaji_faktur/Gaji.vue';
   import Komisi from './gaji_faktur/Komisi.vue';
+  import UpahBorongan from './gaji_faktur/UpahBorongan.vue';
+  import TotalGajiKotor from './gaji_faktur/TotalGajiKotor.vue';
   import Sekat from './component_reuse/Sekat.vue';
+  import ButtonBerikutnya from './component_reuse/ButtonBerikutnya.vue';
 
 
   import {
@@ -108,7 +121,11 @@
       Sekat,
       EditKeterlambatan,
       Komisi,
-      EditKomisi
+      EditKomisi,
+      UpahBorongan,
+      TotalGajiKotor,
+      ButtonBerikutnya
+
 
     },
     data() {
