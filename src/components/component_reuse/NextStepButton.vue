@@ -2,9 +2,18 @@
   <section class="Next_Step_Button">
     <div class="button_berikutnya">
       <div class="mt-2 px-4 mt-4 my-4">
-        <button class="button_background w-full py-2 text-center rounded text-white"
+        <button
+          v-if="nextFaktur === 'Simpan' " 
+          class="button_background w-full py-2 text-center rounded text-white"
           @click="nextSteps()">
-          Simpan PinjaM</button>
+          {{nextFaktur}}</button>
+
+        <button
+        v-if="nextFaktur === 'Submit Gaji' " 
+        class="button_background w-full py-2 text-center rounded text-white"
+          >
+          {{nextFaktur}}
+          </button>
       </div>
     </div>
   </section>
@@ -22,7 +31,17 @@
       }
     },
 
+    computed:{
+        ...mapGetters(['logicStepper']),
+
+        nextFaktur(){
+        if (this.logicStepper === 'gaji-faktur') return 'Simpan';
+        else return 'Submit Gaji'
+        }
+    },
+
     methods: {
+      
       ...mapMutations(['nextStep']),
       nextSteps() {
         console.log("nextSteps")
