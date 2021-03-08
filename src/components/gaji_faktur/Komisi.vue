@@ -68,10 +68,6 @@
       }
     },
 
-    data() {
-      return {}
-    },
-
     computed: {
       allSalary() {
         let dataLength = this.items.komisi.length;

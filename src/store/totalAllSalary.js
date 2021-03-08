@@ -47,8 +47,7 @@ export const totalAllSalary={
             let dataCollect=
             getters.getSubTotalSalary+
             getters.getSubTotalWages+
-            getters.getSubTotalKomisi+
-            getters.getSubTotalDemand
+            getters.getSubTotalKomisi
             
             return state.totalSalaryBruto=dataCollect;
         },

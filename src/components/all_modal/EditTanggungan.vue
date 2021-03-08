@@ -35,7 +35,11 @@
             </div>
             <input type="text"
               class="flex-shrink flex-grow flex-auto  w-px flex-1 border h-10 border-grey-light rounded rounded-l-none px-4 relative focus:outline-none focus:ring-2 focus:ring-blue-400 focus:shadow"
-              placeholder="1000" @change="changeNominal" :value="nominal">
+              placeholder="1000" 
+              @change="changeNominal" 
+              :value="nominal"
+              :disabled="enableDelete"
+              >
           </div>
         </div>
 
@@ -114,6 +118,7 @@
         nominal: null,
         description: '',
         saveData: false,
+        disabledNominal:false,
       }
     },
     computed: {
@@ -171,6 +176,8 @@
             this.items.tanggungan[this.indexTo].nama = this.title;
             this.items.tanggungan[this.indexTo].nominal = parseInt(this.nominal);
             this.items.tanggungan[this.indexTo].keterangan = this.description;
+            console.log("edit masuk")
+            this.disabledNominal=true;
           } else {
             let dataAddTanggungan = {
               id: uuid(),

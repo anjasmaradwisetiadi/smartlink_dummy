@@ -84,6 +84,7 @@
       :items="getAllDataEmployee.data"
       @modalAddTanggungan="modalAddTanggungan"
       @modalEditTanggungan="modalEditTanggungan"
+      @salaryTanggungan="salaryTanggungan"
       ></tanggungan>
 
       <sekat></sekat>
@@ -259,6 +260,10 @@
       },
 
       salaryKomisi(data){
+        this.collectSubTotal({name:data.name,nominal:data.nominal})
+      },
+
+      salaryTanggungan(data){
         this.collectSubTotal({name:data.name,nominal:data.nominal})
       },
 

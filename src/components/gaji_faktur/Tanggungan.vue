@@ -55,7 +55,7 @@
               Tanggungan Dibayar
             </div>
             <div class="w-1/3 text-lg font-semibold text-red-400 text-right m-auto">
-              (-) Rp 70.000
+              (-) Rp {{allSalary}}
             </div>
           </div>
         </div>
@@ -76,6 +76,18 @@
       items: {
         type: Object
       },
+    },
+    computed:{
+        allSalary(){
+            let dataLength = (this.items.tanggungan).length;
+
+            let data = 0;
+            for(let i=0; i<dataLength; i++){
+                data +=parseInt(this.items.tanggungan[i].nominal)
+            }
+            this.$emit("salaryTanggungan", {name:"sub_total_tanggungan",nominal:data});
+            return data;
+        }
     },
 
     methods: {
