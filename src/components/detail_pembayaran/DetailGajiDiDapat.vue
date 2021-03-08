@@ -1,5 +1,5 @@
 <template>
-  <section class="Detail_Gaji_Di_Dapat">
+  <section class="Detail_Gaji_Di_Dapat pt-4">
     <div class="flex flex-col mt-3 pb-3 border-b border-dashed px-4">
       <div class="flex">
         <div class="w-1/2 text-sm font-semibold text-left">

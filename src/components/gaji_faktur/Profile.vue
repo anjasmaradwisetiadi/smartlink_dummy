@@ -1,7 +1,7 @@
 <template>
 <!-- profile -->
   <!-- no resi  -->
-  <div class="profile_resi flex flex-col text-left border-b border-dashed px-4 pb-3">
+  <div class="profile_resi flex flex-col text-left border-b border-dashed px-4 pb-3 pt-4">
     <div class="font-bold text-lg">
       Bu Adara Olivia
     </div>

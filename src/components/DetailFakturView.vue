@@ -1,7 +1,7 @@
 <template>
   <section class="DetailFaktur">
     <!-- masih tidak bisa digunakan karena perlu terhubung dari awal step 1 sampai step 3 (submit data) -->
-    <div class="title text-center py-3 border-b">
+    <div class="w-screen title text-center pb-3 pt-2 border-b-2 border-t z-0 fixed bg-white">
       <div class="uppercase font-bold text-lg">
         Detail Faktur
       </div>

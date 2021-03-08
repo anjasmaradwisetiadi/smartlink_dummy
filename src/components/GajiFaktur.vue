@@ -1,7 +1,7 @@
 <template>
-  <section class="Gaji_Faktur">
+  <section class="Gaji_Faktur pt-10 overflow-y-scroll">
     <div v-if="getLoading"
-      class="loading text-center mx-auto relative text-red-500 text-lg font-bold">
+      class="loading text-center mx-auto relative text-red-500 text-lg font-bold pt-4">
       Still Loading....
     </div>
 

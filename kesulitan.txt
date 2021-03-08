@@ -2,5 +2,15 @@
 2. cara menampilkan Subtotal Gaji berdasarkan data dari hasil edit Gaji (dictionary javascript)
   ---solusi: buat dictionary berdasarkan data yang didapat, lalu baru cetak di template
 3. tanya perihal mutations dan dengan rootState ke M.Eka.
+4. pecah consume API -> GET(inquery,Banks),POST(endpoint) di store
+5. disabled edit ketika sudah sampai tahap terakhir
 ---bug minor
 1.focus di Choice bank filter
+---next feature
+1. [post] data ketika submit gaji, post perubahan [get] endpoint 
+2. error handle 
+2. benahi koding
+3. directive number only
+4. masking
+5. install tepati tannggal
+
