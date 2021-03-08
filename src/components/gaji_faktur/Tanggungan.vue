@@ -19,32 +19,34 @@
               @click.prevent="modalAddTanggungan()">Tambah Pembayaran Tanggungan...</div>
           </div>
           <div v-if="(items.tanggungan).length === 0">
-            <p class="mt-3 text-red-400">data tidak ada....</p>
+            <p class="mt-3 text-red-400 text-left">data tidak ada....</p>
           </div>
           <div v-else>
-            <div class="flex mt-3">
-              <div v-for="(item, index) in items.tanggungan" :key="index">
-                <div class="w-2/3 flex flex-col text-left">
-                  <div class="text-sm font-semibold">
-                    {{item.nama}}
+            <div class="mt-3">
+              <div v-for="(item, indexs) in items.tanggungan" :key="indexs" class="w-full">
+                <div class="flex relative">
+                  <div class="w-2/3 flex flex-col text-left">
+                    <div class="text-sm font-semibold">
+                      {{item.nama}}
+                    </div>
+                    <div class="text-sm text-gray-400">
+                      {{item.keterangan}}
+                    </div>
                   </div>
-                  <div class="text-sm text-gray-400">
-                    {{item.keterangan}}
+                  <div class="w-1/3 flex text-red-400 m-auto text-right">
+                    <div class="w-full text-sm font-semibold mr-2">
+                      {{item.nominal}}
+                    </div>
+                    <span class="material-icons text-base font-bold -mt-1 cursor-pointer"
+                      @click="modalEditTanggungan({id:item.id,index:indexs})">
+                      mode_edit
+                    </span>
                   </div>
                 </div>
-                <div class="w-1/3 flex text-red-400 m-auto text-right">
-                  <div class="w-full text-sm font-semibold mr-2">
-                    {{item.nominal}}
-                  </div>
-                  <span class="material-icons text-base font-bold -mt-1 cursor-pointer"
-                  @click="modalEditTanggungan({id:item.id,data:index})"
-                  >
-                    mode_edit
-                  </span>
-                </div>
-              </div>
 
+              </div>
             </div>
+
           </div>
 
 
@@ -76,35 +78,25 @@
       },
     },
 
-    data() {
-      return {
-
-      }
-    },
-    computed: {
-
-    },
-    mounted() {
-
-    },
     methods: {
-      ...mapMutations(['modalEdit']),
+      ...mapMutations(['modalEdit',]),
 
       modalAddTanggungan() {
         this.$emit('modalAddTanggungan', {
             variabel: 'EditTanggungan',
-            enableDelete: false
+            enableDelete: false,
+            id:null
           }),
           this.modalEdit(true);
       },
 
-      modalEditTanggungan(data){
-          this.$emit('modalEditTanggungan',{
-            variabel: 'EditTanggungan',
-            enableDelete: true,
-            data: data.id,
-            index: data.data
-          })
+      modalEditTanggungan(data) {
+        this.$emit('modalEditTanggungan', {
+          variabel: 'EditTanggungan',
+          enableDelete: true,
+          id: data.id,
+          index: data.index
+        })
         this.modalEdit(true);
       }
 

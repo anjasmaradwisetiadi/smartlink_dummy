@@ -20,10 +20,7 @@
           <div class="mb-4 relative">
             <input type="text"
               class="w-full flex-shrink flex-grow flex-auto  w-px flex-1 border h-10 border-grey-light rounded px-4 relative focus:outline-none focus:ring-2 focus:ring-blue-400 focus:shadow"
-              placeholder="Contoh: Ganti Barang Hilang"
-              @change="changeTitle"
-              :value="title"
-              >
+              placeholder="Contoh: Ganti Barang Hilang" @change="changeTitle" :value="title">
           </div>
         </div>
 
@@ -38,10 +35,7 @@
             </div>
             <input type="text"
               class="flex-shrink flex-grow flex-auto  w-px flex-1 border h-10 border-grey-light rounded rounded-l-none px-4 relative focus:outline-none focus:ring-2 focus:ring-blue-400 focus:shadow"
-              placeholder="1000" 
-              @change="changeNominal"
-              :value="nominal"
-              >
+              placeholder="1000" @change="changeNominal" :value="nominal">
           </div>
         </div>
 
@@ -52,25 +46,22 @@
           <div class="mb-4 relative">
             <input type="text"
               class="w-full flex-shrink flex-grow flex-auto  w-px flex-1 border h-10 border-grey-light rounded px-4 relative focus:outline-none focus:ring-2 focus:ring-blue-400 focus:shadow"
-              placeholder="Contoh: Ganti Barang Hilang"
-              @change="changeDescription"
-              :value="description"
-              >
+              placeholder="Contoh: Ganti Barang Hilang" @change="changeDescription"
+              :value="description">
           </div>
         </div>
 
         <div class="flex mt-4 px-4">
           <div class="w-1/2 mr-2">
-            <button class="text-red-400 w-full text-center py-2 rounded border border-red-400"
+            <button class="w-full text-center py-2 rounded"
               :class="!enableDelete?'text-red-100 rounded border border-red-100 cursor-not-allowed':'text-red-400 rounded border border-red-400'"
-              :disabled="!enableDelete">
+              :disabled="!enableDelete" @click.prevent="deleteTanggungan()">
               Hapus
             </button>
           </div>
           <div class="w-1/2 ml-2">
             <button class="button_background w-full py-2 text-center rounded text-white"
-            @click.prevent="saveTanggungan"
-            >
+              @click.prevent="saveTanggungan(idTo)">
               Simpan</button>
           </div>
         </div>
@@ -92,31 +83,37 @@
     mapGetters
   } from 'vuex';
 
-  const { uuid } = require('uuidv4');
+  const {
+    uuid
+  } = require('uuidv4');
 
   export default {
     props: {
-      items:{
-          type:Object,
+      items: {
+        type: Object,
       },
       enableDelete: {
         type: Boolean,
         default: false
       },
-      idTo:{
-          type:String
+      idTo: {
+        type: String,
+        default:null,
+        require:true
       },
-      indexTo:{
-          type:Number,
+      indexTo: {
+        type: Number,
+        default:null,
+        require:true
       }
 
     },
     data() {
       return {
-        title:'',
-        nominal:null,
-        description:'',
-        saveData:false,
+        title: '',
+        nominal: null,
+        description: '',
+        saveData: false,
       }
     },
     computed: {
@@ -129,58 +126,78 @@
         }
       },
 
-      firstTimeTitle(){
+      firstTimeTitle() {
         return this.title = this.items.tanggungan[this.indexTo].nama;
       },
-      firstTimeNominal(){
+      firstTimeNominal() {
         return this.nominal = this.items.tanggungan[this.indexTo].nominal;
       },
-      firstTimeDescription(){
-        return this.description = this.items.tanggungan[this.indexTo].description;
-      }
+      firstTimeDescription() {
+        return this.description = this.items.tanggungan[this.indexTo].keterangan;
+      },
+
     },
 
-    mounted(){
-        if(this.indexTo === null){
-            return false
-        }
-        else{
-            this.firstTimeNominal;
-            this.firstTimeTitle;
-        }
+    mounted() {
+      if (this.idTo === null) {
+        this.resetForm;
+      } else {
+        this.firstTimeTitle;
+        this.firstTimeNominal;
+        this.firstTimeDescription;
+      }
     },
 
     methods: {
       ...mapMutations(['closeModals']),
-      ...mapActions(['setAddTanggungan','setDeleteTanggungan']),
+      ...mapActions(['setAddTanggungan', 'setDeleteTanggungan']),
 
-      changeTitle(e){
-        this.title=e.target.value
+      changeTitle(e) {
+        this.title = e.target.value
       },
-      changeNominal(e){
-        this.nominal=e.target.value
+      changeNominal(e) {
+        this.nominal = e.target.value
       },
-      changeDescription(e){
-        this.description=e.target.value
+      changeDescription(e) {
+        this.description = e.target.value
       },
 
-      saveTanggungan(){
-        this.saveData=true
-        if(this.saveData){
-          let dataAddTanggungan={
-            id:uuid(),
-            nama:this.title,
-            nominal:this.nominal,
-            keterangan:this.description
+      saveTanggungan(dataSave) {
+        console.log("check bug add = ")
+        console.log(dataSave)
+        this.saveData = true
+        if (this.saveData) {
+          if (dataSave) {
+            this.items.tanggungan[this.indexTo].nama = this.title;
+            this.items.tanggungan[this.indexTo].nominal = parseInt(this.nominal);
+            this.items.tanggungan[this.indexTo].keterangan = this.description;
+          } else {
+            let dataAddTanggungan = {
+              id: uuid(),
+              nama: this.title,
+              nominal: this.nominal,
+              keterangan: this.description
+            }
+            this.setAddTanggungan(dataAddTanggungan)
           }
-          this.setAddTanggungan(dataAddTanggungan)
-        }
-        else{
-          this.title= this.items.tanggungan[this.indexTo].title;
+
+        } else {
+          this.title = this.items.tanggungan[this.indexTo].nama;
           this.nominal = this.items.tanggungan[this.indexTo].nominal;
-          this.description = this.items.tanggungan[this.indexTo].description;
+          this.description = this.items.tanggungan[this.indexTo].keterangan;
         }
         this.closeModals(false)
+      },
+
+      deleteTanggungan() {
+        this.setDeleteTanggungan(this.idTo)
+        this.closeModals(false)
+      },
+
+      resetForm(){
+          this.title=''
+          this.nominal=''
+          this.description=''
       },
 
       closeModal(data) {

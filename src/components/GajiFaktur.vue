@@ -229,13 +229,14 @@
       },
 
       modalAddKomisi(data) {
+        this.idTo = data.id;
         this.editModalState = data.variabel;
         this.enableDelete = data.enableDelete;
         this.handleResize();
       },
 
       modalEditKomisi(data) {
-        this.idTo = data.data;
+        this.idTo = data.id;
         this.editModalState = data.variabel;
         this.enableDelete = data.enableDelete;
         this.indexTo = data.index;
@@ -243,13 +244,14 @@
       },
 
       modalAddTanggungan(data){
+        this.idTo = data.id;
         this.editModalState=data.variabel;
         this.enableDelete=data.enableDelete;
         this.handleResize();
       },
 
       modalEditTanggungan(data){
-        this.idTo = data.data;
+        this.idTo = data.id;
         this.editModalState = data.variabel;
         this.enableDelete = data.enableDelete;
         this.indexTo = data.index;

@@ -55,7 +55,7 @@
           </div>
           <div class="w-1/2 ml-2">
             <button class="button_background w-full py-2 text-center rounded text-white"
-            @click="saveKomisi(indexTo)"
+            @click="saveKomisi(idTo)"
             >
               Simpan</button>
           </div>
@@ -92,7 +92,9 @@
           type:Object,
       },
       idTo:{
-          type:String
+          type:String,
+          default:null,
+          require:true
       },
       enableDelete:{
           type:Boolean,
@@ -100,6 +102,8 @@
       },
       indexTo:{
           type:Number,
+          default:null,
+          require:true
       }
 
     },
@@ -124,8 +128,8 @@
     },
 
     mounted(){
-        if(this.indexTo === null){
-            return false
+        if(this.idTo === null){
+          this.resetForm;
         }
         else{
             this.firstTimeNominal;
@@ -147,11 +151,12 @@
     },
 
     saveKomisi(dataSave){
+        console.log(dataSave)
         this.saveData=true;
         if(this.saveData){
             if(dataSave){
                 this.items.komisi[this.indexTo].nominal=parseInt(this.nominal);
-                this.items.komisi[this.indexTo].nama=parseInt(this.title);
+                this.items.komisi[this.indexTo].nama=this.title;
             }
             else{
                 let dataAddKomisi={
@@ -178,7 +183,12 @@
 
     closeModal(data) {
         this.closeModals(data)
-      },
+    },
+
+    resetForm(){
+          this.title='';
+          this.nominal=null;
+    }
 
     }
   }

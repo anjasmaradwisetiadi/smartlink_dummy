@@ -18,7 +18,7 @@
         </div>
         <div v-else>
           <div class="mt-3 pb-8 border-b border-dashed">
-            <div v-for="(item,index) in items.komisi" :key="index">
+            <div v-for="(item,indexs) in items.komisi" :key="indexs">
               <div class="flex mt-2 ">
                 <div class="w-1/2 text-left font-sm ">
                   {{item.nama}}
@@ -29,7 +29,7 @@
                   </div>
                   <span
                     class="material-icons text-base font-bold text-blue-400 -mt-1 cursor-pointer"
-                    @click="modalEditKomisi({id:item.id,data:index})">
+                    @click="modalEditKomisi({id:item.id,index:indexs})">
                     mode_edit
                   </span>
                 </div>
@@ -93,17 +93,19 @@
       modalAddKomisi() {
         this.$emit('modalAddKomisi', {
           variabel: 'EditKomisi',
-          enableDelete: false
+          enableDelete: false,
+          id:null
         });
         this.modalEdit(true);
       },
 
       modalEditKomisi(data) {
+        console.log("edit data")
         this.$emit('modalEditKomisi', {
-          data: data.id,
+          id: data.id,
           variabel: 'EditKomisi',
           enableDelete: true,
-          index: data.data
+          index: data.index
         });
         this.modalEdit(true);
       },
