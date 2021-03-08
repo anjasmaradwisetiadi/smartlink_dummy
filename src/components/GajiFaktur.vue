@@ -8,64 +8,81 @@
     <div v-if="!getLoading"
       class="main_page ">
       <!-- modal -->
+      <!-- modal Profile -->
       <div class="modal_Kehadiran" v-if="popUpModal && (editModalState==='EditKehadiran')">
         <edit-keterlambatan :items="getAllDataEmployee.data">
         </edit-keterlambatan>
       </div>
 
+      <!-- modal Gaji & Absen -->
+      <div class="modal_Gaji" v-if="popUpModal && (editModalState==='EditGaji')">
+        <edit-gaji 
+          :items="items.data"
+          :index-to="indexTo">
+        </edit-gaji>
+      </div>
+      <div class="modal_Absen" v-if="popUpModal && (editModalState==='EditAbsen')">
+        <edit-absen 
+        :items="items.data"
+          :index-to="indexTo">
+        </edit-absen>
+      </div>
+
+      <!-- modal Komisi -->
       <div class="modal_Komisi" v-if="popUpModal && (editModalState === 'EditKomisi')">
         <edit-komisi :items="getAllDataEmployee.data" :id-to="idTo" :enable-delete="enableDelete"
           :index-to="indexTo">
         </edit-komisi>
       </div>
 
-      <!-- group by -->
+      <!-- Profile -->
       <profile :items="getAllDataEmployee.data"></profile>
-
       <kehadiran :items="getAllDataEmployee.data" @modalEditKehadiran="modalEditKehadiran">
       </kehadiran>
-
-
-      <komisi :items="getAllDataEmployee.data" 
-        @modalAddKomisi="modalAddKomisi"
-        @modalEditKomisi="modalEditKomisi"
-        @salaryKomisi ="salaryKomisi"
-      
-      ></komisi>
-      
       <sekat></sekat>
+
+      <!-- Gaji & Absen -->
+      <gaji :items="getAllDataEmployee.data" @modalEditGaji="modalEditGaji">
+      </gaji>
+      <sekat></sekat>
+
+      <!-- Upah Borongan -->
       <upah-borongan
         :items="getAllDataEmployee.data"
       ></upah-borongan>
       <sekat></sekat>
 
+      <!-- komisi -->
+      <komisi :items="getAllDataEmployee.data" 
+        @modalAddKomisi="modalAddKomisi"
+        @modalEditKomisi="modalEditKomisi"
+        @salaryKomisi ="salaryKomisi"
+      ></komisi>
+      <sekat></sekat>
+
+      <!-- Gaji Kotor -->
       <total-gaji-kotor></total-gaji-kotor>
       <sekat></sekat>
+
+      <!-- Tanggungan -->
+      <tanggungan></tanggungan>
+
+      <sekat></sekat>
+
+      <!-- Gaji Bersih -->
       <total-gaji-bersih></total-gaji-bersih>
 
     </div>
 
 
-    <!-- <div class="modal_Gaji" v-if="popUpModal && (editModalState==='EditGaji')">
-        <edit-gaji 
-          :items="items.data"
-          :index-to="indexTo">
-        </edit-gaji>
-      </div>
+    <!-- 
 
-      <div class="modal_Absen" v-if="popUpModal && (editModalState==='EditAbsen')">
-        <edit-absen 
-        :items="items.data"
-          :index-to="indexTo">
-        </edit-absen>
-      </div> -->
+ -->
 
 
 
     <!-- <sekat></sekat>
 
-      <gaji :items="items.data" @modalEditGaji="modalEditGaji">
-      </gaji>
 
       <sekat></sekat> -->
 
@@ -97,6 +114,7 @@
   import TotalGajiKotor from './gaji_faktur/TotalGajiKotor.vue';
   import TotalGajiBersih from './gaji_faktur/TotalGajiBersih.vue';
   import Sekat from './component_reuse/Sekat.vue';
+  import Tanggungan from './gaji_faktur/Tanggungan.vue';
 
 
   import {
@@ -106,6 +124,7 @@
   import {
     mapMutations
   } from 'vuex';
+
 
 
 
@@ -123,6 +142,7 @@
       UpahBorongan,
       TotalGajiKotor,
       TotalGajiBersih,
+      Tanggungan,
 
 
     },

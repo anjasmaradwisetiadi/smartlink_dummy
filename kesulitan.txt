@@ -4,6 +4,8 @@
 3. tanya perihal mutations dan dengan rootState ke M.Eka.
 4. pecah consume API -> GET(inquery,Banks),POST(endpoint) di store
 5. disabled edit ketika sudah sampai tahap terakhir
+6. buat fitur Tanggungan
+7. buat fitur Gaji dan Upah Borongan dnegan [DICT]
 ---bug minor
 1.focus di Choice bank filter
 ---next feature
