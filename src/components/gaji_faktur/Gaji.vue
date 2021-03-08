@@ -11,12 +11,12 @@
             <div v-if="index===0" class="flex mt-2">
               <div class="w-1/2 flex flex-col text-left">
                 <div class="text-sm font-semibold"> {{item.nama}} </div>
-                <div class="text-sm font-normal text-gray-400">{{item.nominal}} x
+                <div class="text-sm font-normal text-gray-400">{{item.nominal | formatPrice}} x
                   {{items.total_periode}} periode</div>
               </div>
               <div class="w-1/2 flex m-auto text-right">
                 <div class="w-full text-sm font-semibold mr-2">
-                  {{item.nominal*items.total_periode}}
+                  {{item.nominal*items.total_periode | formatPrice}}
                 </div>
                 <span @click.prevent="modalEditGaji(index)"
                   class="material-icons text-base font-bold text-blue-400 -mt-1 cursor-pointer">
@@ -27,12 +27,12 @@
             <div v-if="index>0" class="flex mt-2">
               <div class="w-1/2 flex flex-col text-left">
                 <div class="text-sm font-semibold"> {{item.nama}} </div>
-                <div class="text-sm font-normal text-gray-400">{{item.nominal}} x
+                <div class="text-sm font-normal text-gray-400">{{item.nominal | formatPrice}} x
                   {{items.total_kehadiran}} kehadiran</div>
               </div>
               <div class="w-1/2 flex m-auto text-right">
                 <div class="w-full text-sm font-semibold mr-2 ">
-                  {{item.nominal*items.total_kehadiran}}
+                  {{item.nominal*items.total_kehadiran | formatPrice}}
                 </div>
                 <span @click.prevent="modalEditAbsen(index)"
                   class="material-icons text-base font-bold text-blue-400 -mt-1 cursor-pointer">

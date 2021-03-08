@@ -39,7 +39,6 @@
       
       ...mapMutations(['nextStep']),
       nextSteps() {
-        console.log("nextSteps")
         this.nextStep()
       },
     }

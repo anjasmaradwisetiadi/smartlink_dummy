@@ -96,7 +96,6 @@
       },
 
       modalEditKomisi(data) {
-        console.log("edit data")
         this.$emit('modalEditKomisi', {
           id: data.id,
           variabel: 'EditKomisi',

@@ -24,7 +24,7 @@
               </div>
               <input type="number"
                 class="flex-shrink flex-grow flex-auto  w-px flex-1 border h-10 border-grey-light rounded rounded-l-none px-4 relative focus:outline-none focus:ring-2 focus:ring-blue-400 focus:shadow"
-                placeholder="1000" @change="changeNominal" :value="nominal">
+                placeholder="1000" @change="changeNominal" :value="nominal" v-digitsOnly>
             </div>
             <div class="w-1/6 my-2 mx-1">
               X
@@ -32,7 +32,7 @@
             <div class="w-2/6 flex flex-wrap items-stretch w-full mb-4 relative">
               <input type="number"
                 class="flex-shrink flex-grow flex-auto w-px flex-1 border h-10 border-grey-light rounded rounded-r-none px-4 relative focus:outline-none focus:ring-2 focus:ring-blue-400 focus:shadow"
-                placeholder="1" @change="changePeriode" :value="periode">
+                placeholder="1" @change="changePeriode" :value="periode" v-digitsOnly>
 
               <div class="flex -mr-px">
                 <span

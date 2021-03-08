@@ -21,9 +21,9 @@
                 <span
                   class="flex items-center  bg-gray-200 rounded rounded-r-none border border-r-0 border-grey-light px-4 whitespace-no-wrap text-grey-dark text-sm font-bold">Rp</span>
               </div>
-              <input type="text"
+              <input type="number"
                 class="flex-shrink flex-grow flex-auto  w-px flex-1 border h-10 border-grey-light rounded rounded-l-none px-4 relative focus:outline-none focus:ring-2 focus:ring-blue-400 focus:shadow"
-                placeholder="1000" @change="changeNominal" :value="nominal">
+                placeholder="1000" @change="changeNominal" :value="nominal" v-digitsOnly>
             </div>
             <div class="w-1/6 my-2 mx-1">
               X

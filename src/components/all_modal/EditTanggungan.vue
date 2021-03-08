@@ -20,7 +20,7 @@
           <div class="mb-4 relative">
             <input type="text"
               class="w-full flex-shrink flex-grow flex-auto  w-px flex-1 border h-10 border-grey-light rounded px-4 relative focus:outline-none focus:ring-2 focus:ring-blue-400 focus:shadow"
-              placeholder="Contoh: Ganti Barang Hilang" @change="changeTitle" :value="title">
+              placeholder="Contoh: Ganti Barang Hilang" @change="changeTitle" :value="title" v-alphanumericOnly>
           </div>
         </div>
 
@@ -33,12 +33,13 @@
               <span
                 class="flex items-center  bg-gray-200 rounded rounded-r-none border border-r-0 border-grey-light px-4 whitespace-no-wrap text-grey-dark text-sm">Rp</span>
             </div>
-            <input type="text"
+            <input type="number"
               class="flex-shrink flex-grow flex-auto  w-px flex-1 border h-10 border-grey-light rounded rounded-l-none px-4 relative focus:outline-none focus:ring-2 focus:ring-blue-400 focus:shadow"
               placeholder="1000" 
               @change="changeNominal" 
               :value="nominal"
               :disabled="enableDelete"
+              v-digitsOnly
               >
           </div>
         </div>
@@ -168,16 +169,12 @@
       },
 
       saveTanggungan(dataSave) {
-        console.log("check bug add = ")
-        console.log(dataSave)
         this.saveData = true
         if (this.saveData) {
           if (dataSave) {
             this.items.tanggungan[this.indexTo].nama = this.title;
             this.items.tanggungan[this.indexTo].nominal = parseInt(this.nominal);
             this.items.tanggungan[this.indexTo].keterangan = this.description;
-            console.log("edit masuk")
-            this.disabledNominal=true;
           } else {
             let dataAddTanggungan = {
               id: uuid(),

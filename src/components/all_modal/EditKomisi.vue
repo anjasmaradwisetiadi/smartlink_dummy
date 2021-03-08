@@ -20,6 +20,7 @@
               placeholder="Nama Komisi"
               @change="changeTitle"
               :value="title"
+              v-alphanumericOnly
               >
           </div>
         </div>
@@ -38,6 +39,7 @@
               placeholder="1000"
               @change="changeNominal"
               :value="nominal"
+              v-digitsOnly
               >
           </div>
         </div>
@@ -151,7 +153,6 @@
     },
 
     saveKomisi(dataSave){
-        console.log(dataSave)
         this.saveData=true;
         if(this.saveData){
             if(dataSave){

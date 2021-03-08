@@ -21,9 +21,9 @@
                 class="flex material-icons items-center rounded rounded-r-none border border-r-0 border-grey-light px-4 whitespace-no-wrap text-grey-dark text-lg text-red-400 cursor-pointer"
                 @click="addPresence()">add</span>
             </div>
-            <input type="text"
+            <input type="number"
               class="flex-shrink flex-grow flex-auto  w-px flex-1 border h-10 border-grey-light rounded rounded-l-none px-4 relative focus:outline-none focus:ring-2 focus:ring-blue-400 focus:shadow"
-              @change="changePresence" :value="presence">
+              @change="changePresence" :value="presence" v-digitsOnly>
             <span
               class="flex material-icons items-center rounded rounded-r-none border border-l-0 border-grey-light px-4 whitespace-no-wrap text-grey-dark text-lg text-blue-400 cursor-pointer"
               @click="minPresence()">horizontal_rule</span>
