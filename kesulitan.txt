@@ -3,9 +3,8 @@
   ---solusi: buat dictionary berdasarkan data yang didapat, lalu baru cetak di template
 3. tanya perihal mutations dan dengan rootState ke M.Eka.
 4. pecah consume API -> GET(inquery,Banks),POST(endpoint) di store
-5. disabled edit ketika sudah sampai tahap terakhir
-6. buat fitur Tanggungan
-7. buat fitur Gaji dan Upah Borongan dnegan [DICT]
+5. disabled edit ketika sudah sampai tahap terakhir(tahap 4)
+7. buat fitur Gaji dan Upah Borongan dengan teknik javascript [DICT]
 ---bug minor
 1.focus di Choice bank filter
 ---next feature

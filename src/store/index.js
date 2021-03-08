@@ -8,16 +8,14 @@ import { totalAllSalary } from './totalAllSalary'
 import { detailPembayaran } from './detail_pembayaran/detailPembayaran'
 import { formAllDetailPembayaran } from './detail_pembayaran/formAll'
 import { stepper } from './stepper';
+import { getInquiry } from './consume_API/inquiry';
+import { getBanks } from './consume_API/banks';
 
-import { collectionUrl } from '../service/baseUrl'
 
 // import { dataEmployee } from '../service/dataEmployee'
-const axios = require('axios');
 
 Vue.use(Vuex);
 
-const urlInquiry = collectionUrl.baseInquiry;
-const urlBanks = collectionUrl.baseBanks;
 
 export default new Vuex.Store({
   state: {
@@ -42,34 +40,7 @@ export default new Vuex.Store({
 
   },
   actions: {
-    
-    setInquiry({state,commit}){
-      state.loading = true;
-      axios.get(urlInquiry)
-      .then(function (response) {
-        state.loading = false;
-        commit('inquiry',response.data)
-      })
-      .catch(function (error) {
-        state.loading = false;
-        commit('errorMessage',error.message)
-      })
-      
-    },
 
-    setBanks({state,commit}){
-      state.loading = true;
-      axios.get(urlBanks)
-      .then(function (response) {
-        state.loading = false;
-        commit('banks',response.data.data)
-      })
-      .catch(function (error) {
-        state.loading = false;
-        commit('errorMessage',error.message)
-      })
-      
-    }
 
   },
   getters: {
@@ -98,6 +69,9 @@ export default new Vuex.Store({
     totalAllSalary,
     detailPembayaran,
     formAllDetailPembayaran,
-    stepper
+    stepper,
+    getInquiry,
+    getBanks
+
   },
 });

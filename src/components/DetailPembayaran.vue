@@ -5,8 +5,12 @@
         class="loading text-center mx-auto relative text-red-500 text-lg font-bold pt-4">
         Still Loading....
       </div>
+      <div v-else-if="!getLoading && getErrorMessage"
+        class="loading text-center mx-auto relative text-red-500 text-lg font-bold pt-4">
+        Error terjadi {{getErrorMessage}}
+      </div>
 
-      <div v-if="!getLoading" class="flex flex-col">
+      <div v-else class="flex flex-col">
         <!-- form gaji bersih -->
         <detail-gaji-di-dapat></detail-gaji-di-dapat>
         <!-- sekat abu2 -->
@@ -39,7 +43,7 @@
     },
 
     computed: {
-      ...mapGetters(['getLoading'])
+      ...mapGetters(['getLoading','getErrorMessage'])
     },
 
     mounted() {

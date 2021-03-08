@@ -5,7 +5,14 @@
       Still Loading....
     </div>
 
-    <div v-if="!getLoading"
+    <div
+    v-else-if="!getLoading && getErrorMessage"
+    class="loading text-center mx-auto relative text-red-500 text-lg font-bold pt-4"
+    >
+    Error terjadi {{getErrorMessage}}
+    </div>
+
+    <div v-else
       class="main_page ">
       <!-- Modal Start-->
       <!-- modal Profile -->
@@ -182,7 +189,7 @@
     },
 
     computed: {
-      ...mapGetters(['getAllDataEmployee', 'getToggleModal', 'getLoading']),
+      ...mapGetters(['getAllDataEmployee', 'getToggleModal', 'getLoading','getErrorMessage']),
 
       popUpModal() {
         return this.toggleModal = this.getToggleModal
