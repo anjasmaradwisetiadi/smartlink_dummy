@@ -1,4 +1,3 @@
-
 <template>
   <div class="Ubah_Keterlambatan items-center text-center">
     <div v-if="getToggleModal" class="fixed flex justify-center items-center z-20  w-screen">
@@ -9,7 +8,7 @@
           </div>
           <div class="text-right mr-6">
             <span class="material-icons text-blue-500 font-bold cursor-pointer"
-              @click.prevent="closeModal(toggleModal)"> close </span>
+              @click.prevent="closeModal(false)"> close </span>
           </div>
         </div>
         <div class="flex flex-col mt-4 px-4">
@@ -20,41 +19,33 @@
             <div class="flex -mr-px">
               <span
                 class="flex material-icons items-center rounded rounded-r-none border border-r-0 border-grey-light px-4 whitespace-no-wrap text-grey-dark text-lg text-red-400 cursor-pointer"
-                @click="addPresence()"  
-              >add</span>
+                @click="addPresence()">add</span>
             </div>
             <input type="text"
               class="flex-shrink flex-grow flex-auto  w-px flex-1 border h-10 border-grey-light rounded rounded-l-none px-4 relative focus:outline-none focus:ring-2 focus:ring-blue-400 focus:shadow"
-              @change="changePresence"
-              :value="presence"
-              >
+              @change="changePresence" :value="presence">
             <span
               class="flex material-icons items-center rounded rounded-r-none border border-l-0 border-grey-light px-4 whitespace-no-wrap text-grey-dark text-lg text-blue-400 cursor-pointer"
-              @click="minPresence()"  
-            >horizontal_rule</span>
+              @click="minPresence()">horizontal_rule</span>
           </div>
         </div>
         <div class="flex mt-4 px-4">
           <div class="w-1/2 mr-2">
             <button class="text-red-400 w-full text-center py-2 rounded border border-red-400"
-            @click="zeroPresence()"
-            >
+              @click="zeroPresence()">
               Hapus
             </button>
           </div>
           <div class="w-1/2 ml-2">
-            <button 
-            class="button_background w-full py-2 text-center rounded text-white"
-            @click="savePresence()"
-            >
+            <button class="button_background w-full py-2 text-center rounded text-white"
+              @click="savePresence()">
               Simpan</button>
           </div>
         </div>
-
-
       </div>
     </div>
 
+    <!-- shadow layer -->
     <div v-if="getToggleModal" class="height_window " :style="sizeShadow">
 
     </div>
@@ -74,18 +65,15 @@
       },
     },
 
-    data(){
-      return{
-        toggleModal:false,
-        presence:0,
-        saveData:false,
-
-
+    data() {
+      return {
+        presence: 0,
+        saveData: false,
       }
     },
 
     computed: {
-      ...mapGetters(['getToggleModal','getInnerHeight','getInnerWidth']),
+      ...mapGetters(['getToggleModal', 'getInnerHeight', 'getInnerWidth']),
 
       sizeShadow() {
         return {
@@ -94,13 +82,13 @@
         }
       },
 
-      firstTimePresence(){
-        return this.presence=this.items.total_kehadiran;
+      firstTimePresence() {
+        return this.presence = this.items.total_kehadiran;
       }
 
     },
 
-    mounted(){
+    mounted() {
       this.firstTimePresence;
     },
 
@@ -111,30 +99,29 @@
         this.closeModals(data)
       },
 
-      changePresence(e){
-        this.presence=e.target.value;
+      changePresence(e) {
+        this.presence = e.target.value;
       },
 
-      addPresence(){
+      addPresence() {
         this.presence++;
       },
 
-      minPresence(){
+      minPresence() {
         this.presence--;
       },
 
-      zeroPresence(){
-         this.presence=0; 
+      zeroPresence() {
+        this.presence = 0;
       },
 
-      savePresence(){
+      savePresence() {
         this.closeModals(false);
-        this.saveData=true;
-        if(this.saveData){
-          this.items.total_kehadiran=parseInt(this.presence)
-        }
-        else{
-          this.presence=this.items.total_kehadiran
+        this.saveData = true;
+        if (this.saveData) {
+          this.items.total_kehadiran = parseInt(this.presence)
+        } else {
+          this.presence = this.items.total_kehadiran
         }
       }
     }

@@ -8,7 +8,7 @@
           </div>
           <div class="text-right mr-6">
             <span class="material-icons text-blue-500 font-bold cursor-pointer"
-              @click.prevent="closeModal(toggleModal)"> close </span>
+              @click.prevent="closeModal(false)"> close </span>
           </div>
         </div>
         <div class="flex flex-col px-4 mt-4 ">
@@ -51,7 +51,7 @@
       </div>
     </div>
 
-
+    <!-- shadow layer -->
     <div v-if="getToggleModal" class="height_window " :style="sizeShadow">
 
     </div>
@@ -73,7 +73,6 @@
         nominal: 0,
         presence: 0,
         counting: 0,
-        toggleModal: false,
       }
     },
 
@@ -88,7 +87,7 @@
     },
 
     computed: {
-      ...mapGetters(['getToggleModal','getInnerHeight','getInnerWidth']),
+      ...mapGetters(['getToggleModal', 'getInnerHeight', 'getInnerWidth']),
 
       sizeShadow() {
         return {

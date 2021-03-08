@@ -7,7 +7,7 @@
             Tambah / Ubah Komisi
           </div>
           <div class="text-right mr-6">
-            <span @click.prevent="closeModal(toggleModal)" class="material-icons text-blue-500 font-bold cursor-pointer"> close </span>
+            <span @click.prevent="closeModal(false)" class="material-icons text-blue-500 font-bold cursor-pointer"> close </span>
           </div>
         </div>
         <div class="flex flex-col mt-4 px-4">
@@ -80,7 +80,6 @@
   export default {
     data() {
       return {
-        toggleModal: false,
         title:'',
         nominal:null,
         saveData:false,
@@ -148,7 +147,6 @@
     },
 
     saveKomisi(dataSave){
-        this.closeModals(false);
         this.saveData=true;
         if(this.saveData){
             if(dataSave){
@@ -168,6 +166,8 @@
             this.nominal=this.items.komisi[this.indexTo].nominal;
             this.title=this.items.komisi[this.indexTo].nama;
         }
+        
+        this.closeModals(false);
 
     },
 

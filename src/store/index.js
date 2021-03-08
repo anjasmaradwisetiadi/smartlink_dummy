@@ -1,8 +1,9 @@
 import Vue from 'vue';
 import Vuex from 'vuex';
 import { modalStateManagement } from './modal'
-import { editGaji }from './editGaji'
-import { editKomisi } from './editKomisi'
+import { editGaji }from './edit_modal/editGaji'
+import { editKomisi } from './edit_modal/editKomisi'
+import { editTanggungan } from './edit_modal/editTanggungan'
 import { totalAllSalary } from './totalAllSalary'
 import { detailPembayaran } from './detail_pembayaran/detailPembayaran'
 import { formAllDetailPembayaran } from './detail_pembayaran/formAll'
@@ -93,6 +94,7 @@ export default new Vuex.Store({
     modalStateManagement,
     editGaji,
     editKomisi,
+    editTanggungan,
     totalAllSalary,
     detailPembayaran,
     formAllDetailPembayaran,

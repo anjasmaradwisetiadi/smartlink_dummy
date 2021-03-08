@@ -1,6 +1,4 @@
-import { dataEmployee } from '../service/dataEmployee'
-
-export const editKomisi={
+export const editTanggungan={
 
     mutations:{
         // try call roo state from addKomisi
@@ -13,12 +11,11 @@ export const editKomisi={
         // }
     },
     actions:{
-        setAddKomisi({rootState},payload){
-            // commit('addKomisi',payload)
-            rootState.dataEmployee.data.komisi.push(payload)
+        setAddTanggungan({rootState},payload){
+            rootState.dataEmployee.data.tanggungan.push(payload)
         },
-        setDeleteKomisi({rootState},payload){
-            rootState.dataEmployee.data.komisi = rootState.dataEmployee.data.komisi.filter((item)=>item.id != payload)  
+        setDeleteTanggungan({rootState},payload){
+            rootState.dataEmployee.data.tanggungan = rootState.dataEmployee.data.tanggungan.filter((item)=>item.id != payload)  
         }
 
     },

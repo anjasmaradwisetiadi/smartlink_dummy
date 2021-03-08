@@ -30,15 +30,22 @@
 
       <!-- modal Komisi -->
       <div class="modal_Komisi" v-if="popUpModal && (editModalState === 'EditKomisi')">
-        <edit-komisi :items="getAllDataEmployee.data" :id-to="idTo" :enable-delete="enableDelete"
-          :index-to="indexTo">
+        <edit-komisi 
+          :items="getAllDataEmployee.data" 
+          :id-to="idTo" 
+          :enable-delete="enableDelete"
+          :index-to="indexTo"
+        >
         </edit-komisi>
       </div>
 
       <!-- modal Tanggungan -->
       <div class="modal_Tanggungan" v-if="popUpModal && (editModalState === 'EditTanggungan')">
         <edit-tanggungan 
-        :enable-delete="enableDelete"></edit-tanggungan>
+          :items="getAllDataEmployee.data" 
+          :id-to="idTo" 
+          :enable-delete="enableDelete"
+          :index-to="indexTo"></edit-tanggungan>
       </div>
       <!-- Modal End-->
 
@@ -73,7 +80,11 @@
       <sekat></sekat>
 
       <!-- Tanggungan -->
-      <tanggungan @modalAddTanggungan="modalAddTanggungan"></tanggungan>
+      <tanggungan 
+      :items="getAllDataEmployee.data"
+      @modalAddTanggungan="modalAddTanggungan"
+      @modalEditTanggungan="modalEditTanggungan"
+      ></tanggungan>
 
       <sekat></sekat>
 
@@ -234,6 +245,14 @@
       modalAddTanggungan(data){
         this.editModalState=data.variabel;
         this.enableDelete=data.enableDelete;
+        this.handleResize();
+      },
+
+      modalEditTanggungan(data){
+        this.idTo = data.data;
+        this.editModalState = data.variabel;
+        this.enableDelete = data.enableDelete;
+        this.indexTo = data.index;
         this.handleResize();
       },
 

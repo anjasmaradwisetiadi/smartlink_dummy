@@ -9,7 +9,7 @@
           </div>
           <div class="text-right mr-6">
             <span class="material-icons text-blue-500 font-bold cursor-pointer"
-              @click.prevent="closeModal(toggleModal)"> close </span>
+              @click.prevent="closeModal(false)"> close </span>
           </div>
         </div>
         <div class="flex flex-col px-4 mt-4 ">
@@ -47,7 +47,7 @@
             Jumlah
           </div>
           <div class="w-1/2 text-right">
-           Rp {{count}}
+            Rp {{count}}
           </div>
         </div>
 
@@ -59,12 +59,10 @@
       </div>
     </div>
 
-
+    <!-- shadow layer -->
     <div v-if="getToggleModal" class="height_window " :style="sizeShadow">
 
     </div>
-
-
   </div>
 
 </template>
@@ -83,7 +81,6 @@
         periode: 0,
         counting: 0,
         saveData: false,
-        toggleModal:false
       }
     },
 
@@ -93,13 +90,13 @@
         type: Object
       },
 
-      indexTo:{
-        type:Number
+      indexTo: {
+        type: Number
       }
     },
 
     computed: {
-      ...mapGetters(['getToggleModal','getInnerHeight','getInnerWidth']),
+      ...mapGetters(['getToggleModal', 'getInnerHeight', 'getInnerWidth']),
 
       sizeShadow() {
         return {
@@ -116,7 +113,7 @@
         return this.periode = this.items.total_periode;
       },
 
-      count: function(){
+      count: function () {
         return this.counting = this.periode * this.nominal
       }
 
