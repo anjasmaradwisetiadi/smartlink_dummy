@@ -11,9 +11,16 @@
           </div>
         </div>
 
+
         <div class="flex flex-col mt-3">
-          <div class="flex">
-            <div class="w-1/2 flex flex-col text-left">
+          <div class="flex mt-2 text-left">
+            <span class="material-icons text-xl font-bold text-blue-400 -mt-1 "> add_circle_outline
+            </span>
+            <div class="ml-3 text-blue-400 text-base font-semibold cursor-pointer"
+              @click.prevent="modalAddTanggungan()">Tambah Pembayaran Tanggungan...</div>
+          </div>
+          <div class="flex mt-3">
+            <div class="w-2/3 flex flex-col text-left">
               <div class="text-sm font-semibold">
                 Ganti Barang Hilang
               </div>
@@ -21,7 +28,7 @@
                 Baju yang hilang warna merah
               </div>
             </div>
-            <div class="w-1/2 flex text-red-400 m-auto text-right">
+            <div class="w-1/3 flex text-red-400 m-auto text-right">
               <div class="w-full text-sm font-semibold mr-2">
                 50.000
               </div>
@@ -65,8 +72,37 @@
   </section>
 </template>
 <script>
-  export default {
+  import {
+    mapMutations,
+    mapGetters,
+    mapActions
+  } from 'vuex';
 
+  export default {
+      data(){
+          return{
+
+          }
+      },
+      computed:{
+
+      },
+      mounted(){
+
+      },
+      methods:{
+          ...mapMutations(['modalEdit']),
+
+          modalAddTanggungan(){
+              console.log("kirim 2222")
+              this.$emit('modalAddTanggungan',{
+                  variabel: 'EditTanggungan',
+                  enableDelete:false
+              }),
+              this.modalEdit(true);
+
+          }
+      }
   }
 
 </script>

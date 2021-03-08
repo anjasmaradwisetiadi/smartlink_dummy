@@ -15,4 +15,5 @@
 3. directive number only
 4. masking
 5. install tepati tannggal
+6. coba mixin untuk untuk function handle $emit semua modal
 

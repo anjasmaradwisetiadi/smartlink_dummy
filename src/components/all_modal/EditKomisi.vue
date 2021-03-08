@@ -63,6 +63,7 @@
       </div>
     </div>
 
+    <!-- shadow layer -->
     <div v-if="getToggleModal" class="height_window " :style="sizeShadow">
 
     </div>
@@ -81,7 +82,7 @@
       return {
         toggleModal: false,
         title:'',
-        nominal:0,
+        nominal:null,
         saveData:false,
 
       }
@@ -95,7 +96,8 @@
           type:String
       },
       enableDelete:{
-          type:Boolean
+          type:Boolean,
+          default:false
       },
       indexTo:{
           type:Number,
@@ -123,7 +125,7 @@
     },
 
     mounted(){
-        if(this.indexTo ===null){
+        if(this.indexTo === null){
             return false
         }
         else{

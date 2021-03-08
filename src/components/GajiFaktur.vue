@@ -7,7 +7,7 @@
 
     <div v-if="!getLoading"
       class="main_page ">
-      <!-- modal -->
+      <!-- Modal Start-->
       <!-- modal Profile -->
       <div class="modal_Kehadiran" v-if="popUpModal && (editModalState==='EditKehadiran')">
         <edit-keterlambatan :items="getAllDataEmployee.data">
@@ -35,6 +35,13 @@
         </edit-komisi>
       </div>
 
+      <!-- modal Tanggungan -->
+      <div class="modal_Tanggungan" v-if="popUpModal && (editModalState === 'EditTanggungan')">
+        <edit-tanggungan 
+        :enable-delete="enableDelete"></edit-tanggungan>
+      </div>
+      <!-- Modal End-->
+
       <!-- Profile -->
       <profile :items="getAllDataEmployee.data"></profile>
       <kehadiran :items="getAllDataEmployee.data" @modalEditKehadiran="modalEditKehadiran">
@@ -61,11 +68,12 @@
       <sekat></sekat>
 
       <!-- Gaji Kotor -->
-      <total-gaji-kotor></total-gaji-kotor>
+      <total-gaji-kotor
+      ></total-gaji-kotor>
       <sekat></sekat>
 
       <!-- Tanggungan -->
-      <tanggungan></tanggungan>
+      <tanggungan @modalAddTanggungan="modalAddTanggungan"></tanggungan>
 
       <sekat></sekat>
 
@@ -106,6 +114,7 @@
   import EditAbsen from './all_modal/EditAbsen.vue';
   import EditKeterlambatan from './all_modal/EditKeterlambatan.vue';
   import EditKomisi from './all_modal/EditKomisi.vue';
+  import EditTanggungan from './all_modal/EditTanggungan.vue';
   import Kehadiran from './gaji_faktur/Kehadiran.vue';
   import Profile from './gaji_faktur/Profile.vue';
   import Gaji from './gaji_faktur/Gaji.vue';
@@ -128,17 +137,19 @@
 
 
 
+
   export default {
     components: {
       EditGaji,
       EditAbsen,
+      EditKomisi,
+      EditTanggungan,
       Profile,
       Kehadiran,
       Gaji,
       Sekat,
       EditKeterlambatan,
       Komisi,
-      EditKomisi,
       UpahBorongan,
       TotalGajiKotor,
       TotalGajiBersih,
@@ -217,6 +228,12 @@
         this.editModalState = data.variabel;
         this.enableDelete = data.enableDelete;
         this.indexTo = data.index;
+        this.handleResize();
+      },
+
+      modalAddTanggungan(data){
+        this.editModalState=data.variabel;
+        this.enableDelete=data.enableDelete;
         this.handleResize();
       },
 
