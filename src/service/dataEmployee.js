@@ -1,5 +1,5 @@
 // dataEmployee
-export const dataEmployee = [{
+export const dataEmployee = {
     "success": true,
     "messages": "Berhasil Mendapatkan Data Gaji",
     "data": {
@@ -74,5 +74,5 @@ export const dataEmployee = [{
   
       ]
     }
-  }]
+  }
   

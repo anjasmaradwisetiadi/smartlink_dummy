@@ -9,40 +9,33 @@
           </div>
         </div>
         <div class="mt-3 pb-3 border-b border-dashed">
-          <div class="flex ">
-            <div class="w-1/2 flex flex-col text-left">
-              <div class="text-sm font-semibold">
-                Mencuci
-              </div>
-              <div class="uppercase text-sm text-gray-400">
-                100kg
-              </div>
-            </div>
-            <div class="w-1/2 flex m-auto text-right">
-              <div class="w-full text-sm font-semibold mr-2 ">
-                20.000
-              </div>
-              <span class="material-icons text-base font-bold text-gray-200 -mt-1"> not_interested
-              </span>
-            </div>
-          </div>
-          <div class="flex mt-3">
-            <div class="w-1/2 flex flex-col text-left">
-              <div class="text-sm font-semibold">
-                Menyetrika
-              </div>
-              <div class="uppercase text-sm text-gray-400">
-                50KG
+          <div class="flex flex-col">
+            <div v-for="(item,index) in getSalaryArrangment" :key="index">
+              {{index}}
+              <div class="flex">
+                <div class="w-1/2 flex flex-col text-left">
+                  <div class="text-sm font-semibold">
+                    {{item[0].nama}}
+                  </div>
+                  <div class="text-sm text-gray-400">
+                    {{salaryWorked[index][0].nominal}} KG
+                  </div>
+                </div>
+                <div class="w-1/2 flex m-auto text-right">
+                  <div class="w-full text-sm font-semibold mr-2 ">
+                    20.000
+                  </div>
+                  <span class="material-icons text-base font-bold text-gray-200 -mt-1">
+                    not_interested
+                  </span>
+                </div>
               </div>
             </div>
-            <div class="w-1/2 flex m-auto text-right">
-              <div class="w-full text-sm font-semibold mr-2 ">
-                80.000
-              </div>
-              <span class="material-icons text-base font-bold text-gray-200 -mt-1"> not_interested
-              </span>
+
+            <div>
             </div>
           </div>
+
         </div>
 
         <div class="flex mt-3 pb-4 ">
@@ -60,6 +53,11 @@
   </section>
 </template>
 <script>
+  import {
+    mapGetters
+  } from 'vuex';
+
+
   export default {
     props: {
       items: {
@@ -75,9 +73,18 @@
 
     mounted() {
       this.subTotalSalary;
+      this.$store.dispatch('setWageSalary');
+      this.$store.dispatch('setWorkedSalary');
+
     },
 
     computed: {
+      ...mapGetters(['getSalaryArrangment', 'getSalaryWorked']),
+
+      salaryWorked(){
+        return this.getSalaryWorked
+      },
+
       subTotalSalary() {
         let dataCall = this.data
         this.$emit("salaryKomisi", {
