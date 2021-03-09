@@ -6,7 +6,7 @@
           Subtotal Gaji
         </div>
         <div class="w-1/2 text-base font-bold text-right">
-          Rp {{subTotalSalary}}
+          Rp {{subTotalSalary | formatPrice}}
         </div>
       </div>
       <div class="flex mt-3">
@@ -14,7 +14,7 @@
           Subtotal Upah
         </div>
         <div class="w-1/2 text-base font-bold text-right">
-          Rp {{subTotalWages}}
+          Rp {{subTotalWages | formatPrice}}
         </div>
       </div>
       <div class="flex mt-3">
@@ -22,7 +22,7 @@
           Subtotal Komisi
         </div>
         <div class="w-1/2 text-base font-bold text-right">
-          Rp {{subTotalKomisi}}
+          Rp {{subTotalKomisi | formatPrice}}
         </div>
       </div>
 
@@ -31,7 +31,7 @@
           Gaji Kotor
         </div>
         <div class="w-1/2 text-base font-bold text-right text-green-500">
-          Rp {{totalSalaryBruto}}
+          Rp {{totalSalaryBruto | formatPrice}}
         </div>
       </div>
       <div class="flex mt-8">
@@ -39,7 +39,7 @@
           Tanggungan
         </div>
         <div class="w-1/2 text-base font-bold text-right text-red-500">
-          Rp {{subTotalDemand}}
+          Rp {{subTotalDemand | formatPrice}}
         </div>
       </div>
     </div>
@@ -48,7 +48,7 @@
         Total Gaji Bersih
       </div>
       <div class="w-1/2 text-base font-bold text-blue-400 text-right">
-        Rp {{totalSalaryNet}}
+        Rp {{totalSalaryNet | formatPrice}}
       </div>
     </div>
   </section>
