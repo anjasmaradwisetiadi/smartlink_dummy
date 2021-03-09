@@ -8,47 +8,50 @@
             Upah Borongan
           </div>
         </div>
-        <div class="flex mt-3">
-          <div class="w-1/2 flex flex-col text-left">
-            <div class="font-sm font-semibold">
-              Mencuci
+        <div class="mt-3 pb-3 border-b border-dashed">
+          <div class="flex ">
+            <div class="w-1/2 flex flex-col text-left">
+              <div class="text-sm font-semibold">
+                Mencuci
+              </div>
+              <div class="uppercase text-sm text-gray-400">
+                100kg
+              </div>
             </div>
-            <div class="uppercase text-sm text-gray-400">
-              100kg
+            <div class="w-1/2 flex m-auto text-right">
+              <div class="w-full text-sm font-semibold mr-2 ">
+                20.000
+              </div>
+              <span class="material-icons text-base font-bold text-gray-200 -mt-1"> not_interested
+              </span>
             </div>
           </div>
-          <div class="w-1/2 flex m-auto text-right">
-            <div class="w-full text-sm font-semibold mr-2 ">
-              20.000
+          <div class="flex mt-3">
+            <div class="w-1/2 flex flex-col text-left">
+              <div class="text-sm font-semibold">
+                Menyetrika
+              </div>
+              <div class="uppercase text-sm text-gray-400">
+                50KG
+              </div>
             </div>
-            <span class="material-icons text-base font-bold text-gray-200 -mt-1"> not_interested
-            </span>
+            <div class="w-1/2 flex m-auto text-right">
+              <div class="w-full text-sm font-semibold mr-2 ">
+                80.000
+              </div>
+              <span class="material-icons text-base font-bold text-gray-200 -mt-1"> not_interested
+              </span>
+            </div>
           </div>
         </div>
-        <div class="flex mt-3">
-          <div class="w-1/2 flex flex-col text-left">
-            <div class="font-sm font-semibold">
-              Menyetrika
-            </div>
-            <div class="uppercase text-sm text-gray-400">
-              50KG
-            </div>
-          </div>
-          <div class="w-1/2 flex m-auto text-right">
-            <div class="w-full text-sm font-semibold mr-2 ">
-              80.000
-            </div>
-            <span class="material-icons text-base font-bold text-gray-200 -mt-1"> not_interested
-            </span>
-          </div>
-        </div>
+
         <div class="flex mt-3 pb-4 ">
           <div class="w-1/2 flex flex-col text-left">
-            <div class="text-base font-semibold">
+            <div class="font-semibold">
               Subtotal Upah
             </div>
           </div>
-          <div class="w-1/2 text-base font-semibold text-right m-auto">
+          <div class="w-1/2 font-semibold text-right m-auto">
             Rp {{subTotalSalary}}
           </div>
         </div>
@@ -64,25 +67,28 @@
       }
     },
 
-    data(){
-        return{
-            data:2000
-        }
+    data() {
+      return {
+        data: 2000
+      }
     },
 
-    mounted(){
-        this.subTotalSalary;
+    mounted() {
+      this.subTotalSalary;
     },
 
-    computed:{
-        subTotalSalary(){
-            let dataCall=this.data
-            this.$emit("salaryKomisi",{name:"sub_total_upah",nominal:dataCall});
-            return dataCall
-        }
+    computed: {
+      subTotalSalary() {
+        let dataCall = this.data
+        this.$emit("salaryKomisi", {
+          name: "sub_total_upah",
+          nominal: dataCall
+        });
+        return dataCall
+      }
     }
 
-    
+
   }
 
 </script>

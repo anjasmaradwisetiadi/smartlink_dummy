@@ -4,14 +4,14 @@
       <div class="flex flex-col px-4">
         <div class="flex">
           <div class="w-2/3 flex text-left">
-            <div class="font-bold text-base text-blue-500">
+            <div class="font-bold text-lg text-blue-500">
               Total Gaji Bersih
             </div>
             <span class="material-icons text-lg text-green-300 ml-1"> check_circle </span>
           </div>
 
           <div class="w-1/3 ">
-            <div class=" text-base font-bold text-blue-500 text-right">
+            <div class=" font-bold text-blue-500 text-right">
               Rp {{getTotalSalaryNet | formatPrice}}
             </div>
           </div>

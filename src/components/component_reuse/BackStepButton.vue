@@ -1,6 +1,6 @@
 <template>
   <section class="Back_Step_Button">
-    <div class="w-screen title text-center pb-3 pt-2 border-b-2 border-t z-0 fixed bg-white">
+    <div class="w-screen title text-center pb-3 pt-2 border-b-2 border-t z-10 fixed bg-white">
       <div class=" flex font-bold">
         <div class="w-1/6">
           <span 

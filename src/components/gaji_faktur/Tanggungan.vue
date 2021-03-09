@@ -3,7 +3,7 @@
     <div class="Tanggungan mt-3 pb-3">
       <div class="flex flex-col px-4 ">
         <div class="flex flex-col border-b border-dashed pb-3">
-          <div class="font-bold text-lg text-left">
+          <div class="font-bold text-base text-left">
             Tanggungan
           </div>
           <div class="text-sm text-gray-400 text-left">
@@ -51,10 +51,10 @@
 
 
           <div class="flex mt-3">
-            <div class="w-2/3 text-lg font-semibold text-left">
+            <div class="w-2/3 font-semibold text-left">
               Tanggungan Dibayar
             </div>
-            <div class="w-1/3 text-lg font-semibold text-red-400 text-right m-auto">
+            <div class="w-1/3 font-semibold text-red-400 text-right m-auto">
               (-) Rp {{allSalary | formatPrice}}
             </div>
           </div>

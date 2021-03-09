@@ -6,48 +6,50 @@
           Komisi
         </div>
       </div>
-      <div class="flex flex-col text-left px-4 pb-8 border-b">
-        <div class="flex mt-2">
-          <span class="material-icons text-xl font-bold text-blue-400 -mt-1 "> add_circle_outline
-          </span>
-          <div class="ml-3 text-blue-400 text-base font-semibold cursor-pointer"
-            @click.prevent="modalAddKomisi()">Tambah komisi lain...</div>
-        </div>
-        <div v-if="(items.komisi).length === 0">
-          <p class="mt-3 text-red-400">data tidak ada....</p>
-        </div>
-        <div v-else>
-          <div class="mt-3 pb-8 border-b border-dashed">
-            <div v-for="(item,indexs) in items.komisi" :key="indexs">
-              <div class="flex mt-2 ">
-                <div class="w-1/2 text-left font-sm ">
-                  {{item.nama}}
-                </div>
-                <div class="w-1/2 flex m-auto text-right">
-                  <div class="w-full text-sm font-semibold mr-2 ">
-                    Rp.{{item.nominal | formatPrice}}
+      <div class="flex flex-col text-left px-4">
+        <div class="border-b border-dashed pb-3">
+          <div class="flex mt-2">
+            <span class="material-icons text-xl font-bold text-blue-400 -mt-1 "> add_circle_outline
+            </span>
+            <div class="ml-3 text-blue-400 text-base font-semibold cursor-pointer"
+              @click.prevent="modalAddKomisi()">Tambah komisi lain...</div>
+          </div>
+          <div v-if="(items.komisi).length === 0">
+            <p class="mt-3 text-red-400">data tidak ada....</p>
+          </div>
+          <div v-else>
+            <div class="mt-3 pb-3 border-b border-dashed">
+              <div v-for="(item,indexs) in items.komisi" :key="indexs">
+                <div class="flex mt-2 ">
+                  <div class="w-1/2 text-left font-sm ">
+                    {{item.nama}}
                   </div>
-                  <span
-                    class="material-icons text-base font-bold text-blue-400 -mt-1 cursor-pointer"
-                    @click="modalEditKomisi({id:item.id,index:indexs})">
-                    mode_edit
-                  </span>
+                  <div class="w-1/2 flex m-auto text-right">
+                    <div class="w-full text-sm font-semibold mr-2 ">
+                      Rp.{{item.nominal | formatPrice}}
+                    </div>
+                    <span
+                      class="material-icons text-base font-bold text-blue-400 -mt-1 cursor-pointer"
+                      @click="modalEditKomisi({id:item.id,index:indexs})">
+                      mode_edit
+                    </span>
+                  </div>
                 </div>
               </div>
             </div>
-          </div>
 
+          </div>
         </div>
+      </div>
 
-        <div class="flex mt-3 pb-4 ">
-          <div class="w-1/2 flex flex-col text-left">
-            <div class="text-base font-semibold">
-              Subtotal Komisi
-            </div>
+      <div class="flex mt-3 px-4">
+        <div class="w-1/2 flex flex-col text-left">
+          <div class="font-semibold">
+            Subtotal Komisi
           </div>
-          <div class="w-1/2 text-base font-semibold text-right m-auto">
-            Rp {{allSalary | formatPrice}}
-          </div>
+        </div>
+        <div class="w-1/2 font-semibold text-right m-auto">
+          Rp {{allSalary | formatPrice}}
         </div>
       </div>
     </div>
@@ -77,7 +79,10 @@
           data += parseInt(this.items.komisi[i].nominal);
         }
 
-        this.$emit("salaryKomisi",{name:"sub_total_komisi",nominal:data});
+        this.$emit("salaryKomisi", {
+          name: "sub_total_komisi",
+          nominal: data
+        });
         return data;
       },
 
@@ -90,7 +95,7 @@
         this.$emit('modalAddKomisi', {
           variabel: 'EditKomisi',
           enableDelete: false,
-          id:null
+          id: null
         });
         this.modalEdit(true);
       },
