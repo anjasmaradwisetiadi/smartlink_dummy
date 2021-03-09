@@ -13,7 +13,7 @@
             :data="allBanks" 
             v-model.trim="formData.client" 
             @chosenBank="handleChosenBank"
-            placeholder="Search for state...">
+            placeholder="Pilih Rekening Bank">
             </form-bank>
           </div>
         </div>

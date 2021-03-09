@@ -7,7 +7,7 @@
       </div>
       <div class="flex rounded-md border cursor-pointer">
         <div class="w-5/6">
-          <input type="text" placeholder="Pilih Tanggal" class="w-full px-2 py-3 focus:outline-none focus:ring-2 focus:ring-blue-400"
+          <input type="text" placeholder="Pilih Tanggal" class="w-full px-2 py-3 focus:outline-none focus:ring-2 focus:ring-blue-400 placeholder-gray-200"
           @change="changeDate"
           >
         </div>

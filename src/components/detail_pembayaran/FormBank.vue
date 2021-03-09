@@ -2,6 +2,7 @@
   <div class="form_banks text-left">
     <div class="relative">
       <input :value="value" @input="handleInput" :placeholder="placeholder" ref="input" tabindex="0"
+      class="placeholder-gray-200"
       @click="showOptions = true"
         :class="inputClass" 
         />
