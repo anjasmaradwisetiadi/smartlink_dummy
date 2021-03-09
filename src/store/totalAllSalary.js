@@ -5,7 +5,7 @@ export const totalAllSalary={
                 nominal:0
             },
             "sub_total_upah":{
-                nominal:2000,
+                nominal:0,
             },
             "sub_total_komisi":{
                 nominal:0,

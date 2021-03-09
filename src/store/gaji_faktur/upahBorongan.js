@@ -47,7 +47,6 @@ export const upahBorongan = {
     },
     getters:{
         getSalaryArrangment:(state)=>{
-            console.log(state.salaryArrangmentData)
             return state.salaryArrangmentData;
         },
         getSalaryWorked:(state)=>{

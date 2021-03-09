@@ -11,19 +11,18 @@
         <div class="mt-3 pb-3 border-b border-dashed">
           <div class="flex flex-col">
             <div v-for="(item,index) in getSalaryArrangment" :key="index">
-              {{index}}
               <div class="flex">
                 <div class="w-1/2 flex flex-col text-left">
                   <div class="text-sm font-semibold">
                     {{item[0].nama}}
                   </div>
                   <div class="text-sm text-gray-400">
-                    {{salaryWorked[index][0].nominal}} KG
+                    {{getSalaryWorked[index][0].nominal}} KG
                   </div>
                 </div>
                 <div class="w-1/2 flex m-auto text-right">
                   <div class="w-full text-sm font-semibold mr-2 ">
-                    20.000
+                    {{item[0].nominal * getSalaryWorked[index][0].nominal | formatPrice}}
                   </div>
                   <span class="material-icons text-base font-bold text-gray-200 -mt-1">
                     not_interested
@@ -45,7 +44,7 @@
             </div>
           </div>
           <div class="w-1/2 font-semibold text-right m-auto">
-            Rp {{subTotalSalary}}
+            Rp {{subTotalSalary | formatPrice}}
           </div>
         </div>
       </div>
@@ -72,7 +71,6 @@
     },
 
     mounted() {
-      this.subTotalSalary;
       this.$store.dispatch('setWageSalary');
       this.$store.dispatch('setWorkedSalary');
 
@@ -81,18 +79,18 @@
     computed: {
       ...mapGetters(['getSalaryArrangment', 'getSalaryWorked']),
 
-      salaryWorked(){
-        return this.getSalaryWorked
-      },
-
-      subTotalSalary() {
-        let dataCall = this.data
-        this.$emit("salaryKomisi", {
+      subTotalSalary(){
+        let allSalaryWholesale=0
+        for (const salaryWorked in this.getSalaryWorked){
+          allSalaryWholesale+=(this.getSalaryWorked[salaryWorked][0].nominal*this.getSalaryArrangment[salaryWorked][0].nominal)
+        }
+        this.$emit("salaryBorongan", {
           name: "sub_total_upah",
-          nominal: dataCall
+          nominal: allSalaryWholesale
         });
-        return dataCall
-      }
+        console.log(allSalaryWholesale)
+        return allSalaryWholesale
+      },
     }
 
 

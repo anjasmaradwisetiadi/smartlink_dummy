@@ -70,6 +70,7 @@
       <!-- Upah Borongan -->
       <upah-borongan
         :items="getAllDataEmployee.data"
+        @salaryBorongan="salaryBorongan"
       ></upah-borongan>
       <sekat></sekat>
 
@@ -264,6 +265,10 @@
         this.enableDelete = data.enableDelete;
         this.indexTo = data.index;
         this.handleResize();
+      },
+
+      salaryBorongan(data){
+        this.collectSubTotal({name:data.name,nominal:data.nominal})
       },
 
       salaryKomisi(data){
