@@ -25,7 +25,7 @@
                 </div>
                 <div class="w-1/2 flex m-auto text-right">
                   <div class="w-full text-sm font-semibold mr-2 ">
-                    Rp.{{item.nominal}}
+                    Rp.{{item.nominal | formatPrice}}
                   </div>
                   <span
                     class="material-icons text-base font-bold text-blue-400 -mt-1 cursor-pointer"
@@ -46,7 +46,7 @@
             </div>
           </div>
           <div class="w-1/2 text-base font-semibold text-right m-auto">
-            Rp {{allSalary}}
+            Rp {{allSalary | formatPrice}}
           </div>
         </div>
       </div>

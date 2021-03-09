@@ -5,7 +5,7 @@
         Total Gaji Kotor
       </div>
       <div class="w-1/2 font-bold text-right">
-        Rp {{getTotalSalaryBruto}}</div>
+        Rp {{getTotalSalaryBruto | formatPrice}}</div>
     </div>
   </div>
 </template>

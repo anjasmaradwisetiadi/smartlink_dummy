@@ -35,7 +35,7 @@
                   </div>
                   <div class="w-1/3 flex text-red-400 m-auto text-right">
                     <div class="w-full text-sm font-semibold mr-2">
-                      {{item.nominal}}
+                      {{item.nominal | formatPrice}}
                     </div>
                     <span class="material-icons text-base font-bold -mt-1 cursor-pointer"
                       @click="modalEditTanggungan({id:item.id,index:indexs})">
@@ -55,7 +55,7 @@
               Tanggungan Dibayar
             </div>
             <div class="w-1/3 text-lg font-semibold text-red-400 text-right m-auto">
-              (-) Rp {{allSalary}}
+              (-) Rp {{allSalary | formatPrice}}
             </div>
           </div>
         </div>

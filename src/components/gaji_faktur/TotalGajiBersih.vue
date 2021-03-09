@@ -12,7 +12,7 @@
 
           <div class="w-1/3 ">
             <div class=" text-base font-bold text-blue-500 text-right">
-              Rp {{getTotalSalaryNet}}
+              Rp {{getTotalSalaryNet | formatPrice}}
             </div>
           </div>
         </div>
