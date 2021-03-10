@@ -24,10 +24,7 @@ export const formAllDetailPembayaran = {
       state.validationDataDate=payload
     }
   },
-  actions: {
-
-
-  },
+  
   getters: {
     getBanks:(state)=>{
         return state.bank;
