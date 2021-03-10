@@ -95,11 +95,7 @@
 
     computed: {
       ...mapGetters(['getTotalSalary', 'getSalaryTypeData', 'getLoading', 'getModeEdit']),
-
-      getModeEdits() {
-        return this.getModeEdit
-      },
-
+      
       allSalary() {
         if (this.getSalaryTypeData.periode && this.getSalaryTypeData.kehadiran) {
 

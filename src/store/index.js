@@ -47,7 +47,7 @@ export default new Vuex.Store({
 
   },
   actions: {
-    setModeEdit(commit,payload){
+    setModeEdit({commit},payload){
       commit('modeEdit',payload)
     }
 

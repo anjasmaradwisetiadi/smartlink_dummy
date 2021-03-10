@@ -8,7 +8,7 @@
       </div>
       <div class="flex flex-col text-left px-4">
         <div class="border-b border-dashed pb-3">
-          <div class="flex mt-2">
+          <div v-if="getModeEdit" class="flex mt-2">
             <span class="material-icons text-xl font-bold text-blue-400 -mt-1 "> add_circle_outline
             </span>
             <div class="ml-3 text-blue-400 text-base font-semibold cursor-pointer"
@@ -18,8 +18,8 @@
             <p class="mt-3 text-red-400">data tidak ada....</p>
           </div>
           <div v-else>
-            <div class="mt-3 pb-3 border-b border-dashed">
-              <div v-for="(item,indexs) in items.komisi" :key="indexs">
+            <div class="pb-3">
+              <div v-for="(item,indexs) in items.komisi" :key="indexs" :class="getModeEdit?'mb-0':'mb-10'">
                 <div class="flex mt-2 ">
                   <div class="w-1/2 text-left font-sm ">
                     {{item.nama}}
@@ -29,6 +29,7 @@
                       Rp.{{item.nominal | formatPrice}}
                     </div>
                     <span
+                      v-if="getModeEdit"
                       class="material-icons text-base font-bold text-blue-400 -mt-1 cursor-pointer"
                       @click="modalEditKomisi({id:item.id,index:indexs})">
                       mode_edit
@@ -71,6 +72,8 @@
     },
 
     computed: {
+      ...mapGetters(['getModeEdit']),
+
       allSalary() {
         let dataLength = this.items.komisi.length;
 

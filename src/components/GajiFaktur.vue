@@ -120,10 +120,6 @@
     mapMutations
   } from 'vuex';
 
-
-
-
-
   export default {
     components: {
       EditGaji,
@@ -174,6 +170,7 @@
 
     mounted() {
       this.$store.dispatch('setInquiry');
+      this.$store.dispatch('setModeEdit',true);
     },
 
     methods: {

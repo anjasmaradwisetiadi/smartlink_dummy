@@ -8,15 +8,24 @@
     </div>
     <!-- Resi & Profile -->
     <id-detail-faktur></id-detail-faktur>
-      <profile :items="getAllDataEmployee.data"></profile>
+    <profile :items="getAllDataEmployee.data"></profile>
     <sekat></sekat>
 
     <!-- Gaji -->
-    <gaji :items="getAllDataEmployee.data" >
+    <gaji :items="getAllDataEmployee.data">
     </gaji>
     <sekat></sekat>
 
-    <!-- <komisi></komisi> -->
+    <!-- Upah Borongan -->
+    <upah-borongan :items="getAllDataEmployee.data"
+    >
+    </upah-borongan>
+    <sekat></sekat>
+
+    <!-- komisi -->
+    <komisi :items="getAllDataEmployee.data" ></komisi>
+    <sekat></sekat>
+
     <total-gaji-kotor></total-gaji-kotor>
     <sekat>
     </sekat>
@@ -32,23 +41,24 @@
   } from 'vuex';
 
   import Sekat from './component_reuse/Sekat.vue';
-
   import IdDetailFaktur from './gaji_faktur/IdDetailFaktur.vue'
   import Profile from './gaji_faktur/Profile.vue'
-  import Gaji from './gaji_faktur/Gaji.vue';  
+  import Gaji from './gaji_faktur/Gaji.vue';
   import Komisi from './gaji_faktur/Komisi.vue';
+  import UpahBorongan from './gaji_faktur/UpahBorongan.vue';
   import TotalGajiBersih from './gaji_faktur/TotalGajiBersih.vue';
   import TotalGajiKotor from './gaji_faktur/TotalGajiKotor.vue';
   import Keterangan from './gaji_faktur/Keterangan.vue';
-  
+
   export default {
     components: {
+      Sekat,
       IdDetailFaktur,
       Profile,
       Gaji,
       Komisi,
+      UpahBorongan,
       TotalGajiBersih,
-      Sekat,
       TotalGajiKotor,
       Keterangan
 

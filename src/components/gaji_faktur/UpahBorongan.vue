@@ -24,7 +24,9 @@
                   <div class="w-full text-sm font-semibold mr-2 ">
                     {{item[0].nominal * getSalaryWorked[index][0].nominal | formatPrice}}
                   </div>
-                  <span class="material-icons text-base font-bold text-gray-200 -mt-1">
+                  <span 
+                  v-if="getModeEdit"
+                  class="material-icons text-base font-bold text-gray-200 -mt-1">
                     not_interested
                   </span>
                 </div>
@@ -77,7 +79,7 @@
     },
 
     computed: {
-      ...mapGetters(['getSalaryArrangment', 'getSalaryWorked']),
+      ...mapGetters(['getSalaryArrangment', 'getSalaryWorked','getModeEdit']),
 
       subTotalSalary(){
         let allSalaryWholesale=0
