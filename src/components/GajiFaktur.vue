@@ -5,15 +5,12 @@
       Still Loading....
     </div>
 
-    <div
-    v-else-if="!getLoading && getErrorMessage"
-    class="loading text-center mx-auto relative text-red-500 text-lg font-bold pt-4"
-    >
-    Error terjadi {{getErrorMessage}}
+    <div v-else-if="!getLoading && getErrorMessage"
+      class="loading text-center mx-auto relative text-red-500 text-lg font-bold pt-4">
+      Error terjadi {{getErrorMessage}}
     </div>
 
-    <div v-else
-      class="main_page ">
+    <div v-else class="main_page ">
       <!-- Modal Start-->
       <!-- modal Profile -->
       <div class="modal_Kehadiran" v-if="popUpModal && (editModalState==='EditKehadiran')">
@@ -23,36 +20,25 @@
 
       <!-- modal Gaji & Absen -->
       <div class="modal_Gaji" v-if="popUpModal && (editModalState==='EditGaji')">
-        <edit-gaji 
-          :items="getAllDataEmployee.data"
-          :id-to="idTo">
+        <edit-gaji :items="getAllDataEmployee.data" :id-to="idTo">
         </edit-gaji>
       </div>
       <div class="modal_Absen" v-if="popUpModal && (editModalState==='EditAbsen')">
-        <edit-absen 
-          :items="getAllDataEmployee.data"
-          :id-to="idTo">
+        <edit-absen :items="getAllDataEmployee.data" :id-to="idTo">
         </edit-absen>
       </div>
 
       <!-- modal Komisi -->
       <div class="modal_Komisi" v-if="popUpModal && (editModalState === 'EditKomisi')">
-        <edit-komisi 
-          :items="getAllDataEmployee.data" 
-          :id-to="idTo" 
-          :enable-delete="enableDelete"
-          :index-to="indexTo"
-        >
+        <edit-komisi :items="getAllDataEmployee.data" :id-to="idTo" :enable-delete="enableDelete"
+          :index-to="indexTo">
         </edit-komisi>
       </div>
 
       <!-- modal Tanggungan -->
       <div class="modal_Tanggungan" v-if="popUpModal && (editModalState === 'EditTanggungan')">
-        <edit-tanggungan 
-          :items="getAllDataEmployee.data" 
-          :id-to="idTo" 
-          :enable-delete="enableDelete"
-          :index-to="indexTo"></edit-tanggungan>
+        <edit-tanggungan :items="getAllDataEmployee.data" :id-to="idTo"
+          :enable-delete="enableDelete" :index-to="indexTo"></edit-tanggungan>
       </div>
       <!-- Modal End-->
 
@@ -63,37 +49,29 @@
       <sekat></sekat>
 
       <!-- Gaji & Absen -->
-      <gaji :items="getAllDataEmployee.data" @modalEditGaji="modalEditGaji" @salaryGaji="salaryGaji">
+      <gaji :items="getAllDataEmployee.data" @modalEditGaji="modalEditGaji"
+        @salaryGaji="salaryGaji">
       </gaji>
       <sekat></sekat>
 
       <!-- Upah Borongan -->
-      <upah-borongan
-        :items="getAllDataEmployee.data"
-        @salaryBorongan="salaryBorongan"
-      ></upah-borongan>
+      <upah-borongan :items="getAllDataEmployee.data" @salaryBorongan="salaryBorongan">
+      </upah-borongan>
       <sekat></sekat>
 
       <!-- komisi -->
-      <komisi :items="getAllDataEmployee.data" 
-        @modalAddKomisi="modalAddKomisi"
-        @modalEditKomisi="modalEditKomisi"
-        @salaryKomisi ="salaryKomisi"
-      ></komisi>
+      <komisi :items="getAllDataEmployee.data" @modalAddKomisi="modalAddKomisi"
+        @modalEditKomisi="modalEditKomisi" @salaryKomisi="salaryKomisi"></komisi>
       <sekat></sekat>
 
       <!-- Gaji Kotor -->
-      <total-gaji-kotor
-      ></total-gaji-kotor>
+      <total-gaji-kotor></total-gaji-kotor>
       <sekat></sekat>
 
       <!-- Tanggungan -->
-      <tanggungan 
-      :items="getAllDataEmployee.data"
-      @modalAddTanggungan="modalAddTanggungan"
-      @modalEditTanggungan="modalEditTanggungan"
-      @salaryTanggungan="salaryTanggungan"
-      ></tanggungan>
+      <tanggungan :items="getAllDataEmployee.data" @modalAddTanggungan="modalAddTanggungan"
+        @modalEditTanggungan="modalEditTanggungan" @salaryTanggungan="salaryTanggungan">
+      </tanggungan>
 
       <sekat></sekat>
 
@@ -101,18 +79,6 @@
       <total-gaji-bersih></total-gaji-bersih>
 
     </div>
-
-
-    <!-- 
-
- -->
-
-
-
-    <!-- <sekat></sekat>
-
-
-      <sekat></sekat> -->
 
   </section>
 </template>
@@ -190,7 +156,7 @@
     },
 
     computed: {
-      ...mapGetters(['getAllDataEmployee', 'getToggleModal', 'getLoading','getErrorMessage']),
+      ...mapGetters(['getAllDataEmployee', 'getToggleModal', 'getLoading', 'getErrorMessage']),
 
       popUpModal() {
         return this.toggleModal = this.getToggleModal
@@ -206,14 +172,12 @@
       window.addEventListener('resize', this.handleResize);
     },
 
-
-
     mounted() {
       this.$store.dispatch('setInquiry');
     },
 
     methods: {
-      ...mapMutations(['modalEdit', 'innerWidthHeight','collectSubTotal']),
+      ...mapMutations(['modalEdit', 'innerWidthHeight', 'collectSubTotal']),
 
       getDataEndpointInquiry() {
         this.setInquiry;
@@ -247,14 +211,14 @@
         this.handleResize();
       },
 
-      modalAddTanggungan(data){
+      modalAddTanggungan(data) {
         this.idTo = data.id;
-        this.editModalState=data.variabel;
-        this.enableDelete=data.enableDelete;
+        this.editModalState = data.variabel;
+        this.enableDelete = data.enableDelete;
         this.handleResize();
       },
 
-      modalEditTanggungan(data){
+      modalEditTanggungan(data) {
         this.idTo = data.id;
         this.editModalState = data.variabel;
         this.enableDelete = data.enableDelete;
@@ -262,20 +226,32 @@
         this.handleResize();
       },
 
-      salaryGaji(data){
-        this.collectSubTotal({name:data.name,nominal:data.nominal})
+      salaryGaji(data) {
+        this.collectSubTotal({
+          name: data.name,
+          nominal: data.nominal
+        })
       },
 
-      salaryBorongan(data){
-        this.collectSubTotal({name:data.name,nominal:data.nominal})
+      salaryBorongan(data) {
+        this.collectSubTotal({
+          name: data.name,
+          nominal: data.nominal
+        })
       },
 
-      salaryKomisi(data){
-        this.collectSubTotal({name:data.name,nominal:data.nominal})
+      salaryKomisi(data) {
+        this.collectSubTotal({
+          name: data.name,
+          nominal: data.nominal
+        })
       },
 
-      salaryTanggungan(data){
-        this.collectSubTotal({name:data.name,nominal:data.nominal})
+      salaryTanggungan(data) {
+        this.collectSubTotal({
+          name: data.name,
+          nominal: data.nominal
+        })
       },
 
       handleResize() {
@@ -285,9 +261,6 @@
         })
 
       },
-
-
-
     }
 
   }

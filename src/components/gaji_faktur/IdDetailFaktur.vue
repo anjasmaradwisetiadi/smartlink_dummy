@@ -5,14 +5,17 @@
         GJI200121280129001
       </div>
       <div class="text-sm text-gray-500">
-        Dicatat : 31 Januari 2021
+        Dicatat : {{getDate}}
       </div>
     </div>
   </div>
 </template>
 <script>
+import { mapGetters } from 'vuex'
   export default {
-
+    computed:{
+      ...mapGetters(['getDate'])
+    }
   }
 
 </script>

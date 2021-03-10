@@ -48,17 +48,10 @@
 
       changeDataBanks() {
         return Object.entries(this.getBanks)
-
       }
     },
 
     mounted() {
-      console.log(Object.entries(this.getBanks));
-      if ((this.getBanks.length) === null) {
-        console.log("kosong")
-      } else {
-        console.log("isi")
-      }
       this.$store.dispatch('setBanks')
     },
 
@@ -66,11 +59,11 @@
       ...mapMutations(['validBank', 'validDate']),
 
       submitSalary() {
-
         if (this.validateInput() === 1) {
           this.$router.push({
             path: '/detail-faktur'
-          })
+          });
+          this.$store.dispatch('setModeEdit',false);
           this.$store.dispatch('setSubmitGaji')
         } else {
           return false

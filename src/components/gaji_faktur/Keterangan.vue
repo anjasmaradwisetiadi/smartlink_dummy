@@ -4,7 +4,7 @@
     <div class="flex flex-col px-4">
       <div class="flex flex-col pb-8 text-left">
         <div class="text-sm text-gray-400">Keterangan</div>
-        <div class="text-base font-semibold mt-1">Lebih Semangat Lagi Ya !</div>
+        <div class="text-base font-semibold mt-1"> {{getDescription}}</div>
       </div>
       <button
         class=" w-full py-4 bg-green-500 text-white text-lg text-center rounded-md">Cetak</button>
@@ -12,8 +12,11 @@
   </div>
 </template>
 <script>
+import { mapGetters } from 'vuex'
   export default {
-
+      computed:{
+          ...mapGetters(['getDescription'])
+      }
   }
 
 </script>

@@ -22,7 +22,7 @@
                     <div class="w-full text-sm font-semibold mr-2">
                       {{itemSalary.nominal*items.total_periode | formatPrice}}
                     </div>
-                    <span @click.prevent="modalEditGaji(itemSalary.id)"
+                    <span v-if="getModeEdit" @click.prevent="modalEditGaji(itemSalary.id)"
                       class="material-icons text-base font-bold text-blue-400 -mt-1 cursor-pointer">
                       mode_edit </span>
                   </div>
@@ -39,7 +39,7 @@
                     <div class="w-full text-sm font-semibold mr-2 ">
                       {{itemSalary.nominal*items.total_kehadiran | formatPrice}}
                     </div>
-                    <span @click.prevent="modalEditAbsen(itemSalary.id)"
+                    <span v-if="getModeEdit" @click.prevent="modalEditAbsen(itemSalary.id)"
                       class="material-icons text-base font-bold text-blue-400 -mt-1 cursor-pointer">
                       mode_edit </span>
                   </div>
@@ -94,11 +94,15 @@
     },
 
     computed: {
-      ...mapGetters(['getTotalSalary', 'getSalaryTypeData', 'getLoading']),
+      ...mapGetters(['getTotalSalary', 'getSalaryTypeData', 'getLoading', 'getModeEdit']),
+
+      getModeEdits() {
+        return this.getModeEdit
+      },
 
       allSalary() {
         if (this.getSalaryTypeData.periode && this.getSalaryTypeData.kehadiran) {
-          
+
           let dataLengthPeriode = (this.getSalaryTypeData.periode).length;
           let dataLengthPresence = (this.getSalaryTypeData.kehadiran).length;
 

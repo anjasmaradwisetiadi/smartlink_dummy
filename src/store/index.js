@@ -26,7 +26,7 @@ export default new Vuex.Store({
     dataBanks:[],
     errorMessage:'',
     loading: true,
-
+    statusEdit: true,
   },
   mutations: {
     inquiry(state,payload){
@@ -38,12 +38,18 @@ export default new Vuex.Store({
     },
 
     errorMessage(state,payload){
-      state.errorMessage=payload
+      state.errorMessage=payload;
+    },
+
+    modeEdit(state,payload){
+      state.statusEdit=payload
     }
 
   },
   actions: {
-
+    setModeEdit(commit,payload){
+      commit('modeEdit',payload)
+    }
 
   },
   getters: {
@@ -61,6 +67,10 @@ export default new Vuex.Store({
     getLoading: (state)=>{
       return state.loading;
     },
+
+    getModeEdit: (state)=>{
+      return state.statusEdit;
+    }
 
 
   },
