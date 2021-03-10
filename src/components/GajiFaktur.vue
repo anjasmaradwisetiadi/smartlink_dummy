@@ -63,7 +63,7 @@
       <sekat></sekat>
 
       <!-- Gaji & Absen -->
-      <gaji :items="getAllDataEmployee.data" @modalEditGaji="modalEditGaji">
+      <gaji :items="getAllDataEmployee.data" @modalEditGaji="modalEditGaji" @salaryGaji="salaryGaji">
       </gaji>
       <sekat></sekat>
 
@@ -224,7 +224,6 @@
         this.editModalState = data.variabel;
         this.idTo = data.id;
 
-
         this.handleResize();
       },
 
@@ -261,6 +260,10 @@
         this.enableDelete = data.enableDelete;
         this.indexTo = data.index;
         this.handleResize();
+      },
+
+      salaryGaji(data){
+        this.collectSubTotal({name:data.name,nominal:data.nominal})
       },
 
       salaryBorongan(data){

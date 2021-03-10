@@ -31,7 +31,8 @@
                 <div v-if="index === 'kehadiran'" class="flex mt-2 pb-3">
                   <div class="w-1/2 flex flex-col text-left">
                     <div class="text-sm font-semibold"> {{itemSalary.nama}} </div>
-                    <div class="text-sm font-normal text-gray-400">{{itemSalary.nominal | formatPrice}} x
+                    <div class="text-sm font-normal text-gray-400">
+                      {{itemSalary.nominal | formatPrice}} x
                       {{items.total_kehadiran}} kehadiran</div>
                   </div>
                   <div class="w-1/2 flex m-auto text-right">
@@ -54,7 +55,7 @@
             Subtotal Gaji
           </div>
           <div class="w-1/2 font-semibold text-right">
-            Rp 2.524.000
+            Rp {{allSalary | formatPrice}}
           </div>
         </div>
       </div>
@@ -89,11 +90,42 @@
 
     mounted() {
       this.$store.dispatch("setSalary");
+      this.allSalary;
     },
 
     computed: {
-      ...mapGetters(['getTotalSalary', 'getSalaryTypeData']),
+      ...mapGetters(['getTotalSalary', 'getSalaryTypeData', 'getLoading']),
 
+      allSalary() {
+        if (this.getSalaryTypeData.periode && this.getSalaryTypeData.kehadiran) {
+          
+          let dataLengthPeriode = (this.getSalaryTypeData.periode).length;
+          let dataLengthPresence = (this.getSalaryTypeData.kehadiran).length;
+
+          let valuePresence = 0;
+          let valuePeriode = 0;
+          let valueAllSalary = 0;
+
+          // count periode
+          for (let i = 0; i < dataLengthPeriode; i++) {
+            valuePeriode += (this.getSalaryTypeData.periode[i].nominal * this.items.total_periode);
+          };
+          // count Kehadiran
+          for (let i = 0; i < dataLengthPresence; i++) {
+            valuePresence += (this.getSalaryTypeData.kehadiran[i].nominal * this.items
+              .total_kehadiran);
+          };
+
+          valueAllSalary = (valuePresence + valuePeriode);
+          this.$emit("salaryGaji", {
+            name: "sub_total_gaji",
+            nominal: valueAllSalary
+          });
+          return valueAllSalary;
+        } else {
+          return false
+        }
+      }
     },
 
     methods: {
