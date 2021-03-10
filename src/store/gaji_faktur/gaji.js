@@ -36,8 +36,6 @@ export const gaji = {
     },
     getters:{
         getSalaryTypeData:(state)=>{
-            console.log("salary type data")
-            console.log(state.salaryTypeData)
             return state.salaryTypeData
         }
     }

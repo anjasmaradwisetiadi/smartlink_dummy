@@ -90,9 +90,10 @@
         type: Object
       },
 
-      indexTo: {
+      idTo: {
         type: Number
-      }
+      },
+
     },
 
     computed: {
@@ -106,7 +107,15 @@
       },
 
       firstTimeNominal() {
-        return this.nominal = this.items.pengaturan_gaji[this.indexTo].nominal;
+        this.items.pengaturan_gaji.forEach(item => {
+          if (item.id === this.idTo) {
+            return this.nominal = item.nominal
+          } else {
+            return false
+          }
+        });
+        console.log(this.nominal)
+
       },
 
       firstTimePeriode() {
@@ -145,7 +154,15 @@
 
         this.saveData = true;
         if (this.saveData) {
-          this.items.pengaturan_gaji[this.indexTo].nominal = parseInt(this.nominal);
+
+          this.items.pengaturan_gaji.forEach(item => {
+            if (item.id === this.idTo) {
+              return item.nominal = parseInt(this.nominal)
+            } else {
+              return false
+            }
+          });
+          // this.items.pengaturan_gaji[this.idTo].nominal = parseInt(this.nominal);
           this.items.total_periode = parseInt(this.periode);
 
           this.totalSalary({
@@ -154,7 +171,15 @@
           })
           // this.setUpdateSalarys(items);
         } else {
-          this.nominal = this.items.pengaturan_gaji[this.indexTo].nominal;
+          this.items.pengaturan_gaji.forEach(item => {
+            if (item.id === this.idTo) {
+             return this.nominal = item.nominal
+            }
+            else{
+              return false
+            }
+          });
+          // this.nominal = this.items.pengaturan_gaji[this.idTo].nominal;
           this.periode = this.items.total_periode;
         }
 

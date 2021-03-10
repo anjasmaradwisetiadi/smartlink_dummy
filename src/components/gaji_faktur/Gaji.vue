@@ -22,7 +22,7 @@
                     <div class="w-full text-sm font-semibold mr-2">
                       {{itemSalary.nominal*items.total_periode | formatPrice}}
                     </div>
-                    <span @click.prevent="modalEditGaji(index)"
+                    <span @click.prevent="modalEditGaji(itemSalary.id)"
                       class="material-icons text-base font-bold text-blue-400 -mt-1 cursor-pointer">
                       mode_edit </span>
                   </div>
@@ -38,7 +38,7 @@
                     <div class="w-full text-sm font-semibold mr-2 ">
                       {{itemSalary.nominal*items.total_kehadiran | formatPrice}}
                     </div>
-                    <span @click.prevent="modalEditAbsen(index)"
+                    <span @click.prevent="modalEditAbsen(itemSalary.id)"
                       class="material-icons text-base font-bold text-blue-400 -mt-1 cursor-pointer">
                       mode_edit </span>
                   </div>
@@ -99,18 +99,18 @@
     methods: {
       ...mapMutations(['modalEdit', 'totalSalary']),
 
-      modalEditGaji(index) {
+      modalEditGaji(dataId) {
         this.$emit('modalEditGaji', {
           variabel: 'EditGaji',
-          index: index
+          id: dataId
         });
         this.modalEdit(true)
       },
 
-      modalEditAbsen(index) {
+      modalEditAbsen(dataId) {
         this.$emit('modalEditGaji', {
           variabel: 'EditAbsen',
-          index: index
+          id: dataId
         });
         this.modalEdit(true);
       },

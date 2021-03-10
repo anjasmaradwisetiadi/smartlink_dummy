@@ -88,7 +88,6 @@
           name: "sub_total_upah",
           nominal: allSalaryWholesale
         });
-        console.log(allSalaryWholesale)
         return allSalaryWholesale
       },
     }

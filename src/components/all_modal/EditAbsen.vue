@@ -81,7 +81,7 @@
         type: Object
       },
 
-      indexTo: {
+      idTo: {
         type: Number
       }
     },
@@ -97,7 +97,13 @@
       },
 
       firstTimeNominal() {
-        return this.nominal = this.items.pengaturan_gaji[this.indexTo].nominal;
+        this.items.pengaturan_gaji.forEach(item => {
+          if (item.id === this.idTo) {
+            return this.nominal = item.nominal
+          } else {
+            return false
+          }
+        });
       },
 
       firstTimePresence() {
@@ -131,10 +137,23 @@
         this.saveData = true;
 
         if (this.saveData) {
-          this.items.pengaturan_gaji[this.indexTo].nominal = parseInt(this.nominal);
+          this.items.pengaturan_gaji.forEach(item => {
+            if (item.id === this.idTo) {
+              return item.nominal = parseInt(this.nominal)
+            } else {
+              return false
+            }
+          });
+
           this.items.total_kehadiran = parseInt(this.presence);
         } else {
-          this.nominal = this.items.pengaturan_gaji[this.indexTo].nominal;
+          this.items.pengaturan_gaji.forEach(item => {
+            if (item.id === this.idTo) {
+              return this.nominal = item.nominal
+            } else {
+              return false
+            }
+          });
           this.presence = this.items.total_kehadiran;
         }
 

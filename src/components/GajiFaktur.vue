@@ -24,14 +24,14 @@
       <!-- modal Gaji & Absen -->
       <div class="modal_Gaji" v-if="popUpModal && (editModalState==='EditGaji')">
         <edit-gaji 
-          :items="items.data"
-          :index-to="indexTo">
+          :items="getAllDataEmployee.data"
+          :id-to="idTo">
         </edit-gaji>
       </div>
       <div class="modal_Absen" v-if="popUpModal && (editModalState==='EditAbsen')">
         <edit-absen 
-        :items="items.data"
-          :index-to="indexTo">
+          :items="getAllDataEmployee.data"
+          :id-to="idTo">
         </edit-absen>
       </div>
 
@@ -222,14 +222,10 @@
       modalEditGaji(data) {
 
         this.editModalState = data.variabel;
-        this.indexTo = data.index;
+        this.idTo = data.id;
+
 
         this.handleResize();
-        if (data.data) {
-          this.modalEdit(data.data)
-        } else {
-          return false
-        }
       },
 
       modalEditKehadiran(data) {
