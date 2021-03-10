@@ -11,11 +11,11 @@ export const getInquiry = {
       axios.get(urlInquiry)
         .then(function (response) {
           commit('inquiry',response.data)
-          return rootState.loading = false;
+          rootState.loading = false;
         })
         .catch(function (error) {
           rootState.errorMessage=error.message
-          return rootState.loading = false;
+          rootState.loading = false;
         })
     }
 

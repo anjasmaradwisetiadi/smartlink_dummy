@@ -12,6 +12,7 @@ import { getInquiry } from './consume_API/inquiry';
 import { getBanks } from './consume_API/banks';
 import { upahBorongan } from './gaji_faktur/upahBorongan';
 import { gaji } from './gaji_faktur/gaji';
+import { postSalary } from './consume_API/submitGaji'
 
 
 // import { dataEmployee } from '../service/dataEmployee'
@@ -75,7 +76,8 @@ export default new Vuex.Store({
     getInquiry,
     getBanks,
     upahBorongan,
-    gaji
+    gaji,
+    postSalary,
 
   },
 });

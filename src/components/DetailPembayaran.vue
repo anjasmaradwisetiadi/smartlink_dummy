@@ -66,11 +66,12 @@
       ...mapMutations(['validBank', 'validDate']),
 
       submitSalary() {
-        
+
         if (this.validateInput() === 1) {
           this.$router.push({
             path: '/detail-faktur'
           })
+          this.$store.dispatch('setSubmitGaji')
         } else {
           return false
         }
