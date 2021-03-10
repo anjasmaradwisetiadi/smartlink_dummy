@@ -17,20 +17,28 @@
     <sekat></sekat>
 
     <!-- Upah Borongan -->
-    <upah-borongan :items="getAllDataEmployee.data"
-    >
+    <upah-borongan :items="getAllDataEmployee.data">
     </upah-borongan>
     <sekat></sekat>
 
     <!-- komisi -->
-    <komisi :items="getAllDataEmployee.data" ></komisi>
+    <komisi :items="getAllDataEmployee.data"></komisi>
     <sekat></sekat>
 
+    <!-- Gaji Kotor -->
     <total-gaji-kotor></total-gaji-kotor>
-    <sekat>
-    </sekat>
+    <sekat></sekat>
+
+    <!-- Tanggungan -->
+    <tanggungan :items="getAllDataEmployee.data">
+    </tanggungan>
+    <sekat></sekat>
+
+    <!-- Gaji Bersih -->
     <total-gaji-bersih></total-gaji-bersih>
+    <sekat></sekat>
     <!-- keterangan -->
+    <sekat></sekat>
     <keterangan></keterangan>
   </section>
 </template>

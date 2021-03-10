@@ -14,12 +14,13 @@
             <div class="ml-3 text-blue-400 text-base font-semibold cursor-pointer"
               @click.prevent="modalAddKomisi()">Tambah komisi lain...</div>
           </div>
-          <div v-if="(items.komisi).length === 0">
+          <div v-if="(items.komisi).length === 0" :class="getModeEdit?'mb-0':'mb-10'">
             <p class="mt-3 text-red-400">data tidak ada....</p>
           </div>
           <div v-else>
             <div class="pb-3">
-              <div v-for="(item,indexs) in items.komisi" :key="indexs" :class="getModeEdit?'mb-0':'mb-10'">
+              <div v-for="(item,indexs) in items.komisi" :key="indexs"
+                :class="getModeEdit?'mb-0':'mb-10'">
                 <div class="flex mt-2 ">
                   <div class="w-1/2 text-left font-sm ">
                     {{item.nama}}
@@ -28,8 +29,7 @@
                     <div class="w-full text-sm font-semibold mr-2 ">
                       Rp.{{item.nominal | formatPrice}}
                     </div>
-                    <span
-                      v-if="getModeEdit"
+                    <span v-if="getModeEdit"
                       class="material-icons text-base font-bold text-blue-400 -mt-1 cursor-pointer"
                       @click="modalEditKomisi({id:item.id,index:indexs})">
                       mode_edit

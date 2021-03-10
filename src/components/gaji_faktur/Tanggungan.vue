@@ -12,18 +12,25 @@
         </div>
 
         <div class="flex flex-col mt-3">
-          <div class="flex mt-2 text-left">
+          <div
+            v-if="getModeEdit"
+           class="flex mt-2 text-left">
             <span class="material-icons text-xl font-bold text-blue-400 -mt-1 "> add_circle_outline
             </span>
             <div class="ml-3 text-blue-400 text-base font-semibold cursor-pointer"
               @click.prevent="modalAddTanggungan()">Tambah Pembayaran Tanggungan...</div>
           </div>
-          <div v-if="(items.tanggungan).length === 0">
+          <div 
+          v-if="(items.tanggungan).length === 0"
+          :class="getModeEdit?'mb-0':'mb-10'"
+          >
             <p class="mt-3 text-red-400 text-left">data tidak ada....</p>
           </div>
           <div v-else>
             <div class="mt-3">
-              <div v-for="(item, indexs) in items.tanggungan" :key="indexs" class="w-full">
+              <div v-for="(item, indexs) in items.tanggungan" :key="indexs" 
+              :class="getModeEdit?'mb-0':'mb-10'"
+              class="w-full">
                 <div class="flex relative">
                   <div class="w-2/3 flex flex-col text-left">
                     <div class="text-sm font-semibold">
@@ -37,7 +44,9 @@
                     <div class="w-full text-sm font-semibold mr-2">
                       {{item.nominal | formatPrice}}
                     </div>
-                    <span class="material-icons text-base font-bold -mt-1 cursor-pointer"
+                    <span 
+                      v-if="getModeEdit"
+                      class="material-icons text-base font-bold -mt-1 cursor-pointer"
                       @click="modalEditTanggungan({id:item.id,index:indexs})">
                       mode_edit
                     </span>
@@ -78,6 +87,8 @@
       },
     },
     computed:{
+        ...mapGetters(['getModeEdit']),
+
         allSalary(){
             let dataLength = (this.items.tanggungan).length;
 

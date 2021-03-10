@@ -72,7 +72,6 @@
       <tanggungan :items="getAllDataEmployee.data" @modalAddTanggungan="modalAddTanggungan"
         @modalEditTanggungan="modalEditTanggungan" @salaryTanggungan="salaryTanggungan">
       </tanggungan>
-
       <sekat></sekat>
 
       <!-- Gaji Bersih -->
