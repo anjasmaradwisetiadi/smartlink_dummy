@@ -6,20 +6,6 @@ export const editGaji = {
         result:null
     },
     mutations:{
-        // updateSalarys(state,payload){
-        //     let index = state.dataEmployee.findIndex((todo)=> 
-        //         {
-        //         todo.data.pengaturan_gaji[0].id == pengaturan_gaji[0].id
-        //         }
-        //     )
-
-        //     console.log(index);
-
-        //     if(index != -1){
-        //         state.dataEmployee[index] = payload
-        //       }
-        // },
-
         totalSalary(state,payload){
             state.result=payload.nominal*payload.periode;
         }

@@ -1,5 +1,5 @@
 <template>
-  <section class="Gaji_Faktur pt-14">
+  <section class="Gaji_Faktur pt-12">
     <div v-if="getLoading"
       class="loading text-center mx-auto relative text-red-500 text-lg font-bold pt-4">
       Still Loading....
@@ -110,6 +110,7 @@
   import Sekat from './component_reuse/Sekat.vue';
   import Tanggungan from './gaji_faktur/Tanggungan.vue';
 
+  import {mixinsAllModal} from '../utilis/mixins/mixinAllModal'
 
   import {
     mapActions,
@@ -141,12 +142,6 @@
     data() {
       return {
         toggleModal: false,
-        innerWidth: 0,
-        innerHeight: 0,
-        editModalState: '',
-        indexTo: null,
-        idTo: null,
-        enableDelete: false
       }
     },
 
@@ -159,67 +154,20 @@
 
     },
 
-    created() {
-      window.addEventListener('resize', this.handleResize);
-    },
-
-    destroyed() {
-      window.addEventListener('resize', this.handleResize);
-    },
-
     mounted() {
       this.$store.dispatch('setInquiry');
       this.$store.dispatch('setModeEdit',true);
     },
 
+    mixins:[mixinsAllModal],
+
     methods: {
       ...mapMutations(['modalEdit', 'innerWidthHeight', 'collectSubTotal']),
 
+      // all data and fucionalitas Edit Modal  store in mixin(mixinsAllModal)
+
       getDataEndpointInquiry() {
         this.setInquiry;
-      },
-
-      modalEditGaji(data) {
-
-        this.editModalState = data.variabel;
-        this.idTo = data.id;
-
-        this.handleResize();
-      },
-
-      modalEditKehadiran(data) {
-        this.editModalState = data.variabel;
-        this.handleResize();
-      },
-
-      modalAddKomisi(data) {
-        this.idTo = data.id;
-        this.editModalState = data.variabel;
-        this.enableDelete = data.enableDelete;
-        this.handleResize();
-      },
-
-      modalEditKomisi(data) {
-        this.idTo = data.id;
-        this.editModalState = data.variabel;
-        this.enableDelete = data.enableDelete;
-        this.indexTo = data.index;
-        this.handleResize();
-      },
-
-      modalAddTanggungan(data) {
-        this.idTo = data.id;
-        this.editModalState = data.variabel;
-        this.enableDelete = data.enableDelete;
-        this.handleResize();
-      },
-
-      modalEditTanggungan(data) {
-        this.idTo = data.id;
-        this.editModalState = data.variabel;
-        this.enableDelete = data.enableDelete;
-        this.indexTo = data.index;
-        this.handleResize();
       },
 
       salaryGaji(data) {
@@ -248,14 +196,6 @@
           name: data.name,
           nominal: data.nominal
         })
-      },
-
-      handleResize() {
-        this.innerWidthHeight({
-          innerWidth: window.innerWidth,
-          innerHeight: window.innerHeight
-        })
-
       },
     }
 
