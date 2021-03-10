@@ -6,7 +6,7 @@
           Komisi
         </div>
       </div>
-      <div class="flex flex-col text-left px-4">
+      <div class="flex flex-col text-left px-4 mt-3">
         <div class="border-b border-dashed pb-3">
           <div v-if="getModeEdit" class="flex mt-2">
             <span class="material-icons text-xl font-bold text-blue-400 -mt-1 "> add_circle_outline

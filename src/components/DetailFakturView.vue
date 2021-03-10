@@ -21,13 +21,11 @@
     </upah-borongan>
     <sekat></sekat>
 
-    <!-- komisi -->
+    <!-- komisi Gaji Kotor -->
     <komisi :items="getAllDataEmployee.data"></komisi>
-    <sekat></sekat>
-
-    <!-- Gaji Kotor -->
     <total-gaji-kotor></total-gaji-kotor>
     <sekat></sekat>
+
 
     <!-- Tanggungan -->
     <tanggungan :items="getAllDataEmployee.data">
@@ -38,7 +36,6 @@
     <total-gaji-bersih></total-gaji-bersih>
     <sekat></sekat>
     <!-- keterangan -->
-    <sekat></sekat>
     <keterangan></keterangan>
   </section>
 </template>
@@ -56,6 +53,7 @@
   import UpahBorongan from './gaji_faktur/UpahBorongan.vue';
   import TotalGajiBersih from './gaji_faktur/TotalGajiBersih.vue';
   import TotalGajiKotor from './gaji_faktur/TotalGajiKotor.vue';
+  import Tanggungan from './gaji_faktur/Tanggungan.vue';
   import Keterangan from './gaji_faktur/Keterangan.vue';
 
   export default {
@@ -68,6 +66,7 @@
       UpahBorongan,
       TotalGajiBersih,
       TotalGajiKotor,
+      Tanggungan,
       Keterangan
 
     },

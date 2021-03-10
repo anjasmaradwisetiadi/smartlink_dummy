@@ -2,14 +2,14 @@
   <section class="Upah_Borongan">
     <!-- Upah Borongan -->
     <div class="Upah Borongan flex flex-col mt-3 pb-3">
-      <div class="flex flex-col text-left px-4  ">
-        <div class="pb-3 border-b">
-          <div class=" text-base font-bold ">
+      <div class="flex flex-col text-left ">
+        <div class="pb-3 border-b ">
+          <div class=" text-base font-bold px-4">
             Upah Borongan
           </div>
         </div>
-        <div class="mt-3 pb-3 border-b border-dashed">
-          <div class="flex flex-col">
+        <div class="mt-3 px-4">
+          <div class="flex flex-col border-b border-dashed pb-3">
             <div v-for="(item,index) in getSalaryArrangment" :key="index">
               <div class="flex">
                 <div class="w-1/2 flex flex-col text-left">
@@ -39,7 +39,7 @@
 
         </div>
 
-        <div class="flex mt-3 pb-4 ">
+        <div class="flex mt-3 pb-4 px-4">
           <div class="w-1/2 flex flex-col text-left">
             <div class="font-semibold">
               Subtotal Upah

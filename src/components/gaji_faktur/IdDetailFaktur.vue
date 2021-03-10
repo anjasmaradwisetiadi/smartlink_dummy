@@ -1,6 +1,6 @@
 <template>
-  <div class="Id_Detail_Faktur">
-    <div class="flex flex-col text-left border-b border-dashed pb-6 px-4">
+  <div class="Id_Detail_Faktur pt-16">
+    <div class="flex flex-col text-left border-b border-dashed pb-3 px-4">
       <div class="font-bold text-lg">
         GJI200121280129001
       </div>

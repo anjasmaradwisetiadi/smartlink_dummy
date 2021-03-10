@@ -7,7 +7,7 @@
         <div class="text-base font-bold mt-1"> {{getDescription}}</div>
       </div>
       <button
-        class=" w-full py-4 bg-green-500 text-white text-lg text-center rounded-md">Cetak</button>
+        class="background_button w-full py-4 text-white text-lg text-center rounded-md">Cetak</button>
     </div>
   </div>
 </template>
@@ -21,5 +21,7 @@ import { mapGetters } from 'vuex'
 
 </script>
 <style lang="scss" scoped>
-
+    .background_button{
+        background-color: #00B6AB;
+    }
 </style>
