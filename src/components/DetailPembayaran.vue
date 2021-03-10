@@ -20,8 +20,8 @@
         <form-input-all></form-input-all>
 
         <div class="mt-6 mb-3 px-4">
-          <router-link tag="button" to="/detail-faktur"
-            class=" w-full py-3 bg_tombol text-white rounded-md ">Submit Gaji</router-link>
+          <button class=" w-full py-3 bg_tombol text-white rounded-md "
+            @click.prevent="submitSalary()">Submit Gaji</button>
         </div>
       </div>
     </div>
@@ -33,7 +33,8 @@
 
   import {
     mapActions,
-    mapGetters
+    mapGetters,
+    mapMutations
   } from 'vuex'
 
   export default {
@@ -43,15 +44,55 @@
     },
 
     computed: {
-      ...mapGetters(['getLoading','getErrorMessage'])
+      ...mapGetters(['getLoading', 'getErrorMessage', 'getBanks', 'getDate']),
+
+      changeDataBanks() {
+        return Object.entries(this.getBanks)
+
+      }
     },
 
     mounted() {
+      console.log(Object.entries(this.getBanks));
+      if ((this.getBanks.length) === null) {
+        console.log("kosong")
+      } else {
+        console.log("isi")
+      }
       this.$store.dispatch('setBanks')
     },
 
     methods: {
+      ...mapMutations(['validBank', 'validDate']),
 
+      submitSalary() {
+        
+        if (this.validateInput() === 1) {
+          this.$router.push({
+            path: '/detail-faktur'
+          })
+        } else {
+          return false
+        }
+      },
+
+      validateInput() {
+        let dataBanks = Object.keys(this.getBanks).length;
+        let dataDate = this.getDate;
+
+        let statusValidBank = (!dataBanks) ? 'invalid' : 'valid';
+        let statusValidDate = (!dataDate) ? 'invalid' : 'valid';
+
+        this.validBank(statusValidBank);
+        this.validDate(statusValidDate);
+
+        if ((statusValidBank === 'valid') && (statusValidDate === 'valid')) {
+          return 1
+        } else {
+          return 0
+        }
+
+      }
     }
 
   }

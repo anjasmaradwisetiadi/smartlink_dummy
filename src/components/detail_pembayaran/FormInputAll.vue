@@ -5,7 +5,7 @@
       <div class="flex flex-col form-control">
         <div class="flex">
           <div class="text-sm text-gray-400 text-right">Bayar Dari Rekening</div>
-          <span class="text-blue-400 ml-1">&#42;</span>
+          <span v-show="getValidBanks==='invalid'" class="text-blue-400 ml-1">&#42;</span>
         </div>
         <div class="flex rounded-md border cursor-pointer focus:outline-none focus:ring-2 focus:ring-blue-400">
           <div class="w-full">
@@ -16,6 +16,9 @@
             placeholder="Pilih Rekening Bank">
             </form-bank>
           </div>
+        </div>
+        <div v-if="getValidBanks==='invalid'" class="text-left">
+          <span class="text-blue-400 mt-1 text-sm ">data wajib diisi</span>
         </div>
 
       </div>
@@ -51,7 +54,7 @@
       }
     },
     computed: {
-      ...mapGetters(['getAllBanks','']),
+      ...mapGetters(['getAllBanks','getValidBanks']),
 
       allBanks() {
         return this.getAllBanks
@@ -63,6 +66,8 @@
       ...mapMutations(['dataBank']),
 
       handleChosenBank(data) {
+        console.log("data banks dipilih")
+        console.log(data)
         this.dataBank(data)
       }
     }

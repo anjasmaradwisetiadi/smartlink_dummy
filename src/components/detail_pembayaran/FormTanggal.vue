@@ -3,7 +3,7 @@
     <div class="flex flex-col form-control mt-4">
       <div class="flex">
         <div class="text-sm text-gray-400 text-right">Dicatat Pada Tanggal</div>
-        <span class="text-blue-400 ml-1">&#42;</span>
+        <span v-show="getValidDate==='invalid'" class="text-blue-400 ml-1">&#42;</span>
       </div>
       <div class="flex rounded-md border cursor-pointer">
         <div class="w-5/6">
@@ -15,12 +15,19 @@
           <span class="material-icons text-gray-400"> calendar_today </span>
         </div>
       </div>
+      <div v-if="getValidDate==='invalid'" class="text-left">
+        <span class="text-blue-400 mt-1 text-sm text-left"> data wajib diisi</span>
+      </div>
     </div>
   </div>
 </template>
 <script>
-    import { mapMutations } from 'vuex'
+    import { mapGetters, mapMutations } from 'vuex'
   export default {
+    computed:{
+      ...mapGetters(['getValidDate'])
+    },
+
      methods:{
         ...mapMutations(['dataDate']),
 

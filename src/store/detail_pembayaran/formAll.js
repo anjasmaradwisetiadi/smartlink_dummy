@@ -2,7 +2,9 @@ export const formAllDetailPembayaran = {
   state: {
     bank:{},  
     date:'',
-    description:''
+    description:'',
+    validationDataBanks:'valid',
+    validationDataDate:'valid',
   },
 
   mutations: {
@@ -14,6 +16,12 @@ export const formAllDetailPembayaran = {
     },
     dataDescription(state,payload){
         state.description=payload;
+    },
+    validBank(state,payload){
+      state.validationDataBanks=payload
+    },
+    validDate(state,payload){
+      state.validationDataDate=payload
     }
   },
   actions: {
@@ -29,6 +37,12 @@ export const formAllDetailPembayaran = {
     },
     getDescription:(state)=>{
         return state.description;
+    },
+    getValidBanks:(state)=>{
+      return state.validationDataBanks;
+    },
+    getValidDate:(state)=>{
+      return state.validationDataDate;
     }
   }
 
