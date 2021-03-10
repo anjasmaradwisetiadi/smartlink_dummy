@@ -9,38 +9,42 @@
         </div>
         <div class="relative px-4">
           <div class="border-b border-dashed">
-            <div v-for="(item,index) in items.pengaturan_gaji" :key="index">
-              <div v-if="index===0" class="flex mt-2">
-                <div class="w-1/2 flex flex-col text-left">
-                  <div class="text-sm font-semibold"> {{item.nama}} </div>
-                  <div class="text-sm font-normal text-gray-400">{{item.nominal | formatPrice}} x
-                    {{items.total_periode}} periode</div>
-                </div>
-                <div class="w-1/2 flex m-auto text-right">
-                  <div class="w-full text-sm font-semibold mr-2">
-                    {{item.nominal*items.total_periode | formatPrice}}
+            <div v-for="(itemSalarys,index) in getSalaryTypeData" :key="index">
+              <div v-for="(itemSalary,indexing) in itemSalarys" :key="indexing">
+                <div v-if="index==='periode'" class="flex mt-2">
+                  <div class="w-1/2 flex flex-col text-left">
+                    <div class="text-sm font-semibold"> {{itemSalary.nama}} </div>
+                    <div class="text-sm font-normal text-gray-400">
+                      {{itemSalary.nominal | formatPrice}} x
+                      {{items.total_periode}} periode</div>
                   </div>
-                  <span @click.prevent="modalEditGaji(index)"
-                    class="material-icons text-base font-bold text-blue-400 -mt-1 cursor-pointer">
-                    mode_edit </span>
+                  <div class="w-1/2 flex m-auto text-right">
+                    <div class="w-full text-sm font-semibold mr-2">
+                      {{itemSalary.nominal*items.total_periode | formatPrice}}
+                    </div>
+                    <span @click.prevent="modalEditGaji(index)"
+                      class="material-icons text-base font-bold text-blue-400 -mt-1 cursor-pointer">
+                      mode_edit </span>
+                  </div>
+                </div>
+
+                <div v-if="index === 'kehadiran'" class="flex mt-2 pb-3">
+                  <div class="w-1/2 flex flex-col text-left">
+                    <div class="text-sm font-semibold"> {{itemSalary.nama}} </div>
+                    <div class="text-sm font-normal text-gray-400">{{itemSalary.nominal | formatPrice}} x
+                      {{items.total_kehadiran}} kehadiran</div>
+                  </div>
+                  <div class="w-1/2 flex m-auto text-right">
+                    <div class="w-full text-sm font-semibold mr-2 ">
+                      {{itemSalary.nominal*items.total_kehadiran | formatPrice}}
+                    </div>
+                    <span @click.prevent="modalEditAbsen(index)"
+                      class="material-icons text-base font-bold text-blue-400 -mt-1 cursor-pointer">
+                      mode_edit </span>
+                  </div>
                 </div>
               </div>
 
-              <div v-if="index>0" class="flex mt-2 pb-3">
-                <div class="w-1/2 flex flex-col text-left">
-                  <div class="text-sm font-semibold"> {{item.nama}} </div>
-                  <div class="text-sm font-normal text-gray-400">{{item.nominal | formatPrice}} x
-                    {{items.total_kehadiran}} kehadiran</div>
-                </div>
-                <div class="w-1/2 flex m-auto text-right">
-                  <div class="w-full text-sm font-semibold mr-2 ">
-                    {{item.nominal*items.total_kehadiran | formatPrice}}
-                  </div>
-                  <span @click.prevent="modalEditAbsen(index)"
-                    class="material-icons text-base font-bold text-blue-400 -mt-1 cursor-pointer">
-                    mode_edit </span>
-                </div>
-              </div>
             </div>
           </div>
         </div>
@@ -83,8 +87,12 @@
       }
     },
 
+    mounted() {
+      this.$store.dispatch("setSalary");
+    },
+
     computed: {
-      ...mapGetters(['getTotalSalary']),
+      ...mapGetters(['getTotalSalary', 'getSalaryTypeData']),
 
     },
 

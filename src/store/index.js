@@ -10,7 +10,8 @@ import { formAllDetailPembayaran } from './detail_pembayaran/formAll'
 import { stepper } from './stepper';
 import { getInquiry } from './consume_API/inquiry';
 import { getBanks } from './consume_API/banks';
-import { upahBorongan } from './gaji_faktur/upahBorongan'
+import { upahBorongan } from './gaji_faktur/upahBorongan';
+import { gaji } from './gaji_faktur/gaji';
 
 
 // import { dataEmployee } from '../service/dataEmployee'
@@ -73,7 +74,8 @@ export default new Vuex.Store({
     stepper,
     getInquiry,
     getBanks,
-    upahBorongan
+    upahBorongan,
+    gaji
 
   },
 });

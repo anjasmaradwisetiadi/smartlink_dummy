@@ -21,7 +21,6 @@ export const upahBorongan = {
     state:{
         salaryArrangmentData:{},
         workedSalaryData:{},
-        allDataBorongan:[]
 
     },
     mutations:{
