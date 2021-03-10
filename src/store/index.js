@@ -27,6 +27,7 @@ export default new Vuex.Store({
     errorMessage:'',
     loading: true,
     statusEdit: true,
+    navigationGuard: false
   },
   mutations: {
     inquiry(state,payload){
@@ -43,6 +44,9 @@ export default new Vuex.Store({
 
     modeEdit(state,payload){
       state.statusEdit=payload
+    },
+    setNavigationGuard(state,payload){
+      state.navigationGuard=payload;
     }
 
   },
@@ -70,6 +74,10 @@ export default new Vuex.Store({
 
     getModeEdit: (state)=>{
       return state.statusEdit;
+    },
+
+    getNavigationGuard:(state)=>{
+      return state.navigationGuard;
     }
 
 

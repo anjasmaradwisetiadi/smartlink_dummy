@@ -37,8 +37,9 @@
 
     methods: {
       
-      ...mapMutations(['nextStep']),
+      ...mapMutations(['nextStep','setNavigationGuard']),
       nextSteps() {
+        this.setNavigationGuard(true);
         this.nextStep()
       },
     }
