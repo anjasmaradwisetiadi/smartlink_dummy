@@ -8,6 +8,7 @@ export const getInquiry = {
   actions: {
     setInquiry({rootState,commit}) {
       rootState.loading = true;
+      console.log(urlInquiry)
       axios.get(urlInquiry)
         .then(function (response) {
           commit('inquiry',response.data)

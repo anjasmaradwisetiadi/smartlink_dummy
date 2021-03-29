@@ -32,7 +32,6 @@ export const totalAllSalary={
         getSubTotalSalary:(state)=>{
             return  state.collectSubTotalSalary.sub_total_gaji.nominal
         },
-
         getSubTotalWages:(state)=>{
             return  state.collectSubTotalSalary.sub_total_upah.nominal
         },
@@ -42,17 +41,13 @@ export const totalAllSalary={
         getSubTotalDemand:(state)=>{
             return  state.collectSubTotalSalary.sub_total_tanggungan.nominal
         },
-
         getTotalSalaryBruto:(state,getters)=>{
-            let dataCollect=
-            getters.getSubTotalSalary+
-            getters.getSubTotalWages+
-            getters.getSubTotalKomisi
-            
+            let dataCollect= getters.getSubTotalSalary + getters.getSubTotalWages + getters.getSubTotalKomisi;
             return state.totalSalaryBruto=dataCollect;
         },
-        getTotalSalaryNet:(state)=>{
-            return state.totalSalaryNet
+        getTotalSalaryNet:(state,getters)=>{
+            let dataCollect = state.totalSalaryBruto - getters.getSubTotalDemand;
+            return state.totalSalaryNet = dataCollect
         },
     }
 

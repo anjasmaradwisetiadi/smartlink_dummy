@@ -114,7 +114,6 @@
             return false
           }
         });
-        console.log(this.nominal)
 
       },
 
@@ -162,7 +161,6 @@
               return false
             }
           });
-          // this.items.pengaturan_gaji[this.idTo].nominal = parseInt(this.nominal);
           this.items.total_periode = parseInt(this.periode);
 
           this.totalSalary({
@@ -179,7 +177,6 @@
               return false
             }
           });
-          // this.nominal = this.items.pengaturan_gaji[this.idTo].nominal;
           this.periode = this.items.total_periode;
         }
 

@@ -94,7 +94,7 @@
 
             let data = 0;
             for(let i=0; i<dataLength; i++){
-                data +=parseInt(this.items.tanggungan[i].nominal)
+                data += parseInt(this.items.komisi[i].nominal);
             }
             this.$emit("salaryTanggungan", {name:"sub_total_tanggungan",nominal:data});
             return data;
