@@ -9,15 +9,21 @@ export const getInquiry = {
     setInquiry({rootState,commit}) {
       rootState.loading = true;
       console.log(urlInquiry)
-      axios.get(urlInquiry)
-        .then(function (response) {
-          commit('inquiry',response.data)
-          rootState.loading = false;
-        })
-        .catch(function (error) {
-          rootState.errorMessage=error.message
-          rootState.loading = false;
-        })
+      
+      setTimeout(() => {
+        commit('inquiry',urlInquiry)
+        rootState.loading = false;
+      }, 3000);
+      // with url backend
+      // axios.get(urlInquiry)
+      //   .then(function (response) {
+      //     commit('inquiry',response.data)
+      //     rootState.loading = false;
+      //   })
+      //   .catch(function (error) {
+      //     rootState.errorMessage=error.message
+      //     rootState.loading = false;
+      //   })
     }
 
   },

@@ -20,7 +20,6 @@ export const mixinsAllModal = {
 
   methods: {
     modalEditGaji(data) {
-
       this.editModalState = data.variabel;
       this.idTo = data.id;
 
