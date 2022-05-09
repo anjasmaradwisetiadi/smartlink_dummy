@@ -9,9 +9,9 @@
         </div>
         <div class="flex rounded-md border cursor-pointer focus:outline-none focus:ring-2 focus:ring-blue-400">
           <div class="w-full">
-            <form-bank 
-            :data="allBanks" 
-            v-model.trim="formData.client" 
+            <form-bank
+            :data="allBanks"
+            v-model.trim="formData.client"
             @chosenBank="handleChosenBank"
             placeholder="Pilih Rekening Bank">
             </form-bank>
@@ -66,8 +66,6 @@
       ...mapMutations(['dataBank']),
 
       handleChosenBank(data) {
-        console.log("data banks dipilih")
-        console.log(data)
         this.dataBank(data)
       }
     }

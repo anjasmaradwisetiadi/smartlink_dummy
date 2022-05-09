@@ -1,12 +1,40 @@
 <template>
   <div id="app">
-    <!-- <div id="nav">
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
-    </div> -->
-    <router-view/>
+    <div v-if="!viewMobile">
+      <div class="mt-4 font-bold">
+        harus dalam ukuran layar mobile (<576px)
+      </div>
+    </div>
+    <div v-else>
+      <router-view/>
+    </div>
   </div>
 </template>
+<script>
+export default {
+  name: 'App',
+  data(){
+    return{
+      windowWidth: 0
+    }
+  },
+  computed:{
+    viewMobile(){
+      if(this.windowWidth < 576){
+        return true
+      } else{
+        return  false
+      }
+    }
+  },
+  mounted() {
+    window.addEventListener('resize', () => {
+      this.windowWidth = window.innerWidth
+    })
+  }
+}
+</script>
+
 
 <style lang="scss">
 #app {

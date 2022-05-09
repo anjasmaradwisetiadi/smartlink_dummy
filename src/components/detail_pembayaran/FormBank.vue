@@ -1,10 +1,15 @@
 <template>
   <div class="form_banks text-left">
     <div class="relative">
-      <input :value="value" @input="handleInput" :placeholder="placeholder" ref="input" tabindex="0"
+      <input
+        :value="value"
+        @input="handleInput"
+        :placeholder="placeholder"
+        ref="input"
+        tabindex="0"
       class="placeholder-gray-200"
       @click="showOptions = true"
-        :class="inputClass" 
+        :class="inputClass"
         />
       <span v-if="value && showOptions" @click.prevent="reset()"
         class="absolute inset-y-0 right-0 pr-3 flex items-center cursor-pointer">
@@ -17,7 +22,9 @@
         @focusout="showOptions = false"
         tabindex="0" :class="dropdownClass">
         <ul class="py-1">
-          <li v-for="(item, index) in searchResults" :key="index" @click="handleClick(item)"
+          <li
+            v-for="(item, index) in searchResults" :key="index"
+            @click="handleClick(item)"
             class=" px-1 py-2 cursor-pointer hover:bg-gray-200">
             {{ item.pemilik }}
           </li>
@@ -64,7 +71,7 @@
         searchTerm: "",
       };
     },
-    
+
     computed: {
       searchResults() {
         return this.data.filter((item) => {

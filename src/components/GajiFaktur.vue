@@ -192,7 +192,6 @@
       },
 
       salaryTanggungan(data) {
-        console.log(data)
         this.collectSubTotal({
           name: data.name,
           nominal: data.nominal

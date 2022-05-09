@@ -7,8 +7,8 @@ export const editKomisi={
 
         // },
         // deleteKomisi(rootState,payload){
-        //     // let data = state.dataEmployee[0].data.komisi; 
-        //     // rootState.dataEmployee.data.komisi = rootState.dataEmployee.data.komisi.filter((item)=>item.id != payload)  
+        //     // let data = state.dataEmployee[0].data.komisi;
+        //     // rootState.dataEmployee.data.komisi = rootState.dataEmployee.data.komisi.filter((item)=>item.id != payload)
         // }
     },
     actions:{
@@ -16,7 +16,7 @@ export const editKomisi={
             rootState.dataEmployee.data.komisi.push(payload)
         },
         setDeleteKomisi({rootState},payload){
-            rootState.dataEmployee.data.komisi = rootState.dataEmployee.data.komisi.filter((item)=>item.id != payload)  
+            rootState.dataEmployee.data.komisi = rootState.dataEmployee.data.komisi.filter((item)=>item.id !== payload)
         }
 
     },

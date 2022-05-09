@@ -4,12 +4,11 @@ const axios = require('axios');
 const urlInquiry = collectionUrl.baseInquiry;
 
 export const getInquiry = {
-    
+
   actions: {
     setInquiry({rootState,commit}) {
       rootState.loading = true;
-      console.log(urlInquiry)
-      
+
       setTimeout(() => {
         commit('inquiry',urlInquiry)
         rootState.loading = false;
