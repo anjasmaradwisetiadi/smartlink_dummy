@@ -15,22 +15,32 @@ export default {
   name: 'App',
   data(){
     return{
-      windowWidth: 0
+      windowWidth: 0,
+      viewMobile:false,
     }
   },
-  computed:{
-    viewMobile(){
-      if(this.windowWidth < 576){
-        return true
-      } else{
-        return  false
+
+  watch:{
+    windowWidth(newVal, oldVal){
+      if (newVal >= 576) {
+        return this.viewMobile = false
+      } else {
+        return this.viewMobile = true
       }
     }
   },
-  mounted() {
-    window.addEventListener('resize', () => {
+  created() {
+    window.addEventListener('resize', this.onResize)
+  },
+
+  updated() {
+    this.viewMobile = (this.windowWidth < 576)
+  },
+
+  methods:{
+    onResize(e) {
       this.windowWidth = window.innerWidth
-    })
+    }
   }
 }
 </script>
