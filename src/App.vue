@@ -1,11 +1,13 @@
 <template>
   <div id="app">
-    <div v-if="!viewMobile">
-      <div class="mt-4 font-bold">
+    <div
+      class="hidden md:block lg:block ">
+      <div class="md:block mt-4 font-bold">
         harus dalam ukuran layar mobile (<576px)
       </div>
     </div>
-    <div v-else>
+    <div
+      class="sm:block md:hidden lg:hidden">
       <router-view/>
     </div>
   </div>
@@ -34,12 +36,19 @@ export default {
   },
 
   updated() {
-    this.viewMobile = (this.windowWidth < 576)
+    window.addEventListener('resize', this.onResize)
   },
 
   methods:{
     onResize(e) {
       this.windowWidth = window.innerWidth
+      console.log('detect size width')
+      console.log(this.windowWidth)
+      if (this.windowWidth >= 576) {
+        return this.viewMobile = false
+      } else {
+        return this.viewMobile = true
+      }
     }
   }
 }
